@@ -15,10 +15,10 @@
 [zh.params.author]
   name = "难评"   # 记得改成你的名字
   image = "mouse.jpg" # 确保 assets 文件夹里有这张图，或者改成你的图片名
-  headline = "也许哪天就有了" 
+  headline = "也许哪天这也是句座右铭" 
   
   # 下面是社交链接，不需要的可以直接删掉或注释掉
-  links = [
-    { email = "mailto:asdfg@outlook.com" },
-    # { github = "https://github.com/" },
-  ]
+links = [
+      { email = "mailto:asdfg@gamil.com" }, 
+      { github = "https://github.com/exusiai0asdfg" }, 
+    ]
