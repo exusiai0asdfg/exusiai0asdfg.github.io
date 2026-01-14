@@ -23,7 +23,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      HUGO_VERSION: "0.128.0" # 注意：冒号后面有空格，这很关键
+      HUGO_VERSION: "0.128.0" # ✅ 这里我已经加好了空格
     steps:
       - name: Install Hugo CLI
         run: |
