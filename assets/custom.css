@@ -1,0 +1,9 @@
+/* 针对文章正文的段落进行首行缩进 */
+article .article-content p {
+    text-indent: 2em; /* 2em 等于两个字符的宽度 */
+}
+
+/* 排除引用的段落，不然引用块也会缩进，很难看 */
+article .article-content blockquote p {
+    text-indent: 0;
+}
