@@ -3,8 +3,7 @@ name: Deploy Hugo site to Pages
 
 on:
   push:
-    branches: ["main"]  # 确保你的主分支叫 main，如果是 master 就改成 master
-
+    branches: ["main"]
   workflow_dispatch:
 
 permissions:
@@ -24,7 +23,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      HUGO_VERSION:"0.128.0"
+      HUGO_VERSION: "0.128.0" # 注意：冒号后面有空格，这很关键
     steps:
       - name: Install Hugo CLI
         run: |
