@@ -1,0 +1,24 @@
+[zh]
+  languageName = "中文"
+  languageCode = "zh-cn"
+  contentDir = "content"
+  weight = 1
+
+[zh.params]
+  displayName = "中文"
+  isoCode = "zh-CN"
+  rtl = false
+  dateFormat = "2006年1月2日"
+  logo = "logo.png" 
+  description = "我的博客"
+
+[zh.params.author]
+  name = "难评"   # 记得改成你的名字
+  image = "mouse.jpg" # 确保 assets 文件夹里有这张图，或者改成你的图片名
+  headline = "也许哪天就有了" 
+  
+  # 下面是社交链接，不需要的可以直接删掉或注释掉
+  links = [
+    { email = "mailto:asdfg@outlook.com" },
+    # { github = "https://github.com/" },
+  ]
