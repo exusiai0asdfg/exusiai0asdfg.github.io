@@ -15,7 +15,8 @@ buildDrafts = false
 buildFuture = true
 
 enableEmoji = true
-
+# 禁止生成标签(taxonomy)和分类(term)页面
+disableKinds = ["taxonomy", "term"]
 # googleAnalytics = "G-XXXXXXXXX"
 
 [pagination]
