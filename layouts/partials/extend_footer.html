@@ -1,27 +1,19 @@
 {{ if not .IsHome }}
 <script>
+  console.log("正在加载随机背景脚本..."); // 加这句，确保能在控制台看到它
   document.addEventListener("DOMContentLoaded", function() {
-    // 1. 定义你的随机图片库 (注意：这些图必须在 static 文件夹里)
     const images = [
-      "bg1.png",
-      "bg2.png", 
-      "bg3.jpg",
-      "bg4.jpeg",
-      "bg5.jpg",
-      "bg6.jpg",
-      "bg7.jpg"
+      "bg1.png", "bg2.png", "bg3.jpg", "bg4.jpeg",
+      "bg5.jpg", "bg6.jpg", "bg7.jpg"
     ];
-
-    // 2. 随机抽取
     const randomImage = images[Math.floor(Math.random() * images.length)];
-
-    // 3. 寻找 Blowfish 的背景容器
     const bgElement = document.getElementById('background-image');
 
-    // 4. 替换背景
     if (bgElement) {
-      console.log("正在应用随机背景:", randomImage); 
+      console.log("找到背景容器，准备切换为:", randomImage);
       bgElement.style.backgroundImage = `url('/${randomImage}')`;
+    } else {
+      console.error("未找到背景容器！");
     }
   });
 </script>
