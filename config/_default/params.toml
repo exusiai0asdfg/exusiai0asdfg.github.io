@@ -2,14 +2,14 @@
 
 colorScheme = "blowfish"
 
-# 1. 这里设置全局默认背景 (兜底用)
-# 请确保 hero.png 在 assets 文件夹里，且名字全是小写
-defaultBackgroundImage = "hero.png"
+# 1. 全局兜底：只要其他地方没设置，就用这张图
+# (注意：对应 assets 里的 wallpaper.png)
+defaultBackgroundImage = "wallpaper.png"
 
 [homepage]
   layout = "background"
-  # 2. 首页背景
-  image = "hero.png" 
+  # 2. 首页背景：明确指定
+  image = "wallpaper.png" 
   showRecent = true
   showRecentItems = 5
   showMore = true
@@ -17,14 +17,17 @@ defaultBackgroundImage = "hero.png"
 
 [article]
   showHero = true
-  # 3. 文章页背景模式
-  heroStyle = "background" 
+  heroStyle = "background"
+  # 3. 文章页背景：显式指定（防止它找不到）
+  background = "wallpaper.png" 
   showBreadcrumbs = true
   showTaxonomies = false
 
 [list]
   showHero = true
   heroStyle = "background"
+  # 4. 列表页背景
+  background = "wallpaper.png"
   showSummary = true
   cardView = true
   
