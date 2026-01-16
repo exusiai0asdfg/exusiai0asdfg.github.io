@@ -1,11 +1,15 @@
 # config/_default/params.toml
 
 colorScheme = "blowfish"
-defaultBackgroundImage = "bg3.jpg" # 全局背景(兜底用)，确保这张图在 static 里
+
+# 1. 这里设置全局默认背景 (兜底用)
+# 请确保 hero.png 在 assets 文件夹里，且名字全是小写
+defaultBackgroundImage = "hero.png"
 
 [homepage]
   layout = "background"
-  image = "hero.png"  
+  # 2. 首页背景
+  image = "hero.png" 
   showRecent = true
   showRecentItems = 5
   showMore = true
@@ -13,15 +17,16 @@ defaultBackgroundImage = "bg3.jpg" # 全局背景(兜底用)，确保这张图�
 
 [article]
   showHero = true
-  heroStyle = "background"
+  # 3. 文章页背景模式
+  heroStyle = "background" 
   showBreadcrumbs = true
-  showTaxonomies = false # 你之前要求的，不显示标签
+  showTaxonomies = false
 
 [list]
   showHero = true
   heroStyle = "background"
   showSummary = true
-  cardView = true  # <--- 这个开启后，那个丑陋的列表就会变成卡片
+  cardView = true
   
 [footer]
   showCopyright = true
