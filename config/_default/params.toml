@@ -5,7 +5,7 @@ defaultBackgroundImage = "bg3.jpg" # 全局背景(兜底用)，确保这张图�
 
 [homepage]
   layout = "background"
-  image = "hero background.PNG"  
+  image = "herobackground.png"  
   showRecent = true
   showRecentItems = 5
   showMore = true
