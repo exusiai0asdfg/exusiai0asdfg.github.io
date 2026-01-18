@@ -21,3 +21,9 @@
   name = "生涯规划"   # 对应 content/plan 文件夹
   url = "/plan/"
   weight = 40
+
+[[main]]
+  identifier = "about"
+  name = "关于本站"     # 菜单上显示的名字
+  url = "/about/"      # 对应刚才建立的 about.md
+  weight = 5           # 数字越小越靠左，设为 5 让它排在最前面！
