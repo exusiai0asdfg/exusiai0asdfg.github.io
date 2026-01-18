@@ -31,3 +31,21 @@ defaultBackgroundImage = "wallpaper.png"
   
 [footer]
   showCopyright = true
+
+# config/_default/params.toml
+
+[article]
+  showComments = true 
+
+[giscus]
+  repo = "exusiai0asdfg/exusiai0asdfg.github.io"
+  repoId = "R_kgDOQ5pfUQ"
+  category = "General"
+  categoryId = "DIC_kwDOQ5pfUc4C1GYH"
+  mapping = "pathname"
+  reactionsEnabled = "1"
+  emitMetadata = "0"
+  inputPosition = "top"
+  theme = "preferred_color_scheme" 
+  lang = "zh-CN"
+  loading = "lazy"
