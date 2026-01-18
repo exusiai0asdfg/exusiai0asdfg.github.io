@@ -1,14 +1,11 @@
 # config/_default/params.toml
 
 colorScheme = "blowfish"
-
-# 1. 全局兜底：只要其他地方没设置，就用这张图
-# (注意：对应 assets 里的 wallpaper.png)
+# 全局兜底背景图
 defaultBackgroundImage = "wallpaper.png"
 
 [homepage]
   layout = "background"
-  # 2. 首页背景：明确指定
   image = "wallpaper.png" 
   showRecent = true
   showRecentItems = 5
@@ -20,11 +17,12 @@ defaultBackgroundImage = "wallpaper.png"
   heroStyle = "background"
   showBreadcrumbs = true
   showTaxonomies = false
+  # 👇 评论功能合并在这里
+  showComments = true 
 
 [list]
   showHero = true
   heroStyle = "background"
-  # 4. 列表页背景
   background = "wallpaper.png"
   showSummary = true
   cardView = true
@@ -32,11 +30,7 @@ defaultBackgroundImage = "wallpaper.png"
 [footer]
   showCopyright = true
 
-# config/_default/params.toml
-
-[article]
-  showComments = true 
-
+# 👇 Giscus 评论配置 (已填好你的 ID)
 [giscus]
   repo = "exusiai0asdfg/exusiai0asdfg.github.io"
   repoId = "R_kgDOQ5pfUQ"
@@ -46,6 +40,6 @@ defaultBackgroundImage = "wallpaper.png"
   reactionsEnabled = "1"
   emitMetadata = "0"
   inputPosition = "top"
-  theme = "preferred_color_scheme" 
+  theme = "preferred_color_scheme"
   lang = "zh-CN"
   loading = "lazy"
