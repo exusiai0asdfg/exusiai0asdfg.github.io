@@ -2,28 +2,34 @@
   identifier = "home"
   name = "首页"
   url = "/"
-  weight = 10
+  weight = 40
 
 [[main]]
   identifier = "posts"
   name = "所思所想"   # 这里对应你的 content/posts 文件夹
   url = "/posts/"
-  weight = 20
+  weight = 10
 
 [[main]]
   identifier = "notes"
   name = "学习笔记"   # 对应 content/notes 文件夹
   url = "/notes/"
-  weight = 30
+  weight = 20
 
 [[main]]
   identifier = "plan"
   name = "生涯规划"   # 对应 content/plan 文件夹
   url = "/plan/"
-  weight = 40
+  weight = 30
+
+[[main]]
+  identifier = "moments"
+  name = "动态"   # 对应 content/plan 文件夹
+  url = "/moments/"
+  weight = 5
 
 [[main]]
   identifier = "about"
   name = "关于本站"     # 菜单上显示的名字
   url = "/about/"      # 对应刚才建立的 about.md
-  weight = 5           # 数字越小越靠左，设为 5 让它排在最前面！
+  weight =  1       # 数字越小越靠左，设为 5 让它排在最前面！
