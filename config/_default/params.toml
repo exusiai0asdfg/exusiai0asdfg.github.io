@@ -18,8 +18,6 @@ defaultBackgroundImage = "wallpaper.png"
 [article]
   showHero = true
   heroStyle = "background"
-  # 3. 文章页背景：显式指定（防止它找不到）
-  background = "wallpaper.png" 
   showBreadcrumbs = true
   showTaxonomies = false
 
