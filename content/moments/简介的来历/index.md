@@ -2,7 +2,6 @@
 title = "简介的来历"
 date = "2026-01-18T14:53:00+08:00"
 draft = false
-background = "bg7.jpg"
 [article]
 showHero = true
 heroStyle = "background"

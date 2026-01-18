@@ -1,9 +1,0 @@
-+++
-title = "  "
-draft = false
-date = ""
-background = "bg1.png"
-[article]
-showHero = true
-heroStyle = "background"
-+++
