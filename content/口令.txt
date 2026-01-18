@@ -1,3 +1,3 @@
 git add .
-git commit -m "改简介"
+git commit -m "依旧改图片"
 git push
