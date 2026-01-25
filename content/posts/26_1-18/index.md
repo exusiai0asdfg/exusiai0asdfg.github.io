@@ -7,7 +7,7 @@ background = "bg4.jpeg"
 showHero = true
 heroStyle = "background"
 +++
-{{< secret password="qwertasdfg" >}}
+
 
 ### 人为何而活？
 就在去年10-11月左右，我接触到了萨特的存在主义，与此同时，我也在想，人究竟为什么而活？
@@ -258,4 +258,3 @@ heroStyle = "background"
 [^5]:他还有妹妹相伴。
 
 
-{{< /secret >}}

@@ -6,6 +6,4 @@ date = "2026-01-18T15:56:00+08:00"
 showHero = true
 heroStyle = "background"
 +++
-{{< secret password="qwertasdfg" >}}
 
-{{< /secret >}}

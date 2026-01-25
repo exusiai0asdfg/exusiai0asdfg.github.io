@@ -6,6 +6,3 @@ draft = false
 showHero = true
 heroStyle = "background"
 +++
-{{< secret password="qwertasdfg" >}}
-
-{{< /secret >}}
