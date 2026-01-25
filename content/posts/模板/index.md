@@ -6,4 +6,6 @@ draft = false
 showHero = true
 heroStyle = "background"
 +++
-仅作模板使用
+{{< secret password="qwertasdfg" >}}
+
+{{< /secret >}}
