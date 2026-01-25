@@ -19,7 +19,7 @@ defaultBackgroundImage = "wallpaper.png"
   showTaxonomies = false
   # 👇 评论功能合并在这里
   showComments = true 
-s howDate = true
+  showDate = true
   showViews = true
   showLikes = true
   showReadingTime = true
