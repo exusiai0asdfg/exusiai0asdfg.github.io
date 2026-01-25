@@ -4,7 +4,7 @@
 
  theme = "blowfish" # UNCOMMENT THIS LINE
 baseURL = "https://exusiaiblog.vercel.app/"
-defaultContentLanguage = "zh"
+defaultContentLanguage = "zh-CN"
 hasCJKLanguage = true
 enableGitInfo = false
 
