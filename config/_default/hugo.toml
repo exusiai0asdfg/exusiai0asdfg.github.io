@@ -3,8 +3,11 @@
 # https://blowfish.page/docs/getting-started/
 
  theme = "blowfish" # UNCOMMENT THIS LINE
-baseURL = "https://exusiai0asdfg.github.io/"
+baseURL = "https://exusiaiblog.vercel.app/"
 defaultContentLanguage = "zh"
+hasCJKLanguage = true
+enableGitInfo = false
+summaryLength = 30
 
 # pluralizeListTitles = "true" # hugo function useful for non-english languages, find out more in  https://gohugo.io/getting-started/configuration/#pluralizelisttitles
 

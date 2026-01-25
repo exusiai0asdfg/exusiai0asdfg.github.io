@@ -224,7 +224,7 @@
     
     
     "mainEntityOfPage": "true",
-    "wordCount": "4"
+    "wordCount": "0"
   }]
   </script>
 
@@ -774,11 +774,7 @@
   
 
   
-    
-  
 
-  
-    
   
 
   
@@ -795,7 +791,7 @@
   <div class="flex flex-row flex-wrap items-center">
     
     
-      <time datetime="2026-01-18T15:58:00&#43;08:00">2026年1月18日</time><span class="px-2 text-primary-500">&middot;</span><span>4 字</span><span class="px-2 text-primary-500">&middot;</span><span title="预计阅读">1 分钟</span>
+      <time datetime="2026-01-18T15:58:00&#43;08:00">2026年1月18日</time>
     
 
     
@@ -920,56 +916,6 @@
 
         <div class="article-content max-w-prose mb-20">
           
-
-
-<div class="secret-container" style="margin: 20px 0; border: 1px solid #ccc; padding: 20px; border-radius: 8px; background: var(--entry);">
-    
-    <div class="lock-screen" id="lock-0">
-        <div style="text-align: center;">
-            <span style="font-size: 3rem;">🔒</span>
-            <p>这是一段加密内容，请输入密码查看</p>
-            <input type="password" id="pass-input-0" placeholder="输入密码" style="padding: 5px; border-radius: 4px; border: 1px solid #aaa;">
-            <button onclick="unlock('0', 'qwertasdfg')" style="padding: 5px 10px; cursor: pointer; background: var(--primary); color: white; border: none; border-radius: 4px;">解锁</button>
-            <p id="error-0" style="color: red; display: none; font-size: 0.9rem; margin-top: 5px;">密码错误！</p>
-        </div>
-    </div>
-
-    <div class="secret-content" id="content-0" style="display: none;">
-        
-    </div>
-
-</div>
-
-<script>
-    function unlock(id, correctPassword) {
-        var input = document.getElementById('pass-input-' + id);
-        var errorMsg = document.getElementById('error-' + id);
-        var lockScreen = document.getElementById('lock-' + id);
-        var content = document.getElementById('content-' + id);
-
-        if (input.value === correctPassword) {
-            
-            lockScreen.style.display = 'none';
-            content.style.display = 'block';
-            
-            sessionStorage.setItem('unlocked-' + id, 'true');
-        } else {
-            
-            errorMsg.style.display = 'block';
-            input.value = ''; 
-        }
-    }
-    
-    
-    document.addEventListener("DOMContentLoaded", function() {
-        var id = '0';
-        if (sessionStorage.getItem('unlocked-' + id) === 'true') {
-            document.getElementById('lock-' + id).style.display = 'none';
-            document.getElementById('content-' + id).style.display = 'block';
-        }
-    });
-</script>
-
           
           
           
