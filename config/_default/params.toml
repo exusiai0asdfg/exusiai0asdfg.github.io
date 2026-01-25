@@ -20,11 +20,8 @@ defaultBackgroundImage = "wallpaper.png"
   # 👇 评论功能合并在这里
   showComments = true 
   showDate = true
-  showViews = true
-  showLikes = true
   showReadingTime = true
   showWordCount = true
-  showAuthor = true
 [list]
   showHero = true
   heroStyle = "background"
