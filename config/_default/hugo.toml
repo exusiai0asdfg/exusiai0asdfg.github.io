@@ -7,7 +7,7 @@ baseURL = "https://exusiaiblog.vercel.app/"
 defaultContentLanguage = "zh"
 hasCJKLanguage = true
 enableGitInfo = false
-summaryLength = 30
+
 
 # pluralizeListTitles = "true" # hugo function useful for non-english languages, find out more in  https://gohugo.io/getting-started/configuration/#pluralizelisttitles
 
