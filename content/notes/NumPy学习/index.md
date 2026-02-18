@@ -1,3 +1,11 @@
++++
+title = "NumPy学习1"
+date = "2026-02-18T13:58:00+08:00"
+draft = false
+[article]
+showHero = true
+heroStyle = "background"
++++
 # numpy学习
 <font face="黑体" color="blue" size="4">请注意,numpy的正确写法为NumPy,为number与python的缩写,以下将简写</font>
 本文章包含我的学习路程记录和个人思考，学习,主要参考了
