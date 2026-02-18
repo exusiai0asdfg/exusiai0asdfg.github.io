@@ -45,7 +45,7 @@
 ```
 注意,起始和终止是$base^{start}$和$base^{stop}$,`base`为底数.
 ### 基本操作
-numpy组成的重要部分和基石是N 维数组（Ndarray），关于数组有如下操作
+numpy组成的重要部分和基石是$N$维数组（Ndarray），关于数组有如下操作
 - 创建一维数组
 ```python
     import numpy as np
