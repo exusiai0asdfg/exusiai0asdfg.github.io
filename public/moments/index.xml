@@ -5,9 +5,19 @@
     <link>http://localhost:1313/moments/</link>
     <description>Recent content in 动态 on </description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh-cn</language>
+    <language>zh-CN</language>
     <copyright>© 2026 难评</copyright>
     <lastBuildDate>Sun, 18 Jan 2026 14:53:00 +0800</lastBuildDate><atom:link href="http://localhost:1313/moments/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>TO-DO-LIST</title>
+      <link>http://localhost:1313/moments/to-do-list/</link>
+      <pubDate>Sun, 18 Jan 2026 14:53:00 +0800</pubDate>
+      
+      <guid>http://localhost:1313/moments/to-do-list/</guid>
+      <description></description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/moments/to-do-list/featured.jpg" />
+    </item>
     
     <item>
       <title>简介的来历</title>

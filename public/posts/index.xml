@@ -5,9 +5,19 @@
     <link>http://localhost:1313/posts/</link>
     <description>Recent content in 文章 on </description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh-cn</language>
+    <language>zh-CN</language>
     <copyright>© 2026 难评</copyright>
-    <lastBuildDate>Sun, 18 Jan 2026 12:45:00 +0800</lastBuildDate><atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 13 Feb 2026 10:30:28 +0800</lastBuildDate><atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>性与爱——看《龙与虎》有感</title>
+      <link>http://localhost:1313/posts/%E9%BE%99%E4%B8%8E%E8%99%8E/</link>
+      <pubDate>Fri, 13 Feb 2026 10:30:28 +0800</pubDate>
+      
+      <guid>http://localhost:1313/posts/%E9%BE%99%E4%B8%8E%E8%99%8E/</guid>
+      <description></description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/posts/%E9%BE%99%E4%B8%8E%E8%99%8E/featured.png" />
+    </item>
     
     <item>
       <title>人为何而活？</title>
