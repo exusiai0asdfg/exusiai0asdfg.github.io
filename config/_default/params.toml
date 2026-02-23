@@ -22,6 +22,7 @@ defaultBackgroundImage = "wallpaper.png"
   showReadingTime = true
   showWordCount = true
   math = true 
+  showTableOfContents = true
 [list]
   showHero = true
   heroStyle = "background"
