@@ -17,11 +17,11 @@ defaultBackgroundImage = "wallpaper.png"
   heroStyle = "background"
   showBreadcrumbs = true
   showTaxonomies = false
-  # 👇 评论功能合并在这里
   showComments = true 
   showDate = true
   showReadingTime = true
   showWordCount = true
+  math = true 
 [list]
   showHero = true
   heroStyle = "background"
