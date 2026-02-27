@@ -263,10 +263,36 @@ for x in np.nditer(c):            #(3)
 print  ('\n') 
 for x in np.nditer(d):            #(4)
     print (x, end=", " )
-
-
-
 ```
+1. a为原始数组,即\(
+\begin{bmatrix}
+0 & 1 & 2  \\
+3 & 4 & 5  
+\end{bmatrix}
+\),输出直接为`0, 1, 2, 3, 4, 5, `,而顺序不是用标准 C 或者 Fortran 顺序，选择的顺序是和数组内存布局一致的，这样做是为了提升访问的效率，默认是行序优先,被称为row-major order，或者说是 C-order
+2. 通过`.T`,我们转置来了矩阵a,得到\(
+\begin{bmatrix}
+0 & 3   \\
+1 & 4   \\
+2 & 5 
+\end{bmatrix}
+\)
+但是如果运行会发现,访问输出是一样的,这证明了他们在内存中的存储顺序也是一样的,但如果对转置矩阵使用标准C遍历,会发现与之前不同,这也就是所谓的非标准C,之前相同只是巧合
+3. 3和4即为使用标准 C 或者 Fortran 顺序储存的副本
+
+如果不想创建副本,只像按顺序遍历的话,可以通过如下操作指定遍历形式:
+```python
+import numpy as np 
+for x in np.nditer(a, order='F'):#Fortran order，即是列序优先；
+for x in np.nditer(a.T, order='C'):#C order，即是行序优先；
+```
+### 修改元素
+对于`np.nditer`,还有一个叫` op_flags`的可选参数,简单来说,`nditer`将视待迭代遍历的数组为只读对象（read-only），为了在遍历数组的同时，实现对数组元素值的修改，必须指定 readwrite 或者 writeonly 的模式
+
+
+
+
+
 ## 广播
 虽然这个名字起的有点奇怪,但是学完之后就会大致理解所谓"broadcast"
 

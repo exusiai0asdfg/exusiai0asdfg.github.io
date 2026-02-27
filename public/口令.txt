@@ -1,3 +1,0 @@
-git add .
-git commit -m "打开列表"
-git push
