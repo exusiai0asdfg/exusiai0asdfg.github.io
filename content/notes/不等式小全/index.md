@@ -6,6 +6,7 @@ draft = false
 showHero = true
 heroStyle = "background"
 +++
+{{< katex >}}
 题记-tmd,今天花了一晚上终于搞完了
 
 寒假课程上完,感觉不等式毫无长进,似乎只有多做题才有感觉(大悲
