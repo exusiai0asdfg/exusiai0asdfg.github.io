@@ -1,0 +1,28 @@
+{{/* 加载进度条 NProgress */}}
+<link rel="stylesheet" href="/js/nprogress.css" />
+<script src="/js/nprogress.min.js"></script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    NProgress.configure({
+      showSpinner: false,
+      speed: 500,
+      minimum: 0.15
+    });
+    NProgress.start();
+  });
+
+  window.addEventListener("load", function () {
+    NProgress.done();
+  });
+
+  document.addEventListener("click", function (e) {
+    var target = e.target;
+    while (target && target.tagName !== "A") {
+      target = target.parentNode;
+    }
+    if (target && target.href && target.href.indexOf(window.location.origin) !== -1 && target.target !== "_blank") {
+      NProgress.start();
+    }
+  });
+</script>

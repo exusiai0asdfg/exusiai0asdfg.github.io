@@ -39,15 +39,5 @@
       <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/notes/numpy%E5%AD%A6%E4%B9%A0/featured.jpg" />
     </item>
     
-    <item>
-      <title>模板</title>
-      <link>http://localhost:1313/notes/%E6%A8%A1%E6%9D%BF/</link>
-      <pubDate>Sun, 18 Jan 2026 15:58:00 +0800</pubDate>
-      
-      <guid>http://localhost:1313/notes/%E6%A8%A1%E6%9D%BF/</guid>
-      <description></description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/notes/%E6%A8%A1%E6%9D%BF/featured.jpg" />
-    </item>
-    
   </channel>
 </rss>

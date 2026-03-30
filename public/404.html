@@ -95,6 +95,8 @@
   
   
   
+    
+  
   
     
   
@@ -102,8 +104,8 @@
   <link
     type="text/css"
     rel="stylesheet"
-    href="/css/main.bundle.min.9be54cc51ddea5e6f352c7a0d199ac769b8f1f471f3866aee464036f2ff85d3a942c1d9757a16ad6e677d7c03de757548f8a39b13725127619d37762cca29363.css"
-    integrity="sha512-m&#43;VMxR3epebzUseg0ZmsdpuPH0cfOGau5GQDby/4XTqULB2XV6Fq1uZ318A951dUj4o5sTclEnYZ03dizKKTYw==">
+    href="/css/main.bundle.min.091386bc5f3d20d257dc9d8afa404b9f962552c752c99245ceb47c7cb06fa71638bd8d499b8c2fa60c88aef4615dc04e1ce4d3ff1fd128ee543a1aa16ba29eca.css"
+    integrity="sha512-CROGvF89INJX3J2K&#43;kBLn5YlUsdSyZJFzrR8fLBvpxY4vY1Jm4wvpgyIrvRhXcBOHOTT/x/RKO5UOhqha6Keyg==">
 
   
   
@@ -140,8 +142,8 @@
       defer
       type="text/javascript"
       id="script-bundle"
-      src="/js/main.bundle.min.941eff27287a099c02151ea4dd6935f65767d533fb8aa3dfb5c90d7586ff02bb5591211e1a0d01734a646e184dc2b7b3f7ca47b22f13af1e0d2ec265d2915cc7.js"
-      integrity="sha512-lB7/Jyh6CZwCFR6k3Wk19ldn1TP7iqPftckNdYb/ArtVkSEeGg0Bc0pkbhhNwrez98pHsi8Trx4NLsJl0pFcxw=="
+      src="/js/main.bundle.min.85f36fa751c284c41f02ace9925a7d57fcefe9bd5e5643c4b098bfba9baaaf96daaaab748057e6b4f6b51d32ad7f1efca56937431f5c2268411ff1f145853351.js"
+      integrity="sha512-hfNvp1HChMQfAqzpklp9V/zv6b1eVkPEsJi/upuqr5baqqt0gFfmtPa1HTKtfx78pWk3Qx9cImhBH/HxRYUzUQ=="
       data-copy="复制"
       data-copied="已复制"></script>
   
@@ -236,8 +238,40 @@
 
   
   
+    
+<link rel="stylesheet" href="/js/nprogress.css" />
+<script src="/js/nprogress.min.js"></script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    NProgress.configure({
+      showSpinner: false,
+      speed: 500,
+      minimum: 0.15
+    });
+    NProgress.start();
+  });
+
+  window.addEventListener("load", function () {
+    NProgress.done();
+  });
+
+  document.addEventListener("click", function (e) {
+    var target = e.target;
+    while (target && target.tagName !== "A") {
+      target = target.parentNode;
+    }
+    if (target && target.href && target.href.indexOf(window.location.origin) !== -1 && target.target !== "_blank") {
+      NProgress.start();
+    }
+  });
+</script>
 
   
+
+  
+  
+    
   
 
   
@@ -699,6 +733,257 @@
     src="/js/process.min.ee03488f19c93c2efb199e2e3014ea5f3cb2ce7d45154adb3399a158cac27ca52831db249ede5bb602700ef87eb02434139de0858af1818ab0fb4182472204a4.js"
     integrity="sha512-7gNIjxnJPC77GZ4uMBTqXzyyzn1FFUrbM5mhWMrCfKUoMdsknt5btgJwDvh&#43;sCQ0E53ghYrxgYqw&#43;0GCRyIEpA=="></script>
   
+  
+    
+
+
+
+
+
+
+
+
+
+<div class="site-meta-panel">
+  <div id="runtime" class="site-runtime" data-site-start="2026-01-18T00:00:00&#43;08:00"></div>
+
+  <div id="site-stat-online" class="site-stat" style="display:none;">
+    <script async src="/js/busuanzi.pure.mini.js"></script>
+    <span id="busuanzi_container_site_pv">
+      访问量: <span id="busuanzi_value_site_pv" class="site-stat-value"></span> 次
+    </span>
+    <span class="site-stat-sep">|</span>
+    <span id="busuanzi_container_site_uv">
+      访客数: <span id="busuanzi_value_site_uv" class="site-stat-value"></span> 人
+    </span>
+  </div>
+
+  <div id="site-stat-local" class="site-stat" style="display:none;">
+    本地预览模式不统计访问量，部署到正式域名后显示真实数据。
+  </div>
+</div>
+
+<div class="floating-tools-container">
+  
+  <div id="font-switcher" aria-label="字体切换">
+    <span class="floating-tools-container__badge">Aa</span>
+    <select id="font-selector">
+      <option value="noto-sans">思源黑体</option>
+      <option value="noto-serif">思源宋体</option>
+      <option value="zcool">站酷小薇</option>
+      <option value="mashan">马善政手写</option>
+      <option value="longcang">龙藏书法</option>
+    </select>
+  </div>
+
+  
+  <div id="effect-switcher" aria-label="页面特效">
+    <span class="floating-tools-container__badge" style="font-size: 1.1rem; line-height: 1;">✨</span>
+    <select id="effect-selector">
+      <option value="none">🚫 无特效</option>
+      <option value="star">💫 鼠标星光</option>
+      <option value="sakura">🌸 樱花飘落</option>
+      <option value="clickword">💕 点击浮字</option>
+    </select>
+  </div>
+
+  
+  <div id="live2d-switcher" aria-label="皮套切换">
+    <span class="floating-tools-container__badge" style="font-size: 1.1rem; line-height: 1;">🎭</span>
+    <select id="live2d-selector">
+      <option value="random">🎲 随机皮套</option>
+      <option value="hijiki">🐱 黑猫 (Hijiki)</option>
+      <option value="tororo">🐈 白猫 (Tororo)</option>
+      <option value="miku">🎤 初音 (Miku)</option>
+    </select>
+  </div>
+</div>
+
+<script>
+  (function () {
+    var fontCssMap = {
+      "noto-sans": "https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&display=swap",
+      "noto-serif": "https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&display=swap",
+      "zcool": "https://fonts.googleapis.com/css2?family=ZCOOL+XiaoWei&display=swap",
+      "mashan": "https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&display=swap",
+      "longcang": "https://fonts.googleapis.com/css2?family=Long+Cang&display=swap"
+    };
+
+    function ensureFontLoaded(name) {
+      var href = fontCssMap[name];
+      if (!href) return;
+      var id = "font-css-" + name;
+      if (document.getElementById(id)) return;
+      var link = document.createElement("link");
+      link.id = id;
+      link.rel = "stylesheet";
+      link.href = href;
+      document.head.appendChild(link);
+    }
+
+    function updateRuntime() {
+      var runtimeEl = document.getElementById("runtime");
+      if (!runtimeEl) return;
+
+      var startRaw = runtimeEl.getAttribute("data-site-start");
+      var start = new Date(startRaw);
+      if (Number.isNaN(start.getTime())) return;
+
+      var now = new Date();
+      var diff = now.getTime() - start.getTime();
+      if (diff < 0) diff = 0;
+
+      var dayMs = 24 * 60 * 60 * 1000;
+      var days = Math.floor(diff / dayMs);
+      var hours = Math.floor((diff % dayMs) / (60 * 60 * 1000));
+      var mins = Math.floor((diff % (60 * 60 * 1000)) / (60 * 1000));
+      var secs = Math.floor((diff % (60 * 1000)) / 1000);
+
+      runtimeEl.innerHTML = "本站已运行: <span class='site-stat-value'>" + days + "</span> 天 <span class='site-stat-value'>" + hours + "</span> 小时 <span class='site-stat-value'>" + mins + "</span> 分 <span class='site-stat-value'>" + secs + "</span> 秒";
+    }
+
+    var isLocal = ["localhost", "127.0.0.1", "::1"].indexOf(window.location.hostname) !== -1;
+    var localStat = document.getElementById("site-stat-local");
+    var onlineStat = document.getElementById("site-stat-online");
+    if (isLocal) {
+      if (localStat) localStat.style.display = "block";
+      if (onlineStat) onlineStat.style.display = "none";
+    } else {
+      if (localStat) localStat.style.display = "none";
+      if (onlineStat) onlineStat.style.display = "block";
+    }
+
+    updateRuntime();
+    window.setInterval(updateRuntime, 1000);
+
+    
+    var selector = document.getElementById("font-selector");
+    var key = "blog-font-choice";
+    if (selector) {
+      var saved = localStorage.getItem(key);
+      if (saved) {
+        ensureFontLoaded(saved);
+        document.documentElement.setAttribute("data-font", saved);
+        selector.value = saved;
+      } else {
+        ensureFontLoaded("noto-sans");
+      }
+      selector.addEventListener("change", function () {
+        var value = selector.value;
+        ensureFontLoaded(value);
+        document.documentElement.setAttribute("data-font", value);
+        localStorage.setItem(key, value);
+      });
+    }
+
+    
+    var effectSelector = document.getElementById("effect-selector");
+    var effectKey = "blog-effect-choice";
+    if (effectSelector) {
+      var savedEffect = localStorage.getItem(effectKey) || "none";
+      effectSelector.value = savedEffect;
+      
+      if (savedEffect !== 'none') {
+        var script = document.createElement('script');
+        script.src = '/js/blog-effects.js';
+        script.onload = function() {
+          if(window.BlogEffects && window.BlogEffects[savedEffect]) {
+            window.BlogEffects[savedEffect]();
+          }
+        };
+        document.body.appendChild(script);
+      }
+
+      effectSelector.addEventListener("change", function () {
+        localStorage.setItem(effectKey, effectSelector.value);
+        location.reload(); 
+      });
+    }
+  })();
+</script>
+
+
+<script>
+  (function () {
+    var live2dModels = {
+      "hijiki": "/live2d-models/hijiki/hijiki.model.json",
+      "tororo": "/live2d-models/tororo/tororo.model.json",
+      "miku": "/live2d-models/miku/miku.model.json"
+    };
+
+    var targetModelUrl = "https:\/\/cdn.jsdelivr.net\/npm\/live2d-widget-model-hijiki@1.0.5\/assets\/hijiki.model.json";
+    var savedModel = localStorage.getItem("blog-live2d-model");
+    
+    
+    var l2dSelector = document.getElementById("live2d-selector");
+    
+    function getModelUrlToLoad() {
+       if (savedModel && live2dModels[savedModel]) {
+          if (l2dSelector) l2dSelector.value = savedModel;
+          return live2dModels[savedModel];
+       } 
+       
+       var modelKeys = Object.keys(live2dModels);
+       var randomKey = modelKeys[Math.floor(Math.random() * modelKeys.length)];
+       if (l2dSelector) l2dSelector.value = "random";
+       return live2dModels[randomKey];
+    }
+
+    if (l2dSelector) {
+       l2dSelector.addEventListener("change", function() {
+           var val = this.value;
+           if (val === "random") {
+               localStorage.removeItem("blog-live2d-model");
+           } else {
+               localStorage.setItem("blog-live2d-model", val);
+           }
+           
+           location.reload(); 
+       });
+    }
+
+    function initLive2D() {
+      if (!window.L2Dwidget) return;
+      var modelUrl = getModelUrlToLoad();
+      L2Dwidget.init({
+        model: {
+          jsonPath: modelUrl
+        },
+        display: {
+          position: "right",
+          width: Number("168"),
+          height: Number("336"),
+          hOffset: Number("18"),
+          vOffset: Number("-16")
+        },
+        mobile: {
+          show: true,
+          scale: Number("0.65")
+        },
+        react: {
+          opacityDefault: 0.9,
+          opacityOnHover: 0.3
+        }
+      });
+    }
+
+    function loadLive2DScript() {
+      var script = document.createElement("script");
+      script.src = "/js/L2Dwidget.min.js";
+      script.async = true;
+      script.onload = initLive2D;
+      document.body.appendChild(script);
+    }
+
+    if ("requestIdleCallback" in window) {
+      window.requestIdleCallback(loadLive2DScript, { timeout: 2000 });
+    } else {
+      window.setTimeout(loadLive2DScript, 1200);
+    }
+  })();
+</script>
+
+
   
 </footer>
 <div

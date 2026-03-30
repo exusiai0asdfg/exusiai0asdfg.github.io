@@ -1,0 +1,51 @@
+name: iPhone 发送 Moment 机器人
+
+on:
+  issues:
+    types:[opened]
+
+jobs:
+  publish_moment:
+    # 只有当你发 Issue 时选择了 'moment' 标签，才触发脚本
+    if: contains(github.event.issue.labels.*.name, 'moment')
+    runs-on: ubuntu-latest
+    steps:
+      - name: 获取博客最新代码
+        uses: actions/checkout@v3
+
+      - name: 把手机 Issue 转换成你的博客文章 (TOML格式)
+        run: |
+          # 1. 设置北京时间与文件夹名
+          export TZ='Asia/Shanghai'
+          ISSUE_DATE=$(jq -r '.issue.created_at' "$GITHUB_EVENT_PATH")
+          FORMATTED_DATE=$(date -d "$ISSUE_DATE" +"%Y-%m-%dT%H:%M:%S+08:00")
+          FOLDER_NAME=$(date -d "$ISSUE_DATE" +"%Y-%m-%d-%H%M%S")
+          
+          # 2. 创建 moments 目录
+          TARGET_DIR="content/moments/$FOLDER_NAME"
+          mkdir -p "$TARGET_DIR"
+          
+          # 3. 提取 Issue 的标题和内容
+          ISSUE_TITLE=$(jq -r '.issue.title' "$GITHUB_EVENT_PATH")
+          
+          # 4. 生成带 +++ 的格式，强行写入默认配置
+          cat <<EOF > "$TARGET_DIR/index.md"
+          +++
+          title = "${ISSUE_TITLE}"
+          date = "${FORMATTED_DATE}"
+          draft = false
+          [article]
+          showHero = true
+          heroStyle = "background"
+          +++
+          
+          ${{ github.event.issue.body }}
+          EOF
+
+      - name: 提交并推送到 GitHub (触发 Vercel)
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add content/moments/*
+          git commit -m "📱 iPhone 自动发布新动态: ${{ github.event.issue.title }}" || exit 0
+          git push

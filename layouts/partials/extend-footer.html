@@ -1,0 +1,249 @@
+{{ $siteStart := .Site.Params.custom.siteStart | default "2026-01-18T00:00:00+08:00" }}
+{{ $live2dEnabled := .Site.Params.live2d.enabled | default true }}
+{{ $live2dModel := .Site.Params.live2d.modelUrl | default "https://cdn.jsdelivr.net/npm/live2d-widget-model-hijiki@1.0.5/assets/hijiki.model.json" }}
+{{ $live2dPosition := .Site.Params.live2d.position | default "right" }}
+{{ $live2dWidth := .Site.Params.live2d.width | default 168 }}
+{{ $live2dHeight := .Site.Params.live2d.height | default 336 }}
+{{ $live2dHOffset := .Site.Params.live2d.hOffset | default 18 }}
+{{ $live2dVOffset := .Site.Params.live2d.vOffset | default -16 }}
+{{ $live2dMobileScale := .Site.Params.live2d.mobileScale | default 0.65 }}
+
+<div class="site-meta-panel">
+  <div id="runtime" class="site-runtime" data-site-start="{{ $siteStart }}"></div>
+
+  <div id="site-stat-online" class="site-stat" style="display:none;">
+    <script async src="/js/busuanzi.pure.mini.js"></script>
+    <span id="busuanzi_container_site_pv">
+      访问量: <span id="busuanzi_value_site_pv" class="site-stat-value"></span> 次
+    </span>
+    <span class="site-stat-sep">|</span>
+    <span id="busuanzi_container_site_uv">
+      访客数: <span id="busuanzi_value_site_uv" class="site-stat-value"></span> 人
+    </span>
+  </div>
+
+  <div id="site-stat-local" class="site-stat" style="display:none;">
+    本地预览模式不统计访问量，部署到正式域名后显示真实数据。
+  </div>
+</div>
+
+<div class="floating-tools-container">
+  <!-- 字体切换 -->
+  <div id="font-switcher" aria-label="字体切换">
+    <span class="floating-tools-container__badge">Aa</span>
+    <select id="font-selector">
+      <option value="noto-sans">思源黑体</option>
+      <option value="noto-serif">思源宋体</option>
+      <option value="zcool">站酷小薇</option>
+      <option value="mashan">马善政手写</option>
+      <option value="longcang">龙藏书法</option>
+    </select>
+  </div>
+
+  <!-- 特效切换 -->
+  <div id="effect-switcher" aria-label="页面特效">
+    <span class="floating-tools-container__badge" style="font-size: 1.1rem; line-height: 1;">✨</span>
+    <select id="effect-selector">
+      <option value="none">🚫 无特效</option>
+      <option value="star">💫 鼠标星光</option>
+      <option value="sakura">🌸 樱花飘落</option>
+      <option value="clickword">💕 点击浮字</option>
+    </select>
+  </div>
+
+  <!-- 看板娘切换 -->
+  <div id="live2d-switcher" aria-label="皮套切换">
+    <span class="floating-tools-container__badge" style="font-size: 1.1rem; line-height: 1;">🎭</span>
+    <select id="live2d-selector">
+      <option value="random">🎲 随机皮套</option>
+      <option value="hijiki">🐱 黑猫 (Hijiki)</option>
+      <option value="tororo">🐈 白猫 (Tororo)</option>
+      <option value="miku">🎤 初音 (Miku)</option>
+    </select>
+  </div>
+</div>
+
+<script>
+  (function () {
+    var fontCssMap = {
+      "noto-sans": "https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&display=swap",
+      "noto-serif": "https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&display=swap",
+      "zcool": "https://fonts.googleapis.com/css2?family=ZCOOL+XiaoWei&display=swap",
+      "mashan": "https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&display=swap",
+      "longcang": "https://fonts.googleapis.com/css2?family=Long+Cang&display=swap"
+    };
+
+    function ensureFontLoaded(name) {
+      var href = fontCssMap[name];
+      if (!href) return;
+      var id = "font-css-" + name;
+      if (document.getElementById(id)) return;
+      var link = document.createElement("link");
+      link.id = id;
+      link.rel = "stylesheet";
+      link.href = href;
+      document.head.appendChild(link);
+    }
+
+    function updateRuntime() {
+      var runtimeEl = document.getElementById("runtime");
+      if (!runtimeEl) return;
+
+      var startRaw = runtimeEl.getAttribute("data-site-start");
+      var start = new Date(startRaw);
+      if (Number.isNaN(start.getTime())) return;
+
+      var now = new Date();
+      var diff = now.getTime() - start.getTime();
+      if (diff < 0) diff = 0;
+
+      var dayMs = 24 * 60 * 60 * 1000;
+      var days = Math.floor(diff / dayMs);
+      var hours = Math.floor((diff % dayMs) / (60 * 60 * 1000));
+      var mins = Math.floor((diff % (60 * 60 * 1000)) / (60 * 1000));
+      var secs = Math.floor((diff % (60 * 1000)) / 1000);
+
+      runtimeEl.innerHTML = "本站已运行: <span class='site-stat-value'>" + days + "</span> 天 <span class='site-stat-value'>" + hours + "</span> 小时 <span class='site-stat-value'>" + mins + "</span> 分 <span class='site-stat-value'>" + secs + "</span> 秒";
+    }
+
+    var isLocal = ["localhost", "127.0.0.1", "::1"].indexOf(window.location.hostname) !== -1;
+    var localStat = document.getElementById("site-stat-local");
+    var onlineStat = document.getElementById("site-stat-online");
+    if (isLocal) {
+      if (localStat) localStat.style.display = "block";
+      if (onlineStat) onlineStat.style.display = "none";
+    } else {
+      if (localStat) localStat.style.display = "none";
+      if (onlineStat) onlineStat.style.display = "block";
+    }
+
+    updateRuntime();
+    window.setInterval(updateRuntime, 1000);
+
+    // --- 字体切换逻辑 ---
+    var selector = document.getElementById("font-selector");
+    var key = "blog-font-choice";
+    if (selector) {
+      var saved = localStorage.getItem(key);
+      if (saved) {
+        ensureFontLoaded(saved);
+        document.documentElement.setAttribute("data-font", saved);
+        selector.value = saved;
+      } else {
+        ensureFontLoaded("noto-sans");
+      }
+      selector.addEventListener("change", function () {
+        var value = selector.value;
+        ensureFontLoaded(value);
+        document.documentElement.setAttribute("data-font", value);
+        localStorage.setItem(key, value);
+      });
+    }
+
+    // --- 特效切换逻辑 ---
+    var effectSelector = document.getElementById("effect-selector");
+    var effectKey = "blog-effect-choice";
+    if (effectSelector) {
+      var savedEffect = localStorage.getItem(effectKey) || "none";
+      effectSelector.value = savedEffect;
+      
+      if (savedEffect !== 'none') {
+        var script = document.createElement('script');
+        script.src = '/js/blog-effects.js';
+        script.onload = function() {
+          if(window.BlogEffects && window.BlogEffects[savedEffect]) {
+            window.BlogEffects[savedEffect]();
+          }
+        };
+        document.body.appendChild(script);
+      }
+
+      effectSelector.addEventListener("change", function () {
+        localStorage.setItem(effectKey, effectSelector.value);
+        location.reload(); // 刷新页面以完全清理上一个 Canvas 特效
+      });
+    }
+  })();
+</script>
+
+{{ if $live2dEnabled }}
+<script>
+  (function () {
+    var live2dModels = {
+      "hijiki": "/live2d-models/hijiki/hijiki.model.json",
+      "tororo": "/live2d-models/tororo/tororo.model.json",
+      "miku": "/live2d-models/miku/miku.model.json"
+    };
+
+    var targetModelUrl = "{{ $live2dModel }}";
+    var savedModel = localStorage.getItem("blog-live2d-model");
+    
+    // UI Selector Sync
+    var l2dSelector = document.getElementById("live2d-selector");
+    
+    function getModelUrlToLoad() {
+       if (savedModel && live2dModels[savedModel]) {
+          if (l2dSelector) l2dSelector.value = savedModel;
+          return live2dModels[savedModel];
+       } 
+       // fallback to random if "random" is selected or no save exists
+       var modelKeys = Object.keys(live2dModels);
+       var randomKey = modelKeys[Math.floor(Math.random() * modelKeys.length)];
+       if (l2dSelector) l2dSelector.value = "random";
+       return live2dModels[randomKey];
+    }
+
+    if (l2dSelector) {
+       l2dSelector.addEventListener("change", function() {
+           var val = this.value;
+           if (val === "random") {
+               localStorage.removeItem("blog-live2d-model");
+           } else {
+               localStorage.setItem("blog-live2d-model", val);
+           }
+           // Reload page to re-init Live2D cleanly and randomise again if needed
+           location.reload(); 
+       });
+    }
+
+    function initLive2D() {
+      if (!window.L2Dwidget) return;
+      var modelUrl = getModelUrlToLoad();
+      L2Dwidget.init({
+        model: {
+          jsonPath: modelUrl
+        },
+        display: {
+          position: "{{ $live2dPosition }}",
+          width: Number("{{ $live2dWidth }}"),
+          height: Number("{{ $live2dHeight }}"),
+          hOffset: Number("{{ $live2dHOffset }}"),
+          vOffset: Number("{{ $live2dVOffset }}")
+        },
+        mobile: {
+          show: true,
+          scale: Number("{{ $live2dMobileScale }}")
+        },
+        react: {
+          opacityDefault: 0.9,
+          opacityOnHover: 0.3
+        }
+      });
+    }
+
+    function loadLive2DScript() {
+      var script = document.createElement("script");
+      script.src = "/js/L2Dwidget.min.js";
+      script.async = true;
+      script.onload = initLive2D;
+      document.body.appendChild(script);
+    }
+
+    if ("requestIdleCallback" in window) {
+      window.requestIdleCallback(loadLive2DScript, { timeout: 2000 });
+    } else {
+      window.setTimeout(loadLive2DScript, 1200);
+    }
+  })();
+</script>
+{{ end }}

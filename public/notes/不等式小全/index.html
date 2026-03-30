@@ -94,6 +94,8 @@
   
   
   
+    
+  
   
     
   
@@ -101,8 +103,8 @@
   <link
     type="text/css"
     rel="stylesheet"
-    href="/css/main.bundle.min.9be54cc51ddea5e6f352c7a0d199ac769b8f1f471f3866aee464036f2ff85d3a942c1d9757a16ad6e677d7c03de757548f8a39b13725127619d37762cca29363.css"
-    integrity="sha512-m&#43;VMxR3epebzUseg0ZmsdpuPH0cfOGau5GQDby/4XTqULB2XV6Fq1uZ318A951dUj4o5sTclEnYZ03dizKKTYw==">
+    href="/css/main.bundle.min.db05ffd267970e0f5807881572b51d3ec3125301aa6cff55c0844092869805b4f9bb0ebdb0d5e7513166f300de571d100c6cd04f320852c12aed72ac0dcaba70.css"
+    integrity="sha512-2wX/0meXDg9YB4gVcrUdPsMSUwGqbP9VwIRAkoaYBbT5uw69sNXnUTFm8wDeVx0QDGzQTzIIUsEq7XKsDcq6cA==">
 
   
   
@@ -139,8 +141,8 @@
       defer
       type="text/javascript"
       id="script-bundle"
-      src="/js/main.bundle.min.941eff27287a099c02151ea4dd6935f65767d533fb8aa3dfb5c90d7586ff02bb5591211e1a0d01734a646e184dc2b7b3f7ca47b22f13af1e0d2ec265d2915cc7.js"
-      integrity="sha512-lB7/Jyh6CZwCFR6k3Wk19ldn1TP7iqPftckNdYb/ArtVkSEeGg0Bc0pkbhhNwrez98pHsi8Trx4NLsJl0pFcxw=="
+      src="/js/main.bundle.min.85f36fa751c284c41f02ace9925a7d57fcefe9bd5e5643c4b098bfba9baaaf96daaaab748057e6b4f6b51d32ad7f1efca56937431f5c2268411ff1f145853351.js"
+      integrity="sha512-hfNvp1HChMQfAqzpklp9V/zv6b1eVkPEsJi/upuqr5baqqt0gFfmtPa1HTKtfx78pWk3Qx9cImhBH/HxRYUzUQ=="
       data-copy="复制"
       data-copied="已复制"></script>
   
@@ -363,7 +365,7 @@
     
     
     "mainEntityOfPage": "true",
-    "wordCount": "5460"
+    "wordCount": "5448"
   }]
   </script>
 
@@ -374,8 +376,40 @@
 
   
   
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.css" />
+<script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js"></script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    NProgress.configure({
+      showSpinner: false,
+      speed: 500,
+      minimum: 0.15
+    });
+    NProgress.start();
+  });
+
+  window.addEventListener("load", function () {
+    NProgress.done();
+  });
+
+  document.addEventListener("click", function (e) {
+    var target = e.target;
+    while (target && target.tagName !== "A") {
+      target = target.parentNode;
+    }
+    if (target && target.href && target.href.indexOf(window.location.origin) !== -1 && target.target !== "_blank") {
+      NProgress.start();
+    }
+  });
+</script>
 
   
+
+  
+  
+    
   
 
   
@@ -934,7 +968,7 @@
   <div class="flex flex-row flex-wrap items-center">
     
     
-      <time datetime="2026-02-27T21:58:00&#43;08:00">2026年2月27日</time><span class="px-2 text-primary-500">&middot;</span><span>5460 字</span><span class="px-2 text-primary-500">&middot;</span><span title="预计阅读">11 分钟</span>
+      <time datetime="2026-02-27T21:58:00&#43;08:00">2026年2月27日</time><span class="px-2 text-primary-500">&middot;</span><span>5448 字</span><span class="px-2 text-primary-500">&middot;</span><span title="预计阅读">11 分钟</span>
     
 
     
@@ -1279,7 +1313,7 @@ $$a^3 + b^3 + c^3 - 3abc = \frac{1}{2}(a+b+c) \left[ (a-b)^2 + (b-c)^2 + (c-a)^2
 <li>
 <p><strong>符号判断：</strong></p>
 <ul>
-<li>因为 $a， b， c &gt; 0$，所以 $(a+b+c) &gt; 0$。</li>
+<li>因为 $a， b， c > 0$，所以 $(a+b+c) > 0$。</li>
 <li>因为实数的平方非负，所以 $(a-b)^2 \geq 0$、$(b-c)^2 \geq 0$、$(c-a)^2 \geq 0$。</li>
 <li>因此，整个表达式的右端 $\geq 0$。</li>
 </ul>
@@ -1415,7 +1449,7 @@ $$a^5+3a=a^5+a+a+a\geq 4\sqrt[4]{a^8}=4a^2$$<p>
 </h2>
 <ul>
 <li>
-<p><strong>公式</strong>：$(\sum a_i^2)(\sum b_i^2) - (\sum a_i b_i)^2 = \sum_{1 \le i &lt; j \le n} (a_i b_j - a_j b_i)^2$。</p>
+<p><strong>公式</strong>：$(\sum a_i^2)(\sum b_i^2) - (\sum a_i b_i)^2 = \sum_{1 \le i < j \le n} (a_i b_j - a_j b_i)^2$。</p>
 <p>上式不仅证明了柯西不等式，还直接指出了取等条件为 $a_i b_j = a_j b_i$，即序列成比例。</p>
 </li>
 </ul>
@@ -1442,7 +1476,7 @@ $$a^5+3a=a^5+a+a+a\geq 4\sqrt[4]{a^8}=4a^2$$<p>
 <ul>
 <li>
 <p><strong>形式</strong>:
-设 $a_1， a_2， \dots， a_n$ 及 $b_1， b_2， \dots， b_n$ 为正实数。设 $p， q &gt; 1$ 且满足共轭指数条件 $\frac{1}{p} + \frac{1}{q} = 1$，则：
+设 $a_1， a_2， \dots， a_n$ 及 $b_1， b_2， \dots， b_n$ 为正实数。设 $p， q > 1$ 且满足共轭指数条件 $\frac{1}{p} + \frac{1}{q} = 1$，则：
 </p>
 $$\sum_{i=1}^n a_i b_i \leq \left( \sum_{i=1}^n a_i^p \right)^{1/p} \left( \sum_{i=1}^n     b_i^q \right)^{1/q}$$<p>当且仅当 $a_i^p$ 与 $b_i^q$ 成比例时，等号成立。</p>
 </li>
@@ -1459,7 +1493,7 @@ $$\sum_{i=1}^n a_i b_i \leq \left( \sum_{i=1}^n a_i^p \right)^{1/p} \left( \sum_
 </h3>
 <ol>
 <li><strong>归一化</strong>：令 $A = (\sum a_i^p)^{1/p}$，$B = (\sum b_i^q)^{1/q}$。令 $x_i = a_i/A， y_i = b_i/B$，则只需证明 $\sum x_i y_i \leq 1$。</li>
-<li><strong>利用杨氏不等式</strong>：对于任意 $x， y &gt; 0$，有 $xy \leq \frac{x^p}{p} + \frac{y^q}{q}$。</li>
+<li><strong>利用杨氏不等式</strong>：对于任意 $x， y > 0$，有 $xy \leq \frac{x^p}{p} + \frac{y^q}{q}$。</li>
 <li><strong>求和证明</strong>：
 $$\sum x_i y_i \leq \sum \left( \frac{x_i^p}{p} + \frac{y_i^q}{q} \right) = \frac{1}{p} \sum x_i^p + \frac{1}{q} \sum y_i^q = \frac{1}{p}(1) + \frac{1}{q}(1) = 1$$</li>
 <li><strong>代回得证</strong></li>
@@ -1564,9 +1598,9 @@ $$f(tx_1 + (1-t)x_2) \leq tf(x_1) + (1-t)f(x_2)，$$<p>则称 $f(x)$ 为 $I$ 上
     
 </h3>
 <ol>
-<li>设 $f(x)$ 在 $[a， b]$ 上连续，在 $(a， b)$ 上可导，则 $f(x)$ 为凸函数 $\Leftrightarrow f&rsquo;(x)$ 在 $(a， b)$ 单调上升（指单调不减），严格凸函数则是严格单调上升；</li>
-<li>设 $f(x)$ 在 $[a， b]$ 连续，在 $(a， b)$ 上二阶可导，$f(x)$ 为凸函数 $\Leftrightarrow f&rsquo;&rsquo;(x) \geq 0$；$f(x)$ 为严格凸函数 $\Leftrightarrow f&rsquo;&rsquo;(x) \geq 0$，且在 $(a， b)$ 的任意一个子区间上不恒为 $0$；</li>
-<li>设 $f(x)$ 在 $[a， b]$ 连续，在 $(a， b)$ 可导，对 $t \in [a， b]$，设 $g_t(x) = f(t) + f&rsquo;(t)(x-t)$ 是 $t$ 处的切线，则 $f(x)$ 为凸函数 $\Leftrightarrow \forall t \in [a， b]， f(x) \geq g_t(x)$ 对 $x \in [a， b]$ 均成立。若是严格凸函数，则该不等式当且仅当 $x = t$ 时成立；</li>
+<li>设 $f(x)$ 在 $[a， b]$ 上连续，在 $(a， b)$ 上可导，则 $f(x)$ 为凸函数 $\Leftrightarrow f'(x)$ 在 $(a， b)$ 单调上升（指单调不减），严格凸函数则是严格单调上升；</li>
+<li>设 $f(x)$ 在 $[a， b]$ 连续，在 $(a， b)$ 上二阶可导，$f(x)$ 为凸函数 $\Leftrightarrow f''(x) \geq 0$；$f(x)$ 为严格凸函数 $\Leftrightarrow f''(x) \geq 0$，且在 $(a， b)$ 的任意一个子区间上不恒为 $0$；</li>
+<li>设 $f(x)$ 在 $[a， b]$ 连续，在 $(a， b)$ 可导，对 $t \in [a， b]$，设 $g_t(x) = f(t) + f'(t)(x-t)$ 是 $t$ 处的切线，则 $f(x)$ 为凸函数 $\Leftrightarrow \forall t \in [a， b]， f(x) \geq g_t(x)$ 对 $x \in [a， b]$ 均成立。若是严格凸函数，则该不等式当且仅当 $x = t$ 时成立；</li>
 <li>定义在 $(a， b)$ 上的凸函数必连续，改成闭区间则不一定成立。</li>
 </ol>
 
@@ -1610,7 +1644,7 @@ $$f(tx_1 + (1-t)x_2) \leq tf(x_1) + (1-t)f(x_2)，$$<p>则称 $f(x)$ 为 $I$ 上
 </h2>
 <ul>
 <li>
-<p><strong>方法</strong>：在取等点 $x_0$ 处对函数求切线 $L(x) = f&rsquo;(x_0)(x-x_0) + f(x_0)$。</p>
+<p><strong>方法</strong>：在取等点 $x_0$ 处对函数求切线 $L(x) = f'(x_0)(x-x_0) + f(x_0)$。</p>
 <p>一方面，琴生是有力的，看到很多重复的形式可以直接划入函数开导来快速判断，将不等式套入函数处理手段，但是二阶导就使得算导数，尤其是对分式变得十分麻烦，需要熟练求导并掌握一些计算省略的技巧.</p>
 </li>
 </ul>
@@ -1644,18 +1678,18 @@ $$M_r(a) = \left( \frac{a_1^r + a_2^r + \dots + a_n^r}{n} \right)^{\frac{1}{r}} 
 </li>
 <li>
 <p><strong>证明</strong>：
-我们要证明当 $r &lt; s$ 时，$M_r(a) \leq M_s(a)$。</p>
+我们要证明当 $r < s$ 时，$M_r(a) \leq M_s(a)$。</p>
 <ul>
 <li>
-<p>情况 1：$0 &lt; r &lt; s$
-令 $k = \frac{s}{r} &gt; 1$。定义函数 $f(x) = x^k$。
-因为 $k &gt; 1$，所以 $f(x)$ 在 $(0， +\infty)$ 上是凸函数。
+<p>情况 1：$0 < r < s$
+令 $k = \frac{s}{r} > 1$。定义函数 $f(x) = x^k$。
+因为 $k > 1$，所以 $f(x)$ 在 $(0， +\infty)$ 上是凸函数。
 令 $x_i = a_i^r$，根据琴生不等式：
 </p>
 $$f\left( \frac{1}{n} \sum_{i=1}^n x_i \right) \leq \frac{1}{n} \sum_{i=1}^n f(x_i)$$<p>
 代入 $f(x)$ 和 $x_i$：
 </p>
-$$\left( \frac{\sum a_i^r}{n} \right)^{\frac{s}{r}} \leq \frac{\sum (a_i^r)^{\frac{s}{r}}}{n} = \frac{\sum a_i^s}{n}$$<p>由于 $s &gt; 0$，两边同时开 $s$ 次方（即取 $1/s$ 次幂）：
+$$\left( \frac{\sum a_i^r}{n} \right)^{\frac{s}{r}} \leq \frac{\sum (a_i^r)^{\frac{s}{r}}}{n} = \frac{\sum a_i^s}{n}$$<p>由于 $s > 0$，两边同时开 $s$ 次方（即取 $1/s$ 次幂）：
 </p>
 $$\left[ \left( \frac{\sum a_i^r}{n} \right)^{\frac{s}{r}} \right]^{\frac{1}{s}} \leq \left( \frac{\sum a_i^s}{n} \right)^{\frac{1}{s}}$$<p>
 </p>
@@ -1663,9 +1697,9 @@ $$\left( \frac{\sum a_i^r}{n} \right)^{\frac{1}{r}} \leq \left( \frac{\sum a_i^s
 即 $M_r(a) \leq M_s(a)$。</p>
 </li>
 <li>
-<p>情况 2：$r &lt; s &lt; 0$
-令 $r&rsquo; = -r， s&rsquo; = -s$，则 $r&rsquo; &gt; s&rsquo; &gt; 0$。
-利用已证的正指数情况，对 $b_i = \frac{1}{a_i}$ 应用结论，或通过改变 $f(x) = x^{s/r}$ 的凹凸性讨论（此时 $0 &lt; s/r &lt; 1$，函数为本定义下的凹函数），同理可证。</p>
+<p>情况 2：$r < s < 0$
+令 $r' = -r， s' = -s$，则 $r' > s' > 0$。
+利用已证的正指数情况，对 $b_i = \frac{1}{a_i}$ 应用结论，或通过改变 $f(x) = x^{s/r}$ 的凹凸性讨论（此时 $0 < s/r < 1$，函数为本定义下的凹函数），同理可证。</p>
 </li>
 </ul>
 </li>
@@ -1681,7 +1715,7 @@ $$\left( \frac{\sum a_i^r}{n} \right)^{\frac{1}{r}} \leq \left( \frac{\sum a_i^s
     
 </h2>
 <ul>
-<li><strong>公式</strong>：$ab \le \frac{a^p}{p} + \frac{b^q}{q}$（其中 $\frac{1}{p} + \frac{1}{q} = 1， p，q &gt; 1$）。</li>
+<li><strong>公式</strong>：$ab \le \frac{a^p}{p} + \frac{b^q}{q}$（其中 $\frac{1}{p} + \frac{1}{q} = 1， p，q > 1$）。</li>
 <li><strong>证明</strong>：对 $f(x) = \ln x$ 使用琴生不等式：$\ln(\frac{1}{p}a^p + \frac{1}{q}b^q) \ge \frac{1}{p}\ln a^p + \frac{1}{q}\ln b^q = \ln a + \ln b = \ln(ab)$。</li>
 </ul>
 <div style="page-break-after: always;"></div>
@@ -1730,11 +1764,11 @@ $$S_{min} \leq S \leq S_{max}$$</li>
 <ol>
 <li>
 <p><strong>初始状态</strong>：
-设当前的和为 $S = \sum_{k=1}^n a_k c_k$。如果 $c_k$ 的排列不完全按照顺序排列（即 $c_k$ 不是 $b_k$），那么必然存在两个下标 $i &lt; j$，满足 $a_i \leq a_j$ 但 $c_i &gt; c_j$（即这对元素是“逆序”的）。</p>
+设当前的和为 $S = \sum_{k=1}^n a_k c_k$。如果 $c_k$ 的排列不完全按照顺序排列（即 $c_k$ 不是 $b_k$），那么必然存在两个下标 $i < j$，满足 $a_i \leq a_j$ 但 $c_i > c_j$（即这对元素是“逆序”的）。</p>
 </li>
 <li>
 <p><strong>执行交换（调整）</strong>：
-我们将 $c_i$ 和 $c_j$ 的位置互换，其余项保持不变。互换后的新排列记为 $c&rsquo;$，新的总和记为 $S&rsquo;$。
+我们将 $c_i$ 和 $c_j$ 的位置互换，其余项保持不变。互换后的新排列记为 $c'$，新的总和记为 $S'$。
 计算两次求和的差值：
 </p>
 $$S' - S = (a_i c_j + a_j c_i) - (a_i c_i + a_j c_j)$$<p>
@@ -1746,9 +1780,9 @@ $$S' - S = (a_j - a_i)(c_i - c_j)$$</li>
 <li>
 <p><strong>符号判断</strong>：</p>
 <ul>
-<li>已知 $i &lt; j \implies a_i \leq a_j \implies (a_j - a_i) \geq 0$。</li>
-<li>已知 $c_i &gt; c_j \implies (c_i - c_j) &gt; 0$。</li>
-<li>因此，$(a_j - a_i)(c_i - c_j) \geq 0$，即 $S&rsquo; \geq S$。</li>
+<li>已知 $i < j \implies a_i \leq a_j \implies (a_j - a_i) \geq 0$。</li>
+<li>已知 $c_i > c_j \implies (c_i - c_j) > 0$。</li>
+<li>因此，$(a_j - a_i)(c_i - c_j) \geq 0$，即 $S' \geq S$。</li>
 </ul>
 </li>
 <li>
@@ -1757,7 +1791,7 @@ $$S' - S = (a_j - a_i)(c_i - c_j)$$</li>
 </li>
 <li>
 <p><strong>逆序和的证明</strong>：
-同理，若要证明 $S_{min} \leq S$，只需在发现 $c_i &lt; c_j$（顺序对）时进行交换，证明每次交换都会使总和减小，直到达到逆序状态。</p>
+同理，若要证明 $S_{min} \leq S$，只需在发现 $c_i < c_j$（顺序对）时进行交换，证明每次交换都会使总和减小，直到达到逆序状态。</p>
 </li>
 </ol>
 <ul>
@@ -1775,7 +1809,7 @@ $$S' - S = (a_j - a_i)(c_i - c_j)$$</li>
     </span>
     
 </h2>
-<p><strong>Abel 变换</strong>：设 ${a_n}$ 和 ${b_n}$ 是两个数列，记 $A_k = \sum_{i=1}^k a_i$ 为 ${a_n}$ 的前 $k$ 项和，并约定 $A_0 = 0$。则有：
+<p><strong>Abel 变换</strong>：设 $\{a_n\}$ 和 $\{b_n\}$ 是两个数列，记 $A_k = \sum_{i=1}^k a_i$ 为 $\{a_n\}$ 的前 $k$ 项和，并约定 $A_0 = 0$。则有：
 </p>
 $$\sum_{i=1}^n a_i b_i = A_n b_n - \sum_{i=1}^{n-1} A_i (b_{i+1} - b_i)$$<p>
 <strong>证明</strong>：
@@ -2044,6 +2078,169 @@ $$2n \sum a_i b_i \ge 2 \left( \sum a_i \right) \left( \sum b_i \right)$$
     src="/js/process.min.ee03488f19c93c2efb199e2e3014ea5f3cb2ce7d45154adb3399a158cac27ca52831db249ede5bb602700ef87eb02434139de0858af1818ab0fb4182472204a4.js"
     integrity="sha512-7gNIjxnJPC77GZ4uMBTqXzyyzn1FFUrbM5mhWMrCfKUoMdsknt5btgJwDvh&#43;sCQ0E53ghYrxgYqw&#43;0GCRyIEpA=="></script>
   
+  
+    
+
+
+
+
+
+
+
+
+
+<div class="site-meta-panel">
+  <div id="runtime" class="site-runtime" data-site-start="2026-01-18T00:00:00&#43;08:00"></div>
+
+  <div id="site-stat-online" class="site-stat" style="display:none;">
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span id="busuanzi_container_site_pv">
+      访问量: <span id="busuanzi_value_site_pv" class="site-stat-value"></span> 次
+    </span>
+    <span class="site-stat-sep">|</span>
+    <span id="busuanzi_container_site_uv">
+      访客数: <span id="busuanzi_value_site_uv" class="site-stat-value"></span> 人
+    </span>
+  </div>
+
+  <div id="site-stat-local" class="site-stat" style="display:none;">
+    本地预览模式不统计访问量，部署到正式域名后显示真实数据。
+  </div>
+</div>
+
+<div id="font-switcher" class="font-switcher" aria-label="字体切换">
+  <span class="font-switcher__badge">Aa</span>
+  <select id="font-selector">
+    <option value="noto-sans">思源黑体</option>
+    <option value="noto-serif">思源宋体</option>
+    <option value="zcool">站酷小薇</option>
+    <option value="mashan">马善政手写</option>
+    <option value="longcang">龙藏书法</option>
+  </select>
+</div>
+
+<script>
+  (function () {
+    var fontCssMap = {
+      "noto-sans": "https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&display=swap",
+      "noto-serif": "https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&display=swap",
+      "zcool": "https://fonts.googleapis.com/css2?family=ZCOOL+XiaoWei&display=swap",
+      "mashan": "https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&display=swap",
+      "longcang": "https://fonts.googleapis.com/css2?family=Long+Cang&display=swap"
+    };
+
+    function ensureFontLoaded(name) {
+      var href = fontCssMap[name];
+      if (!href) return;
+      var id = "font-css-" + name;
+      if (document.getElementById(id)) return;
+      var link = document.createElement("link");
+      link.id = id;
+      link.rel = "stylesheet";
+      link.href = href;
+      document.head.appendChild(link);
+    }
+
+    function updateRuntime() {
+      var runtimeEl = document.getElementById("runtime");
+      if (!runtimeEl) return;
+
+      var startRaw = runtimeEl.getAttribute("data-site-start");
+      var start = new Date(startRaw);
+      if (Number.isNaN(start.getTime())) return;
+
+      var now = new Date();
+      var diff = now.getTime() - start.getTime();
+      if (diff < 0) diff = 0;
+
+      var dayMs = 24 * 60 * 60 * 1000;
+      var days = Math.floor(diff / dayMs);
+      var hours = Math.floor((diff % dayMs) / (60 * 60 * 1000));
+      var mins = Math.floor((diff % (60 * 60 * 1000)) / (60 * 1000));
+      var secs = Math.floor((diff % (60 * 1000)) / 1000);
+
+      runtimeEl.innerHTML = "本站已运行: <span class='site-stat-value'>" + days + "</span> 天 <span class='site-stat-value'>" + hours + "</span> 小时 <span class='site-stat-value'>" + mins + "</span> 分 <span class='site-stat-value'>" + secs + "</span> 秒";
+    }
+
+    var isLocal = ["localhost", "127.0.0.1", "::1"].indexOf(window.location.hostname) !== -1;
+    var localStat = document.getElementById("site-stat-local");
+    var onlineStat = document.getElementById("site-stat-online");
+    if (isLocal) {
+      if (localStat) localStat.style.display = "block";
+      if (onlineStat) onlineStat.style.display = "none";
+    } else {
+      if (localStat) localStat.style.display = "none";
+      if (onlineStat) onlineStat.style.display = "block";
+    }
+
+    updateRuntime();
+    window.setInterval(updateRuntime, 1000);
+
+    var selector = document.getElementById("font-selector");
+    var key = "blog-font-choice";
+    if (selector) {
+      var saved = localStorage.getItem(key);
+      if (saved) {
+        ensureFontLoaded(saved);
+        document.documentElement.setAttribute("data-font", saved);
+        selector.value = saved;
+      } else {
+        ensureFontLoaded("noto-sans");
+      }
+      selector.addEventListener("change", function () {
+        var value = selector.value;
+        ensureFontLoaded(value);
+        document.documentElement.setAttribute("data-font", value);
+        localStorage.setItem(key, value);
+      });
+    }
+  })();
+</script>
+
+
+<script>
+  (function () {
+    function initLive2D() {
+      if (!window.L2Dwidget) return;
+      L2Dwidget.init({
+        model: {
+          jsonPath: "https:\/\/cdn.jsdelivr.net\/npm\/live2d-widget-model-hijiki@1.0.5\/assets\/hijiki.model.json"
+        },
+        display: {
+          position: "right",
+          width: Number("168"),
+          height: Number("336"),
+          hOffset: Number("18"),
+          vOffset: Number("-16")
+        },
+        mobile: {
+          show: true,
+          scale: Number("0.65")
+        },
+        react: {
+          opacityDefault: 0.9,
+          opacityOnHover: 0.3
+        }
+      });
+    }
+
+    function loadLive2DScript() {
+      var script = document.createElement("script");
+      script.src = "https://cdn.jsdelivr.net/npm/live2d-widget@3.1.4/lib/L2Dwidget.min.js";
+      script.async = true;
+      script.onload = initLive2D;
+      document.body.appendChild(script);
+    }
+
+    if ("requestIdleCallback" in window) {
+      window.requestIdleCallback(loadLive2DScript, { timeout: 2000 });
+    } else {
+      window.setTimeout(loadLive2DScript, 1200);
+    }
+  })();
+</script>
+
+
   
 </footer>
 <div

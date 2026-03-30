@@ -1,0 +1,277 @@
+/* 针对文章正文的段落进行首行缩进 */
+article .article-content p {
+    text-indent: 2em;
+}
+
+/* 排除引用的段落，不然引用块也会缩进 */
+article .article-content blockquote p {
+    text-indent: 0;
+}
+
+:root {
+    --site-font: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+}
+
+html[data-font='noto-sans'] {
+    --site-font: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+}
+
+html[data-font='noto-serif'] {
+    --site-font: 'Noto Serif SC', 'Songti SC', 'STSong', serif;
+}
+
+html[data-font='zcool'] {
+    --site-font: 'ZCOOL XiaoWei', 'Noto Sans SC', 'PingFang SC', sans-serif;
+}
+
+html[data-font='mashan'] {
+    --site-font: 'Ma Shan Zheng', 'Noto Sans SC', 'PingFang SC', sans-serif;
+}
+
+html[data-font='longcang'] {
+    --site-font: 'Long Cang', 'Noto Sans SC', 'PingFang SC', sans-serif;
+}
+
+body {
+    font-family: var(--site-font) !important;
+    letter-spacing: 0.01em;
+    line-height: 1.75;
+}
+
+/* 针对不同字体的修复：字距、行高、以及由于特殊字体(ch单位极小)导致的排版偏窄(过早换行)问题 */
+
+/* 修复特殊字体下 `ch` 单位引发的极窄排版压缩问题。
+   彻底放开最大宽度限制，让正文自动填满页面的主体栅格，避免右侧出现巨大留白。 */
+.prose, .max-w-prose {
+    max-width: none !important;
+}
+
+/* 针对龙藏体：视觉尺寸偏小极多，需大幅放大 */
+html[data-font='longcang'] body {
+    font-size: 1.15rem !important;
+    letter-spacing: 0.06em;
+    word-spacing: 0.08em;
+}
+html[data-font='longcang'] .prose {
+    font-size: 1.35rem !important; /* 正文放大 */
+    line-height: 2.2 !important;   /* 行高加大 */
+}
+html[data-font='longcang'] .prose h1 { font-size: 2.5rem !important; line-height: 1.4 !important; }
+html[data-font='longcang'] .prose h2 { font-size: 2.1rem !important; line-height: 1.4 !important; }
+html[data-font='longcang'] .prose h3 { font-size: 1.7rem !important; line-height: 1.4 !important; }
+
+html[data-font='mashan'] body {
+    font-weight: 400;
+    letter-spacing: 0.03em;
+    line-height: 1.9 !important;
+}
+html[data-font='mashan'] .prose {
+    font-size: 1.25rem !important;
+    line-height: 2.0 !important;
+}
+html[data-font='mashan'] .prose h1 { font-size: 2.2rem !important; line-height: 1.4 !important; }
+html[data-font='mashan'] .prose h2 { font-size: 1.9rem !important; line-height: 1.4 !important; }
+html[data-font='mashan'] .prose h3 { font-size: 1.6rem !important; line-height: 1.4 !important; }
+
+html[data-font='zcool'] body {
+    font-weight: 500;
+    letter-spacing: 0.02em;
+}
+html[data-font='zcool'] .prose {
+    font-size: 1.12rem !important;
+    line-height: 1.85 !important;
+}
+
+/* 保护代码块不被书法字体覆盖，强制使用等宽字体 */
+html[data-font] .prose code,
+html[data-font] .prose pre,
+html[data-font] .highlight {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !important;
+    font-size: 0.95rem !important; /* 修正代码字体大小 */
+    letter-spacing: normal !important;
+    line-height: 1.5 !important;
+}
+
+html[data-font='mashan'] h1,
+html[data-font='mashan'] h2,
+html[data-font='mashan'] h3,
+html[data-font='longcang'] h1,
+html[data-font='longcang'] h2,
+html[data-font='longcang'] h3,
+html[data-font='mashan'] .prose h1,
+html[data-font='mashan'] .prose h2,
+html[data-font='mashan'] .prose h3,
+html[data-font='longcang'] .prose h1,
+html[data-font='longcang'] .prose h2,
+html[data-font='longcang'] .prose h3 {
+    letter-spacing: 0.06em;
+}
+
+strong, b {
+    font-weight: 700;
+    color: var(--primary);
+    background: linear-gradient(transparent 60%, rgba(var(--color-primary), 0.3) 0);
+    padding: 0 2px;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 恢复 Blowfish 首页背景为全屏：取消 main / prose 的 transform 动画，这样就不会约束 fixed 背景。
+   仅为文章卡片和内部内容添加进场动画 */
+.article-card, .hover-card, .article-link--card {
+    animation: fadeInUp 0.65s ease-out forwards;
+}
+
+.article-card, .hover-card, .article-link--card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.article-card:hover, .hover-card:hover, .article-link--card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.highlight {
+    position: relative;
+    border-radius: 8px;
+    padding-top: 30px !important;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    margin-bottom: 1.5rem;
+}
+.highlight::before {
+    content: " ";
+    position: absolute;
+    border-radius: 50%;
+    background: #fc625d;
+    box-shadow: 20px 0 #fdbc40, 40px 0 #35cd4b;
+    width: 12px;
+    height: 12px;
+    top: 10px;
+    left: 15px;
+    z-index: 2;
+}
+
+.article-link--card {
+    background: rgba(255, 255, 255, 0.22) !important;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.28) !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.14) !important;
+}
+.dark .article-link--card {
+    background: rgba(17, 24, 39, 0.42) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2) !important;
+}
+
+article img {
+    border-radius: 8px;
+    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.4s ease, filter 0.4s ease;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+article img:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 15px 25px rgba(0,0,0,0.15);
+    filter: brightness(1.08);
+}
+
+#nprogress .bar {
+    background: linear-gradient(to right, #4cd964, #5ac8fa, #007aff, #34aadc, #5856d6, #ff2d55) !important;
+    height: 4px !important;
+}
+#nprogress .peg {
+    box-shadow: 0 0 10px #007aff, 0 0 5px #007aff !important;
+}
+
+html {
+    scroll-behavior: smooth !important;
+}
+
+.site-meta-panel {
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--color-neutral-500);
+    margin-top: 20px;
+    padding: 12px;
+    border-top: 1px dashed rgba(150, 150, 150, 0.25);
+}
+
+.site-runtime,
+.site-stat {
+    margin: 4px 0;
+}
+
+.site-stat-sep {
+    margin: 0 8px;
+}
+
+.site-stat-value {
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.floating-tools-container {
+    position: fixed;
+    left: 16px;
+    bottom: 16px;
+    z-index: 40;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.floating-tools-container > div {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.2);
+    color: #e2e8f0;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow: 0 12px 24px rgba(2, 6, 23, 0.22);
+}
+
+.floating-tools-container__badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 999px;
+    background: rgba(15, 23, 42, 0.65);
+    color: #f8fafc;
+    font-weight: 700;
+    font-size: 0.95rem;
+}
+
+.floating-tools-container select {
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    background: rgba(15, 23, 42, 0.7);
+    color: #f8fafc;
+    border-radius: 999px;
+    padding: 6px 12px;
+    outline: none;
+    min-width: 140px;
+    font-size: 0.88rem;
+}
+
+@media (max-width: 768px) {
+    .floating-tools-container {
+        left: 10px;
+        right: 10px;
+        bottom: 10px;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}

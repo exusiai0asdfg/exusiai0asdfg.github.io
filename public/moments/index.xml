@@ -7,16 +7,36 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>© 2026 难评</copyright>
-    <lastBuildDate>Sun, 18 Jan 2026 14:53:00 +0800</lastBuildDate><atom:link href="http://localhost:1313/moments/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 16 Mar 2026 19:54:10 +0800</lastBuildDate><atom:link href="http://localhost:1313/moments/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
-      <title>模板</title>
-      <link>http://localhost:1313/moments/%E6%A8%A1%E6%9D%BF/</link>
+      <title>电脑自动化!</title>
+      <link>http://localhost:1313/moments/%E7%94%B5%E8%84%91%E8%87%AA%E5%8A%A8%E5%8C%96/</link>
+      <pubDate>Mon, 16 Mar 2026 19:54:10 +0800</pubDate>
+      
+      <guid>http://localhost:1313/moments/%E7%94%B5%E8%84%91%E8%87%AA%E5%8A%A8%E5%8C%96/</guid>
+      <description></description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/moments/%E7%94%B5%E8%84%91%E8%87%AA%E5%8A%A8%E5%8C%96/featured.jpg" />
+    </item>
+    
+    <item>
+      <title>TO-DO-LIST</title>
+      <link>http://localhost:1313/moments/to-do-list/</link>
       <pubDate>Sun, 18 Jan 2026 14:53:00 +0800</pubDate>
       
-      <guid>http://localhost:1313/moments/%E6%A8%A1%E6%9D%BF/</guid>
+      <guid>http://localhost:1313/moments/to-do-list/</guid>
       <description></description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/moments/%E6%A8%A1%E6%9D%BF/featured.jpg" />
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/moments/to-do-list/featured.jpg" />
+    </item>
+    
+    <item>
+      <title>简介的来历</title>
+      <link>http://localhost:1313/moments/%E7%AE%80%E4%BB%8B%E7%9A%84%E6%9D%A5%E5%8E%86/</link>
+      <pubDate>Sun, 18 Jan 2026 14:53:00 +0800</pubDate>
+      
+      <guid>http://localhost:1313/moments/%E7%AE%80%E4%BB%8B%E7%9A%84%E6%9D%A5%E5%8E%86/</guid>
+      <description></description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/moments/%E7%AE%80%E4%BB%8B%E7%9A%84%E6%9D%A5%E5%8E%86/featured.jpg" />
     </item>
     
   </channel>

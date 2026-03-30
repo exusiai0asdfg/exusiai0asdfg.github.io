@@ -94,6 +94,8 @@
   
   
   
+    
+  
   
     
   
@@ -101,8 +103,8 @@
   <link
     type="text/css"
     rel="stylesheet"
-    href="/css/main.bundle.min.9be54cc51ddea5e6f352c7a0d199ac769b8f1f471f3866aee464036f2ff85d3a942c1d9757a16ad6e677d7c03de757548f8a39b13725127619d37762cca29363.css"
-    integrity="sha512-m&#43;VMxR3epebzUseg0ZmsdpuPH0cfOGau5GQDby/4XTqULB2XV6Fq1uZ318A951dUj4o5sTclEnYZ03dizKKTYw==">
+    href="/css/main.bundle.min.091386bc5f3d20d257dc9d8afa404b9f962552c752c99245ceb47c7cb06fa71638bd8d499b8c2fa60c88aef4615dc04e1ce4d3ff1fd128ee543a1aa16ba29eca.css"
+    integrity="sha512-CROGvF89INJX3J2K&#43;kBLn5YlUsdSyZJFzrR8fLBvpxY4vY1Jm4wvpgyIrvRhXcBOHOTT/x/RKO5UOhqha6Keyg==">
 
   
   
@@ -139,8 +141,8 @@
       defer
       type="text/javascript"
       id="script-bundle"
-      src="/js/main.bundle.min.941eff27287a099c02151ea4dd6935f65767d533fb8aa3dfb5c90d7586ff02bb5591211e1a0d01734a646e184dc2b7b3f7ca47b22f13af1e0d2ec265d2915cc7.js"
-      integrity="sha512-lB7/Jyh6CZwCFR6k3Wk19ldn1TP7iqPftckNdYb/ArtVkSEeGg0Bc0pkbhhNwrez98pHsi8Trx4NLsJl0pFcxw=="
+      src="/js/main.bundle.min.85f36fa751c284c41f02ace9925a7d57fcefe9bd5e5643c4b098bfba9baaaf96daaaab748057e6b4f6b51d32ad7f1efca56937431f5c2268411ff1f145853351.js"
+      integrity="sha512-hfNvp1HChMQfAqzpklp9V/zv6b1eVkPEsJi/upuqr5baqqt0gFfmtPa1HTKtfx78pWk3Qx9cImhBH/HxRYUzUQ=="
       data-copy="复制"
       data-copied="已复制"></script>
   
@@ -224,7 +226,7 @@
     
     
     "mainEntityOfPage": "true",
-    "wordCount": "4239"
+    "wordCount": "5685"
   }]
   </script>
 
@@ -235,8 +237,40 @@
 
   
   
+    
+<link rel="stylesheet" href="/js/nprogress.css" />
+<script src="/js/nprogress.min.js"></script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    NProgress.configure({
+      showSpinner: false,
+      speed: 500,
+      minimum: 0.15
+    });
+    NProgress.start();
+  });
+
+  window.addEventListener("load", function () {
+    NProgress.done();
+  });
+
+  document.addEventListener("click", function (e) {
+    var target = e.target;
+    while (target && target.tagName !== "A") {
+      target = target.parentNode;
+    }
+    if (target && target.href && target.href.indexOf(window.location.origin) !== -1 && target.target !== "_blank") {
+      NProgress.start();
+    }
+  });
+</script>
 
   
+
+  
+  
+    
   
 
   
@@ -795,7 +829,7 @@
   <div class="flex flex-row flex-wrap items-center">
     
     
-      <time datetime="2026-03-02T19:38:00&#43;08:00">2026年3月2日</time><span class="px-2 text-primary-500">&middot;</span><span>4239 字</span><span class="px-2 text-primary-500">&middot;</span><span title="预计阅读">9 分钟</span>
+      <time datetime="2026-03-02T19:38:00&#43;08:00">2026年3月2日</time><span class="px-2 text-primary-500">&middot;</span><span>5685 字</span><span class="px-2 text-primary-500">&middot;</span><span title="预计阅读">12 分钟</span>
     
 
     
@@ -937,6 +971,7 @@
             <li><a href="#核心">核心</a></li>
             <li><a href="#百合">百合</a></li>
             <li><a href="#亚文化">亚文化</a></li>
+            <li><a href="#总结">总结</a></li>
           </ul>
         </li>
       </ul>
@@ -964,6 +999,7 @@
             <li><a href="#核心">核心</a></li>
             <li><a href="#百合">百合</a></li>
             <li><a href="#亚文化">亚文化</a></li>
+            <li><a href="#总结">总结</a></li>
           </ul>
         </li>
       </ul>
@@ -1172,14 +1208,10 @@
     class="my-0 rounded-md"
     loading="lazy"
     decoding="async"
-    fetchpriority="auto"
+    fetchpriority="low"
     alt="001还是110?"
-    width="1113"
-    height="722"
-    src="/posts/%E8%B6%85%E6%97%B6%E7%A9%BA%E8%BE%89%E5%A4%9C%E5%A7%AC/110_hu_36c39055d02dd704.jpg"
-    srcset="/posts/%E8%B6%85%E6%97%B6%E7%A9%BA%E8%BE%89%E5%A4%9C%E5%A7%AC/110_hu_36c39055d02dd704.jpg 800w, /posts/%E8%B6%85%E6%97%B6%E7%A9%BA%E8%BE%89%E5%A4%9C%E5%A7%AC/110.jpg 1280w"
-    sizes="(min-width: 768px) 50vw, 65vw"
-    data-zoom-src="/posts/%E8%B6%85%E6%97%B6%E7%A9%BA%E8%BE%89%E5%A4%9C%E5%A7%AC/110.jpg"></figure>
+    src="110.jpg"
+    ></figure>
 </p>
 <p>创作者发现，描写同性之美往往更“安全”，更容易通过一种“超现实的浪漫”获得全网赞誉。这导致了大量优秀画师、编剧涌入这一赛道，进一步推动了同性题材的视觉与叙事水准,就像上图<del>谁也不知道是110还是001</del>也没有会因为这个认真的吵起来。</p>
 </li>
@@ -1271,7 +1303,52 @@
       </iframe>
     </div></p>
 </li>
+<li>
+<p>为什么?</p>
+<p>之所以能崛起,离不开对传统音乐行业的颠覆:</p>
+<ul>
+<li>音乐创作的“平权运动”： 在过去，哪怕你才华横溢，如果没有钱请歌手、没有长相、社恐，你的音乐就无人问津。Vocaloid让躲在卧室里的自卑天才（如后来的米津玄师、yoasobi的核心成员Ayase）拥有了世界级的“完美主唱”。</li>
+<li>“空白画布”效应： 虚拟歌手没有背景故事、没有真实性格。她可以是唱着《深海少女》的抑郁患者，也可以是唱着《世界第一的公主殿下》的傲娇女王。她承载了所有创作者和听众投射的情感。</li>
 </ul>
+</li>
+</ul>
+<p><strong>VTuber</strong></p>
+<ul>
+<li>这是什么?
+VTuber（Virtual YouTuber）是指使用虚拟形象（2D或3D模型，俗称“皮套”）在视频平台上进行直播或内容创作的人。观众看到的是动漫形象的动作和表情，听到的是背后真实人类（俗称“中之人”）的声音。国内一般聚集在bilibili,比较有名的比如:嘉然,永雏塔菲,冬雪莲等等</li>
+<li>从哪里来的?
+2016年，**绊爱（Kizuna AI）<strong>首次创造了“Virtual YouTuber”这个词，最初多为预先录制的3D视频。
+2018-2020年，随着Live2D技术（让2D立绘能随人脸捕捉动起来）的普及，彩虹社（Nijisanji）和Hololive等企划大获成功，VTuber全面转向</strong>“实时直播”**模式，并在疫情期间（大家被困家中）迎来了全球性的爆发式增长，直到2026年已经成为年轻一代最主流的娱乐方式之一。</li>
+<li>为什么?
+<ul>
+<li>安全距离与“反面具”： 现实社会要求我们戴上面具（做懂事的员工、乖巧的学生）。VTuber反其道而行之——穿上虚拟的皮套（面具），反而能释放最真实的本性。 很多人在现实中极度社恐，但在套上二次元萌妹的皮套后，却能毫无顾忌地讲段子、唱歌、展露脆弱。</li>
+<li>“反差萌”与真实的陪伴： 观众爱看的不仅是漂亮的动漫模型，而是模型背后那个会打游戏破防、会因为吃不到外卖而哭泣的真实的“灵魂”。VTuber提供了一种高强度、低成本的陪伴感（Parasocial relationship，准社会关系），治愈了现代都市人的极度孤独。</li>
+</ul>
+</li>
+</ul>
+<p>介绍完了,那一定有人问,为什么要包含这种文化?
+到了2026年，无论是术力口还是VTuber，都已经不再是简单的“宅文化”，它们成为了这代数字原住民的“精神基础设施”。
+导演将这些元素融入电影，是为了回答一个最核心的时代痛点：</p>
+<blockquote><p>“在一切都可以被虚拟化、AI化的时代，人与人的连接还有意义吗？”
+电影给出的答案是震耳欲聋的：</p>
+</blockquote><ul>
+<li>术力口告诉你： 就算声音是合成的，写进歌词里的痛楚是真的。</li>
+<li>VTuber告诉你： 就算外表是一层数据皮套，陪伴你度过漫漫长夜的时间是真的。</li>
+<li>辉夜姬告诉你： 就算月宫（元宇宙）能够提供永恒的完美，但在地球（现实/赛博空间的交汇处）上为了守护一个人而流下的眼泪，才是宇宙中最珍贵的奇迹。</li>
+</ul>
+<p>这部电影之所以很受欢迎，正是因为它没有居高临下地批判“年轻人沉迷虚拟网络”，而是温柔地拥抱了这些亚文化，承认了：在残酷的现实面前，这些虚拟的歌声和皮套，曾真真切切地拯救过无数个破碎的灵魂。</p>
+<p>但是需要注意的,之所以被称为亚文化,这些圈子一般还是与一般的社会文化有所区别,规则还不成熟,比如对于很多术力口创作者出圈并不意味着什么好事,比如胭脂作者曾经被网暴至抑郁,而且很多规矩并不明确之下很多无脑粉丝会因为外圈人一点不和群表现出对极大的恶意,而vtuber圈亦是如此,其中参杂着大量的不被社会理解的部分和某些人巨大的恶意,除非非常喜欢,不建议深入了解</p>
+
+<h4 class="relative group">总结
+    <div id="总结" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e6%80%bb%e7%bb%93" aria-label="锚点">#</a>
+    </span>
+    
+</h4>
+<p>这是我在看完后不断了解和思考后做出的最终总结,这也只是我的所得,总之欢迎去看全片</p>
 
           
           
@@ -1318,14 +1395,14 @@
           
             <a
               class="flex text-neutral-700 hover:text-primary-600 dark:text-neutral dark:hover:text-primary-400"
-              href="/posts/%E6%A8%A1%E6%9D%BF/">
+              href="/posts/%E9%BE%99%E4%B8%8E%E8%99%8E/">
               <span class="leading-6">
-                <span class="inline-block rtl:rotate-180">&larr;</span>&ensp;模板
+                <span class="inline-block rtl:rotate-180">&larr;</span>&ensp;性与爱——看《龙与虎》有感
               </span>
             </a>
             
               <span class="ms-6 mt-1 text-xs text-neutral-500 dark:text-neutral-400">
-                <time datetime="2026-01-14T19:19:28&#43;08:00">2026年1月14日</time>
+                <time datetime="2026-02-13T10:30:28&#43;08:00">2026年2月13日</time>
               </span>
             
           
@@ -1415,6 +1492,257 @@
     src="/js/process.min.ee03488f19c93c2efb199e2e3014ea5f3cb2ce7d45154adb3399a158cac27ca52831db249ede5bb602700ef87eb02434139de0858af1818ab0fb4182472204a4.js"
     integrity="sha512-7gNIjxnJPC77GZ4uMBTqXzyyzn1FFUrbM5mhWMrCfKUoMdsknt5btgJwDvh&#43;sCQ0E53ghYrxgYqw&#43;0GCRyIEpA=="></script>
   
+  
+    
+
+
+
+
+
+
+
+
+
+<div class="site-meta-panel">
+  <div id="runtime" class="site-runtime" data-site-start="2026-01-18T00:00:00&#43;08:00"></div>
+
+  <div id="site-stat-online" class="site-stat" style="display:none;">
+    <script async src="/js/busuanzi.pure.mini.js"></script>
+    <span id="busuanzi_container_site_pv">
+      访问量: <span id="busuanzi_value_site_pv" class="site-stat-value"></span> 次
+    </span>
+    <span class="site-stat-sep">|</span>
+    <span id="busuanzi_container_site_uv">
+      访客数: <span id="busuanzi_value_site_uv" class="site-stat-value"></span> 人
+    </span>
+  </div>
+
+  <div id="site-stat-local" class="site-stat" style="display:none;">
+    本地预览模式不统计访问量，部署到正式域名后显示真实数据。
+  </div>
+</div>
+
+<div class="floating-tools-container">
+  
+  <div id="font-switcher" aria-label="字体切换">
+    <span class="floating-tools-container__badge">Aa</span>
+    <select id="font-selector">
+      <option value="noto-sans">思源黑体</option>
+      <option value="noto-serif">思源宋体</option>
+      <option value="zcool">站酷小薇</option>
+      <option value="mashan">马善政手写</option>
+      <option value="longcang">龙藏书法</option>
+    </select>
+  </div>
+
+  
+  <div id="effect-switcher" aria-label="页面特效">
+    <span class="floating-tools-container__badge" style="font-size: 1.1rem; line-height: 1;">✨</span>
+    <select id="effect-selector">
+      <option value="none">🚫 无特效</option>
+      <option value="star">💫 鼠标星光</option>
+      <option value="sakura">🌸 樱花飘落</option>
+      <option value="clickword">💕 点击浮字</option>
+    </select>
+  </div>
+
+  
+  <div id="live2d-switcher" aria-label="皮套切换">
+    <span class="floating-tools-container__badge" style="font-size: 1.1rem; line-height: 1;">🎭</span>
+    <select id="live2d-selector">
+      <option value="random">🎲 随机皮套</option>
+      <option value="hijiki">🐱 黑猫 (Hijiki)</option>
+      <option value="tororo">🐈 白猫 (Tororo)</option>
+      <option value="miku">🎤 初音 (Miku)</option>
+    </select>
+  </div>
+</div>
+
+<script>
+  (function () {
+    var fontCssMap = {
+      "noto-sans": "https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&display=swap",
+      "noto-serif": "https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&display=swap",
+      "zcool": "https://fonts.googleapis.com/css2?family=ZCOOL+XiaoWei&display=swap",
+      "mashan": "https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&display=swap",
+      "longcang": "https://fonts.googleapis.com/css2?family=Long+Cang&display=swap"
+    };
+
+    function ensureFontLoaded(name) {
+      var href = fontCssMap[name];
+      if (!href) return;
+      var id = "font-css-" + name;
+      if (document.getElementById(id)) return;
+      var link = document.createElement("link");
+      link.id = id;
+      link.rel = "stylesheet";
+      link.href = href;
+      document.head.appendChild(link);
+    }
+
+    function updateRuntime() {
+      var runtimeEl = document.getElementById("runtime");
+      if (!runtimeEl) return;
+
+      var startRaw = runtimeEl.getAttribute("data-site-start");
+      var start = new Date(startRaw);
+      if (Number.isNaN(start.getTime())) return;
+
+      var now = new Date();
+      var diff = now.getTime() - start.getTime();
+      if (diff < 0) diff = 0;
+
+      var dayMs = 24 * 60 * 60 * 1000;
+      var days = Math.floor(diff / dayMs);
+      var hours = Math.floor((diff % dayMs) / (60 * 60 * 1000));
+      var mins = Math.floor((diff % (60 * 60 * 1000)) / (60 * 1000));
+      var secs = Math.floor((diff % (60 * 1000)) / 1000);
+
+      runtimeEl.innerHTML = "本站已运行: <span class='site-stat-value'>" + days + "</span> 天 <span class='site-stat-value'>" + hours + "</span> 小时 <span class='site-stat-value'>" + mins + "</span> 分 <span class='site-stat-value'>" + secs + "</span> 秒";
+    }
+
+    var isLocal = ["localhost", "127.0.0.1", "::1"].indexOf(window.location.hostname) !== -1;
+    var localStat = document.getElementById("site-stat-local");
+    var onlineStat = document.getElementById("site-stat-online");
+    if (isLocal) {
+      if (localStat) localStat.style.display = "block";
+      if (onlineStat) onlineStat.style.display = "none";
+    } else {
+      if (localStat) localStat.style.display = "none";
+      if (onlineStat) onlineStat.style.display = "block";
+    }
+
+    updateRuntime();
+    window.setInterval(updateRuntime, 1000);
+
+    
+    var selector = document.getElementById("font-selector");
+    var key = "blog-font-choice";
+    if (selector) {
+      var saved = localStorage.getItem(key);
+      if (saved) {
+        ensureFontLoaded(saved);
+        document.documentElement.setAttribute("data-font", saved);
+        selector.value = saved;
+      } else {
+        ensureFontLoaded("noto-sans");
+      }
+      selector.addEventListener("change", function () {
+        var value = selector.value;
+        ensureFontLoaded(value);
+        document.documentElement.setAttribute("data-font", value);
+        localStorage.setItem(key, value);
+      });
+    }
+
+    
+    var effectSelector = document.getElementById("effect-selector");
+    var effectKey = "blog-effect-choice";
+    if (effectSelector) {
+      var savedEffect = localStorage.getItem(effectKey) || "none";
+      effectSelector.value = savedEffect;
+      
+      if (savedEffect !== 'none') {
+        var script = document.createElement('script');
+        script.src = '/js/blog-effects.js';
+        script.onload = function() {
+          if(window.BlogEffects && window.BlogEffects[savedEffect]) {
+            window.BlogEffects[savedEffect]();
+          }
+        };
+        document.body.appendChild(script);
+      }
+
+      effectSelector.addEventListener("change", function () {
+        localStorage.setItem(effectKey, effectSelector.value);
+        location.reload(); 
+      });
+    }
+  })();
+</script>
+
+
+<script>
+  (function () {
+    var live2dModels = {
+      "hijiki": "/live2d-models/hijiki/hijiki.model.json",
+      "tororo": "/live2d-models/tororo/tororo.model.json",
+      "miku": "/live2d-models/miku/miku.model.json"
+    };
+
+    var targetModelUrl = "https:\/\/cdn.jsdelivr.net\/npm\/live2d-widget-model-hijiki@1.0.5\/assets\/hijiki.model.json";
+    var savedModel = localStorage.getItem("blog-live2d-model");
+    
+    
+    var l2dSelector = document.getElementById("live2d-selector");
+    
+    function getModelUrlToLoad() {
+       if (savedModel && live2dModels[savedModel]) {
+          if (l2dSelector) l2dSelector.value = savedModel;
+          return live2dModels[savedModel];
+       } 
+       
+       var modelKeys = Object.keys(live2dModels);
+       var randomKey = modelKeys[Math.floor(Math.random() * modelKeys.length)];
+       if (l2dSelector) l2dSelector.value = "random";
+       return live2dModels[randomKey];
+    }
+
+    if (l2dSelector) {
+       l2dSelector.addEventListener("change", function() {
+           var val = this.value;
+           if (val === "random") {
+               localStorage.removeItem("blog-live2d-model");
+           } else {
+               localStorage.setItem("blog-live2d-model", val);
+           }
+           
+           location.reload(); 
+       });
+    }
+
+    function initLive2D() {
+      if (!window.L2Dwidget) return;
+      var modelUrl = getModelUrlToLoad();
+      L2Dwidget.init({
+        model: {
+          jsonPath: modelUrl
+        },
+        display: {
+          position: "right",
+          width: Number("168"),
+          height: Number("336"),
+          hOffset: Number("18"),
+          vOffset: Number("-16")
+        },
+        mobile: {
+          show: true,
+          scale: Number("0.65")
+        },
+        react: {
+          opacityDefault: 0.9,
+          opacityOnHover: 0.3
+        }
+      });
+    }
+
+    function loadLive2DScript() {
+      var script = document.createElement("script");
+      script.src = "/js/L2Dwidget.min.js";
+      script.async = true;
+      script.onload = initLive2D;
+      document.body.appendChild(script);
+    }
+
+    if ("requestIdleCallback" in window) {
+      window.requestIdleCallback(loadLive2DScript, { timeout: 2000 });
+    } else {
+      window.setTimeout(loadLive2DScript, 1200);
+    }
+  })();
+</script>
+
+
   
 </footer>
 <div

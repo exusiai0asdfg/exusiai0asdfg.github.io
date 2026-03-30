@@ -20,13 +20,33 @@
     </item>
     
     <item>
-      <title>模板</title>
-      <link>http://localhost:1313/posts/%E6%A8%A1%E6%9D%BF/</link>
+      <title>性与爱——看《龙与虎》有感</title>
+      <link>http://localhost:1313/posts/%E9%BE%99%E4%B8%8E%E8%99%8E/</link>
+      <pubDate>Fri, 13 Feb 2026 10:30:28 +0800</pubDate>
+      
+      <guid>http://localhost:1313/posts/%E9%BE%99%E4%B8%8E%E8%99%8E/</guid>
+      <description></description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/posts/%E9%BE%99%E4%B8%8E%E8%99%8E/featured.png" />
+    </item>
+    
+    <item>
+      <title>人为何而活？</title>
+      <link>http://localhost:1313/posts/26_1-18/</link>
+      <pubDate>Sun, 18 Jan 2026 12:45:00 +0800</pubDate>
+      
+      <guid>http://localhost:1313/posts/26_1-18/</guid>
+      <description></description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/posts/26_1-18/featured.jpeg" />
+    </item>
+    
+    <item>
+      <title>前言</title>
+      <link>http://localhost:1313/posts/%E5%89%8D%E8%A8%80/</link>
       <pubDate>Wed, 14 Jan 2026 19:19:28 +0800</pubDate>
       
-      <guid>http://localhost:1313/posts/%E6%A8%A1%E6%9D%BF/</guid>
+      <guid>http://localhost:1313/posts/%E5%89%8D%E8%A8%80/</guid>
       <description></description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/posts/%E6%A8%A1%E6%9D%BF/featured.jpeg" />
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/posts/%E5%89%8D%E8%A8%80/featured.jpeg" />
     </item>
     
   </channel>

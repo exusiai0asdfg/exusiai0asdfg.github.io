@@ -1,11 +1,55 @@
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
-<div style="text-align: center; font-size: 0.8rem; color: #666; margin-top: 10px;">
-  <span id="busuanzi_container_site_pv" style="display:none">
-    本站总访问量 <span id="busuanzi_value_site_pv" style="font-weight: bold;"></span> 次
+<!-- 不蒜子统计 & 建站时间统计 -->
+<div style="text-align: center; font-size: 0.85rem; color: var(--color-neutral-500); margin-top: 20px; padding: 10px; border-top: 1px dashed rgba(150,150,150,0.2);">
+  <!-- 存活时间 -->
+  <div id="runtime" style="margin-bottom: 5px; font-weight: 500;"></div>
+  
+  <!-- 不蒜子 -->
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <span id="busuanzi_container_site_pv">
+    👀 访问量: <span id="busuanzi_value_site_pv" style="font-weight: bold; color: var(--primary);"></span> 次
   </span>
-  <span style="margin: 0 5px;">|</span>
-  <span id="busuanzi_container_site_uv" style="display:none">
-    访客数 <span id="busuanzi_value_site_uv" style="font-weight: bold;"></span> 人
+  <span style="margin: 0 8px;">|</span>
+  <span id="busuanzi_container_site_uv">
+    🧑‍💻 访客数: <span id="busuanzi_value_site_uv" style="font-weight: bold; color: var(--primary);"></span> 人
   </span>
 </div>
+
+<script>
+  /* 存活时间计算 */
+  function show_runtime() {
+      window.setTimeout("show_runtime()", 1000);
+      X = new Date("2024-01-01T00:00:00"); // 这里可以修改为您实际的建站日期
+      Y = new Date();
+      T = (Y.getTime() - X.getTime());
+      M = 24 * 60 * 60 * 1000;
+      a = T / M;
+      A = Math.floor(a);
+      b = (a - A) * 24;
+      B = Math.floor(b);
+      c = (b - B) * 60;
+      C = Math.floor((b - B) * 60);
+      D = Math.floor((c - C) * 60);
+      document.getElementById("runtime").innerHTML = "🚀 本站已在风雨中坚强运行: <span style='color:var(--primary)'>" + A + "</span> 天 <span style='color:var(--primary)'>" + B + "</span> 小时 <span style='color:var(--primary)'>" + C + "</span> 分 <span style='color:var(--primary)'>" + D + "</span> 秒";
+  }
+  show_runtime();
+</script>
+
+<!-- 点击屏幕散落烟花特效 -->
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+<script>
+  document.addEventListener('click', function (e) {
+    // 过滤掉点击链接等，防止太花哨
+    if (e.target.tagName !== 'A' && e.target.tagName !== 'BUTTON') {
+      confetti({
+        particleCount: 20,
+        spread: 40,
+        origin: {
+          x: e.clientX / window.innerWidth,
+          y: e.clientY / window.innerHeight
+        },
+        colors: ['#26ccff', '#a25afd', '#ff5e7e', '#88ff5a', '#fcff42', '#ffa62d', '#ff36ff'],
+        disableForReducedMotion: true
+      });
+    }
+  });
+</script>

@@ -1,3 +1,28 @@
-{{ if or .Params.math .Site.Params.math }}
-{{ partial "math.html" . }}
-{{ end }}
+{{/* 加载进度条 NProgress */}}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.css" />
+<script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js"></script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+      NProgress.configure({ 
+        showSpinner: false, 
+        speed: 500,
+        minimum: 0.15 
+      });
+      NProgress.start();
+  });
+  window.addEventListener("load", function() {
+      NProgress.done();
+  });
+  
+  // 拦截全局链接点击，触发加载动画
+  document.addEventListener("click", function(e) {
+      var target = e.target;
+      while (target && target.tagName !== 'A') {
+          target = target.parentNode;
+      }
+      if (target && target.href && target.href.indexOf(window.location.origin) !== -1 && target.target !== '_blank') {
+          NProgress.start();
+      }
+  });
+</script>
