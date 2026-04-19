@@ -195,6 +195,278 @@ html {
     scroll-behavior: smooth !important;
 }
 
+.book-annotation {
+    --anno-bg: linear-gradient(180deg, rgba(255, 252, 239, 0.98), rgba(255, 246, 221, 0.98));
+    --anno-border: rgba(170, 138, 67, 0.35);
+    --anno-shadow: 0 16px 30px rgba(86, 67, 28, 0.18);
+    position: relative;
+    margin: 1.35rem 0;
+    padding: 1rem 1rem 0.85rem;
+    border: 1px solid var(--anno-border);
+    border-radius: 14px;
+    background: var(--anno-bg);
+    box-shadow: var(--anno-shadow);
+    color: #3f3016;
+}
+
+.book-annotation__pin {
+    position: absolute;
+    top: 0.6rem;
+    right: 0.75rem;
+    width: 0.62rem;
+    height: 0.62rem;
+    border-radius: 999px;
+    background: radial-gradient(circle at 30% 30%, #fff 0%, #ef3f4a 55%, #9a1f27 100%);
+    box-shadow: 0 2px 7px rgba(122, 24, 30, 0.4);
+}
+
+.book-annotation__header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.45rem;
+    margin-bottom: 0.55rem;
+}
+
+.book-annotation__type {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.12rem 0.5rem;
+    border-radius: 999px;
+    font-size: 0.72rem;
+    letter-spacing: 0.02em;
+    background: rgba(130, 81, 16, 0.12);
+    color: #7f4f0e;
+}
+
+.book-annotation__title {
+    font-size: 0.98rem;
+    letter-spacing: 0.02em;
+}
+
+.book-annotation__quote {
+    margin: 0.2rem 0 0.6rem;
+    padding: 0.52rem 0.65rem;
+    border-left: 3px solid rgba(159, 117, 46, 0.65);
+    background: rgba(255, 255, 255, 0.45);
+    border-radius: 8px;
+    font-size: 0.92rem;
+    color: rgba(79, 56, 18, 0.88);
+}
+
+.book-annotation__body {
+    line-height: 1.8;
+}
+
+.book-annotation__body p {
+    margin: 0.25rem 0;
+    text-indent: 0 !important;
+}
+
+.book-annotation__meta {
+    margin-top: 0.55rem;
+    font-size: 0.8rem;
+    color: rgba(109, 81, 28, 0.8);
+}
+
+.book-annotation__dot {
+    margin: 0 0.28rem;
+}
+
+.dark .book-annotation {
+    --anno-bg: linear-gradient(180deg, rgba(46, 37, 18, 0.92), rgba(34, 28, 14, 0.94));
+    --anno-border: rgba(199, 163, 96, 0.4);
+    --anno-shadow: 0 14px 30px rgba(0, 0, 0, 0.35);
+    color: #f1dec0;
+}
+
+.dark .book-annotation__type {
+    background: rgba(255, 198, 95, 0.14);
+    color: #ffdca0;
+}
+
+.dark .book-annotation__quote {
+    background: rgba(255, 220, 160, 0.08);
+    border-left-color: rgba(255, 201, 108, 0.72);
+    color: rgba(255, 228, 180, 0.92);
+}
+
+.dark .book-annotation__meta {
+    color: rgba(234, 209, 162, 0.82);
+}
+
+.line-annotation {
+    --line-anno-accent: #3b82f6;
+    --line-anno-accent-2: #0ea5e9;
+    --line-anno-bg: linear-gradient(180deg, rgba(219, 234, 254, 0.98), rgba(191, 219, 254, 0.98));
+    --line-anno-border: rgba(59, 130, 246, 0.65);
+    position: relative;
+    display: inline;
+    cursor: help;
+    outline: none;
+}
+
+.line-annotation__mark {
+    border-bottom: 2px solid var(--line-anno-accent);
+    background: linear-gradient(transparent 72%, rgba(59, 130, 246, 0.18) 0);
+    padding: 0 0.08em;
+    transition: border-color 180ms ease, background 180ms ease;
+}
+
+.line-annotation__connector {
+    display: none;
+}
+
+.line-annotation__note {
+    position: absolute;
+    left: 0;
+    top: calc(100% + 0.52rem);
+    width: min(21rem, 68vw);
+    padding: 0.58rem 0.72rem;
+    border: 1px solid var(--line-anno-border);
+    border-radius: 11px;
+    background: var(--line-anno-bg);
+    box-shadow: 0 14px 28px rgba(30, 64, 175, 0.15);
+    color: #1e3a8a;
+    line-height: 1.6;
+    font-size: 0.9rem;
+    text-indent: 0 !important;
+    z-index: 14;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(-4px) scale(0.985);
+    transition: opacity 160ms ease, transform 180ms ease, visibility 0s linear 180ms;
+}
+
+.line-annotation__note::before {
+    content: "";
+    position: absolute;
+    left: 1rem;
+    top: -0.43rem;
+    width: 0.72rem;
+    height: 0.72rem;
+    background: rgba(219, 234, 254, 0.98);
+    border-top: 1px solid var(--line-anno-border);
+    border-left: 1px solid var(--line-anno-border);
+    transform: rotate(45deg);
+}
+
+.line-annotation__note p {
+    margin: 0.15rem 0;
+    text-indent: 0 !important;
+}
+
+.line-annotation__note-body {
+    display: block;
+}
+
+.line-annotation__meta {
+    display: block;
+    margin-top: 0.32rem;
+    font-size: 0.76rem;
+    letter-spacing: 0.01em;
+    color: rgba(30, 64, 175, 0.85);
+}
+
+.line-annotation:hover .line-annotation__mark,
+.line-annotation:focus-visible .line-annotation__mark,
+.line-annotation:focus-within .line-annotation__mark {
+    border-bottom-color: var(--line-anno-accent-2);
+    background: linear-gradient(transparent 70%, rgba(14, 165, 233, 0.2) 0);
+}
+
+.line-annotation:hover .line-annotation__note,
+.line-annotation:focus-visible .line-annotation__note,
+.line-annotation:focus-within .line-annotation__note {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0) scale(1);
+    transition: opacity 160ms ease, transform 180ms ease, visibility 0s;
+}
+
+.line-annotation[data-side="left"] .line-annotation__connector {
+    left: auto;
+    right: calc(100% + 0.45rem);
+}
+
+.line-annotation[data-side="left"] .line-annotation__note {
+    left: auto;
+    right: 0;
+}
+
+.line-annotation[data-side="left"] .line-annotation__note::before {
+    left: auto;
+    right: 1rem;
+    border-left: 0;
+    border-right: 1px solid var(--line-anno-border);
+}
+
+.dark .line-annotation {
+    --line-anno-accent: #60a5fa;
+    --line-anno-accent-2: #38bdf8;
+    --line-anno-bg: linear-gradient(180deg, rgba(30, 58, 138, 0.92), rgba(15, 23, 42, 0.93));
+    --line-anno-border: rgba(96, 165, 250, 0.6);
+}
+
+.dark .line-annotation__mark {
+    border-bottom-color: var(--line-anno-accent);
+    background: linear-gradient(transparent 72%, rgba(96, 165, 250, 0.15) 0);
+}
+
+.dark .line-annotation__note {
+    color: #dbeafe;
+    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.42);
+}
+
+.dark .line-annotation__meta {
+    color: rgba(147, 197, 253, 0.9);
+}
+
+.dark .line-annotation__note::before {
+    background: rgba(30, 58, 138, 0.92);
+}
+
+@media (max-width: 768px) {
+    .book-annotation {
+        margin: 1rem 0;
+        padding: 0.85rem 0.85rem 0.75rem;
+        border-radius: 12px;
+    }
+
+    .book-annotation__title {
+        font-size: 0.92rem;
+    }
+
+    .line-annotation {
+        display: inline;
+    }
+
+    .line-annotation__connector {
+        display: none;
+    }
+
+    .line-annotation__note,
+    .line-annotation[data-side="left"] .line-annotation__note {
+        position: static;
+        width: auto;
+        margin-top: 0.45rem;
+        padding: 0.5rem 0.6rem;
+        font-size: 0.86rem;
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        transform: none;
+        transition: none;
+    }
+
+    .line-annotation__note::before,
+    .line-annotation[data-side="left"] .line-annotation__note::before {
+        display: none;
+    }
+}
+
 .site-meta-panel {
     text-align: center;
     font-size: 0.9rem;

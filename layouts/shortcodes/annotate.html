@@ -1,0 +1,37 @@
+{{ $id := .Get "id" | default "" }}
+{{ $title := .Get "title" | default "批注" }}
+{{ $type := .Get "type" | default "思考" }}
+{{ $quote := .Get "quote" | default "" }}
+{{ $author := .Get "author" | default "" }}
+{{ $date := .Get "date" | default "" }}
+{{ $note := .Get "note" | default "" }}
+{{ $inner := .Inner | strings.TrimSpace }}
+{{ $body := $note }}
+{{ if gt (len $inner) 0 }}
+  {{ $body = $inner }}
+{{ end }}
+
+<aside class="book-annotation" {{ with $id }}id="{{ . }}"{{ end }} data-anno-type="{{ $type }}">
+  <div class="book-annotation__pin" aria-hidden="true"></div>
+
+  <header class="book-annotation__header">
+    <span class="book-annotation__type">{{ $type }}</span>
+    <strong class="book-annotation__title">{{ $title }}</strong>
+  </header>
+
+  {{ with $quote }}
+    <blockquote class="book-annotation__quote">{{ . }}</blockquote>
+  {{ end }}
+
+  {{ if gt (len ($body | strings.TrimSpace)) 0 }}
+    <div class="book-annotation__body">{{ $body | $.Page.RenderString }}</div>
+  {{ end }}
+
+  {{ if or $author $date }}
+    <footer class="book-annotation__meta">
+      {{ with $author }}<span>{{ . }}</span>{{ end }}
+      {{ if and $author $date }}<span class="book-annotation__dot">·</span>{{ end }}
+      {{ with $date }}<time>{{ . }}</time>{{ end }}
+    </footer>
+  {{ end }}
+</aside>

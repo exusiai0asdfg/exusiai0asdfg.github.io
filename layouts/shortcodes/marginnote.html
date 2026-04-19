@@ -1,0 +1,28 @@
+{{ $id := .Get "id" | default "" }}
+{{ $side := .Get "side" | default "right" }}
+{{ $note := .Get "note" | default "" }}
+{{ $text := .Get "text" | default "" }}
+{{ $date := .Get "date" | default (.Get "time" | default "") }}
+{{ $inner := .Inner | strings.TrimSpace }}
+
+{{ if eq ($text | strings.TrimSpace) "" }}
+  {{ $text = $inner }}
+{{ end }}
+
+{{ if eq ($note | strings.TrimSpace) "" }}
+  {{ $note = "（这里是批注内容）" }}
+{{ end }}
+
+{{ $textHtml := $text | markdownify }}
+{{ $textHtml = replaceRE "^<p>([\\s\\S]*)</p>$" "$1" $textHtml }}
+{{ $noteHtml := $note | markdownify }}
+{{ $noteHtml = replaceRE "^<p>([\\s\\S]*)</p>$" "$1" $noteHtml }}
+
+<span class="line-annotation" data-side="{{ $side }}" tabindex="0" {{ with $id }}id="{{ . }}"{{ end }}>
+  <span class="line-annotation__mark">{{ $textHtml | safeHTML }}</span>
+  <span class="line-annotation__connector" aria-hidden="true"></span>
+  <span class="line-annotation__note">
+    <span class="line-annotation__note-body">{{ $noteHtml | safeHTML }}</span>
+    {{ with $date }}<span class="line-annotation__meta">{{ . }}</span>{{ end }}
+  </span>
+</span>

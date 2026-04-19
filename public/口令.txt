@@ -1,3 +1,18 @@
 git add .
-git commit -m "上传今日感言"
+git commit -m "修复壁纸和人数"
 git push
+
+批注:
+
+{{< annotate date="2026-04-19" >}}
+试试看
+{{< /annotate >}}
+
+shit
+{{< marginnote text="这一行想强调" note="给它一个书本式批注" />}}
+
+shit
+{{< marginnote side="left" note="左侧边注示例" >}}这段会连到左侧{{< /marginnote >}}
+
+
+这是正文中的一句话，{{< marginnote date="2026-04-19 22:30" note="这里是对这句话的边注说明" >}}这一小段是重点{{< /marginnote >}}，后面继续正文。
