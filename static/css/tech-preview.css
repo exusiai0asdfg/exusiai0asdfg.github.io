@@ -357,6 +357,15 @@
   overflow: hidden;
 }
 
+.tech-preview-enabled .tech-home-stage__image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
 .tech-preview-enabled .tech-home-stage__veil,
 .tech-preview-enabled .tech-home-stage__glow,
 .tech-preview-enabled .tech-home-stage__fade {
