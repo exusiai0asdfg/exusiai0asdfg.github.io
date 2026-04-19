@@ -3,11 +3,6 @@
 /resources/_gen/
 /.hugo_build.lock
 
-# Local heavy videos (not committed to GitHub)
-/static/videos/*.mp4
-/static/videos/wallpapers/**/*.mp4
-!/static/videos/README.txt
-
 # Editor/system
 .DS_Store
 Thumbs.db
