@@ -1,8 +1,47 @@
 {{/* 加载进度条 NProgress */}}
+<script>
+  (function () {
+    try {
+      if (window.location.pathname !== "/") return;
+      var key = "blog-home-hero-mode-v1";
+      localStorage.removeItem(key);
+      document.documentElement.classList.add("tech-home-first");
+
+      var isMobileLike = false;
+      try {
+        var coarseNoHover = window.matchMedia && window.matchMedia("(hover: none) and (pointer: coarse)").matches;
+        var mobileUA = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent || "");
+        var uaDataMobile = window.navigator.userAgentData && window.navigator.userAgentData.mobile === true;
+        var narrowScreen = Math.min(window.innerWidth || 0, screen.width || 0) > 0 && Math.min(window.innerWidth || 0, screen.width || 0) < 900;
+        isMobileLike = mobileUA || uaDataMobile || (coarseNoHover && narrowScreen);
+      } catch (deviceCheckError) {
+        isMobileLike = false;
+      }
+
+      document.documentElement.classList.add(isMobileLike ? "tech-home-bg-static" : "tech-home-bg-dynamic");
+    } catch (e) {
+      // Ignore storage failures and keep rendering.
+    }
+  })();
+</script>
 <link rel="stylesheet" href="/js/nprogress.css" />
+<link rel="stylesheet" href="/css/tech-preview.css" />
 <script src="/js/nprogress.min.js"></script>
 
 <script>
+  (function () {
+    try {
+      if (window.location.pathname !== "/") return;
+      if (window.location.search.indexOf("noFirstRedirect=1") !== -1) return;
+      var key = "blog-first-visit-about-v1";
+      if (localStorage.getItem(key)) return;
+      localStorage.setItem(key, "1");
+      window.location.replace("/about/");
+    } catch (e) {
+      // Fail silently to avoid blocking page render.
+    }
+  })();
+
   document.addEventListener("DOMContentLoaded", function () {
     NProgress.configure({
       showSpinner: false,

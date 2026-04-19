@@ -1,12 +1,4 @@
 {{ $siteStart := .Site.Params.custom.siteStart | default "2026-01-18T00:00:00+08:00" }}
-{{ $live2dEnabled := .Site.Params.live2d.enabled | default true }}
-{{ $live2dModel := .Site.Params.live2d.modelUrl | default "https://cdn.jsdelivr.net/npm/live2d-widget-model-hijiki@1.0.5/assets/hijiki.model.json" }}
-{{ $live2dPosition := .Site.Params.live2d.position | default "right" }}
-{{ $live2dWidth := .Site.Params.live2d.width | default 168 }}
-{{ $live2dHeight := .Site.Params.live2d.height | default 336 }}
-{{ $live2dHOffset := .Site.Params.live2d.hOffset | default 18 }}
-{{ $live2dVOffset := .Site.Params.live2d.vOffset | default -16 }}
-{{ $live2dMobileScale := .Site.Params.live2d.mobileScale | default 0.65 }}
 
 <div class="site-meta-panel">
   <div id="runtime" class="site-runtime" data-site-start="{{ $siteStart }}"></div>
@@ -51,16 +43,6 @@
     </select>
   </div>
 
-  <!-- 看板娘切换 -->
-  <div id="live2d-switcher" aria-label="皮套切换">
-    <span class="floating-tools-container__badge" style="font-size: 1.1rem; line-height: 1;">🎭</span>
-    <select id="live2d-selector">
-      <option value="random">🎲 随机皮套</option>
-      <option value="hijiki">🐱 黑猫 (Hijiki)</option>
-      <option value="tororo">🐈 白猫 (Tororo)</option>
-      <option value="miku">🎤 初音 (Miku)</option>
-    </select>
-  </div>
 </div>
 
 <script>
@@ -166,84 +148,4 @@
   })();
 </script>
 
-{{ if $live2dEnabled }}
-<script>
-  (function () {
-    var live2dModels = {
-      "hijiki": "/live2d-models/hijiki/hijiki.model.json",
-      "tororo": "/live2d-models/tororo/tororo.model.json",
-      "miku": "/live2d-models/miku/miku.model.json"
-    };
-
-    var targetModelUrl = "{{ $live2dModel }}";
-    var savedModel = localStorage.getItem("blog-live2d-model");
-    
-    // UI Selector Sync
-    var l2dSelector = document.getElementById("live2d-selector");
-    
-    function getModelUrlToLoad() {
-       if (savedModel && live2dModels[savedModel]) {
-          if (l2dSelector) l2dSelector.value = savedModel;
-          return live2dModels[savedModel];
-       } 
-       // fallback to random if "random" is selected or no save exists
-       var modelKeys = Object.keys(live2dModels);
-       var randomKey = modelKeys[Math.floor(Math.random() * modelKeys.length)];
-       if (l2dSelector) l2dSelector.value = "random";
-       return live2dModels[randomKey];
-    }
-
-    if (l2dSelector) {
-       l2dSelector.addEventListener("change", function() {
-           var val = this.value;
-           if (val === "random") {
-               localStorage.removeItem("blog-live2d-model");
-           } else {
-               localStorage.setItem("blog-live2d-model", val);
-           }
-           // Reload page to re-init Live2D cleanly and randomise again if needed
-           location.reload(); 
-       });
-    }
-
-    function initLive2D() {
-      if (!window.L2Dwidget) return;
-      var modelUrl = getModelUrlToLoad();
-      L2Dwidget.init({
-        model: {
-          jsonPath: modelUrl
-        },
-        display: {
-          position: "{{ $live2dPosition }}",
-          width: Number("{{ $live2dWidth }}"),
-          height: Number("{{ $live2dHeight }}"),
-          hOffset: Number("{{ $live2dHOffset }}"),
-          vOffset: Number("{{ $live2dVOffset }}")
-        },
-        mobile: {
-          show: true,
-          scale: Number("{{ $live2dMobileScale }}")
-        },
-        react: {
-          opacityDefault: 0.9,
-          opacityOnHover: 0.3
-        }
-      });
-    }
-
-    function loadLive2DScript() {
-      var script = document.createElement("script");
-      script.src = "/js/L2Dwidget.min.js";
-      script.async = true;
-      script.onload = initLive2D;
-      document.body.appendChild(script);
-    }
-
-    if ("requestIdleCallback" in window) {
-      window.requestIdleCallback(loadLive2DScript, { timeout: 2000 });
-    } else {
-      window.setTimeout(loadLive2DScript, 1200);
-    }
-  })();
-</script>
-{{ end }}
+<script defer src="/js/tech-preview.js"></script>

@@ -3,8 +3,8 @@
   lang="zh-CN"
   dir="ltr"
   class="scroll-smooth"
-  data-default-appearance="light"
-  data-auto-appearance="true"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  data-default-appearance="dark"
+  data-auto-appearance="false"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   <meta charset="utf-8">
   
     <meta http-equiv="content-language" content="zh-CN">
@@ -103,8 +103,8 @@
   <link
     type="text/css"
     rel="stylesheet"
-    href="/css/main.bundle.min.db05ffd267970e0f5807881572b51d3ec3125301aa6cff55c0844092869805b4f9bb0ebdb0d5e7513166f300de571d100c6cd04f320852c12aed72ac0dcaba70.css"
-    integrity="sha512-2wX/0meXDg9YB4gVcrUdPsMSUwGqbP9VwIRAkoaYBbT5uw69sNXnUTFm8wDeVx0QDGzQTzIIUsEq7XKsDcq6cA==">
+    href="/css/main.bundle.min.091386bc5f3d20d257dc9d8afa404b9f962552c752c99245ceb47c7cb06fa71638bd8d499b8c2fa60c88aef4615dc04e1ce4d3ff1fd128ee543a1aa16ba29eca.css"
+    integrity="sha512-CROGvF89INJX3J2K&#43;kBLn5YlUsdSyZJFzrR8fLBvpxY4vY1Jm4wvpgyIrvRhXcBOHOTT/x/RKO5UOhqha6Keyg==">
 
   
   
@@ -238,10 +238,49 @@
   
   
     
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.css" />
-<script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js"></script>
+<script>
+  (function () {
+    try {
+      if (window.location.pathname !== "/") return;
+      var key = "blog-home-hero-mode-v1";
+      localStorage.removeItem(key);
+      document.documentElement.classList.add("tech-home-first");
+
+      var isMobileLike = false;
+      try {
+        var coarseNoHover = window.matchMedia && window.matchMedia("(hover: none) and (pointer: coarse)").matches;
+        var mobileUA = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent || "");
+        var uaDataMobile = window.navigator.userAgentData && window.navigator.userAgentData.mobile === true;
+        var narrowScreen = Math.min(window.innerWidth || 0, screen.width || 0) > 0 && Math.min(window.innerWidth || 0, screen.width || 0) < 900;
+        isMobileLike = mobileUA || uaDataMobile || (coarseNoHover && narrowScreen);
+      } catch (deviceCheckError) {
+        isMobileLike = false;
+      }
+
+      document.documentElement.classList.add(isMobileLike ? "tech-home-bg-static" : "tech-home-bg-dynamic");
+    } catch (e) {
+      
+    }
+  })();
+</script>
+<link rel="stylesheet" href="/js/nprogress.css" />
+<link rel="stylesheet" href="/css/tech-preview.css" />
+<script src="/js/nprogress.min.js"></script>
 
 <script>
+  (function () {
+    try {
+      if (window.location.pathname !== "/") return;
+      if (window.location.search.indexOf("noFirstRedirect=1") !== -1) return;
+      var key = "blog-first-visit-about-v1";
+      if (localStorage.getItem(key)) return;
+      localStorage.setItem(key, "1");
+      window.location.replace("/about/");
+    } catch (e) {
+      
+    }
+  })();
+
   document.addEventListener("DOMContentLoaded", function () {
     NProgress.configure({
       showSpinner: false,
@@ -454,23 +493,6 @@
   
 
   
-    <div class="flex items-center">
-      <button
-        id="appearance-switcher"
-        aria-label="Dark mode switcher"
-        type="button"
-        class="text-base bf-icon-color-hover">
-        <div class="flex items-center justify-center dark:hidden">
-          <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M32 256c0-123.8 100.3-224 223.8-224c11.36 0 29.7 1.668 40.9 3.746c9.616 1.777 11.75 14.63 3.279 19.44C245 86.5 211.2 144.6 211.2 207.8c0 109.7 99.71 193 208.3 172.3c9.561-1.805 16.28 9.324 10.11 16.95C387.9 448.6 324.8 480 255.8 480C132.1 480 32 379.6 32 256z"/></svg>
-</span>
-        </div>
-        <div class="items-center justify-center hidden dark:flex">
-          <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 159.1c-53.02 0-95.1 42.98-95.1 95.1S202.1 351.1 256 351.1s95.1-42.98 95.1-95.1S309 159.1 256 159.1zM509.3 347L446.1 255.1l63.15-91.01c6.332-9.125 1.104-21.74-9.826-23.72l-109-19.7l-19.7-109c-1.975-10.93-14.59-16.16-23.72-9.824L256 65.89L164.1 2.736c-9.125-6.332-21.74-1.107-23.72 9.824L121.6 121.6L12.56 141.3C1.633 143.2-3.596 155.9 2.736 164.1L65.89 256l-63.15 91.01c-6.332 9.125-1.105 21.74 9.824 23.72l109 19.7l19.7 109c1.975 10.93 14.59 16.16 23.72 9.824L256 446.1l91.01 63.15c9.127 6.334 21.75 1.107 23.72-9.822l19.7-109l109-19.7C510.4 368.8 515.6 356.1 509.3 347zM256 383.1c-70.69 0-127.1-57.31-127.1-127.1c0-70.69 57.31-127.1 127.1-127.1s127.1 57.3 127.1 127.1C383.1 326.7 326.7 383.1 256 383.1z"/></svg>
-</span>
-        </div>
-      </button>
-    </div>
-  
 </nav>
 
 
@@ -489,21 +511,6 @@
     </button>
   
 
-  
-    <button
-      id="appearance-switcher-mobile"
-      type="button"
-      aria-label="Dark mode switcher"
-      class="flex items-center justify-center text-neutral-900 hover:text-primary-600 dark:text-neutral-200 dark:hover:text-primary-400">
-      <div class="dark:hidden">
-        <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M32 256c0-123.8 100.3-224 223.8-224c11.36 0 29.7 1.668 40.9 3.746c9.616 1.777 11.75 14.63 3.279 19.44C245 86.5 211.2 144.6 211.2 207.8c0 109.7 99.71 193 208.3 172.3c9.561-1.805 16.28 9.324 10.11 16.95C387.9 448.6 324.8 480 255.8 480C132.1 480 32 379.6 32 256z"/></svg>
-</span>
-      </div>
-      <div class="hidden dark:block">
-        <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 159.1c-53.02 0-95.1 42.98-95.1 95.1S202.1 351.1 256 351.1s95.1-42.98 95.1-95.1S309 159.1 256 159.1zM509.3 347L446.1 255.1l63.15-91.01c6.332-9.125 1.104-21.74-9.826-23.72l-109-19.7l-19.7-109c-1.975-10.93-14.59-16.16-23.72-9.824L256 65.89L164.1 2.736c-9.125-6.332-21.74-1.107-23.72 9.824L121.6 121.6L12.56 141.3C1.633 143.2-3.596 155.9 2.736 164.1L65.89 256l-63.15 91.01c-6.332 9.125-1.105 21.74 9.824 23.72l109 19.7l19.7 109c1.975 10.93 14.59 16.16 23.72 9.824L256 446.1l91.01 63.15c9.127 6.334 21.75 1.107 23.72-9.822l19.7-109l109-19.7C510.4 368.8 515.6 356.1 509.3 347zM256 383.1c-70.69 0-127.1-57.31-127.1-127.1c0-70.69 57.31-127.1 127.1-127.1s127.1 57.3 127.1 127.1C383.1 326.7 326.7 383.1 256 383.1z"/></svg>
-</span>
-      </div>
-    </button>
   
 
   
@@ -1137,19 +1144,11 @@
   
     
 
-
-
-
-
-
-
-
-
 <div class="site-meta-panel">
   <div id="runtime" class="site-runtime" data-site-start="2026-01-18T00:00:00&#43;08:00"></div>
 
   <div id="site-stat-online" class="site-stat" style="display:none;">
-    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <script async src="/js/busuanzi.pure.mini.js"></script>
     <span id="busuanzi_container_site_pv">
       访问量: <span id="busuanzi_value_site_pv" class="site-stat-value"></span> 次
     </span>
@@ -1164,15 +1163,30 @@
   </div>
 </div>
 
-<div id="font-switcher" class="font-switcher" aria-label="字体切换">
-  <span class="font-switcher__badge">Aa</span>
-  <select id="font-selector">
-    <option value="noto-sans">思源黑体</option>
-    <option value="noto-serif">思源宋体</option>
-    <option value="zcool">站酷小薇</option>
-    <option value="mashan">马善政手写</option>
-    <option value="longcang">龙藏书法</option>
-  </select>
+<div class="floating-tools-container">
+  
+  <div id="font-switcher" aria-label="字体切换">
+    <span class="floating-tools-container__badge">Aa</span>
+    <select id="font-selector">
+      <option value="noto-sans">思源黑体</option>
+      <option value="noto-serif">思源宋体</option>
+      <option value="zcool">站酷小薇</option>
+      <option value="mashan">马善政手写</option>
+      <option value="longcang">龙藏书法</option>
+    </select>
+  </div>
+
+  
+  <div id="effect-switcher" aria-label="页面特效">
+    <span class="floating-tools-container__badge" style="font-size: 1.1rem; line-height: 1;">✨</span>
+    <select id="effect-selector">
+      <option value="none">🚫 无特效</option>
+      <option value="star">💫 鼠标星光</option>
+      <option value="sakura">🌸 樱花飘落</option>
+      <option value="clickword">💕 点击浮字</option>
+    </select>
+  </div>
+
 </div>
 
 <script>
@@ -1232,6 +1246,7 @@
     updateRuntime();
     window.setInterval(updateRuntime, 1000);
 
+    
     var selector = document.getElementById("font-selector");
     var key = "blog-font-choice";
     if (selector) {
@@ -1250,52 +1265,34 @@
         localStorage.setItem(key, value);
       });
     }
-  })();
-</script>
 
+    
+    var effectSelector = document.getElementById("effect-selector");
+    var effectKey = "blog-effect-choice";
+    if (effectSelector) {
+      var savedEffect = localStorage.getItem(effectKey) || "none";
+      effectSelector.value = savedEffect;
+      
+      if (savedEffect !== 'none') {
+        var script = document.createElement('script');
+        script.src = '/js/blog-effects.js';
+        script.onload = function() {
+          if(window.BlogEffects && window.BlogEffects[savedEffect]) {
+            window.BlogEffects[savedEffect]();
+          }
+        };
+        document.body.appendChild(script);
+      }
 
-<script>
-  (function () {
-    function initLive2D() {
-      if (!window.L2Dwidget) return;
-      L2Dwidget.init({
-        model: {
-          jsonPath: "https:\/\/cdn.jsdelivr.net\/npm\/live2d-widget-model-hijiki@1.0.5\/assets\/hijiki.model.json"
-        },
-        display: {
-          position: "right",
-          width: Number("168"),
-          height: Number("336"),
-          hOffset: Number("18"),
-          vOffset: Number("-16")
-        },
-        mobile: {
-          show: true,
-          scale: Number("0.65")
-        },
-        react: {
-          opacityDefault: 0.9,
-          opacityOnHover: 0.3
-        }
+      effectSelector.addEventListener("change", function () {
+        localStorage.setItem(effectKey, effectSelector.value);
+        location.reload(); 
       });
     }
-
-    function loadLive2DScript() {
-      var script = document.createElement("script");
-      script.src = "https://cdn.jsdelivr.net/npm/live2d-widget@3.1.4/lib/L2Dwidget.min.js";
-      script.async = true;
-      script.onload = initLive2D;
-      document.body.appendChild(script);
-    }
-
-    if ("requestIdleCallback" in window) {
-      window.requestIdleCallback(loadLive2DScript, { timeout: 2000 });
-    } else {
-      window.setTimeout(loadLive2DScript, 1200);
-    }
   })();
 </script>
 
+<script defer src="/js/tech-preview.js"></script>
 
   
 </footer>

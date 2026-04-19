@@ -1,6 +1,8 @@
 # config/_default/params.toml
 
 colorScheme = "blowfish"
+defaultAppearance = "dark"
+autoSwitchAppearance = false
 # 全局兜底背景图
 defaultBackgroundImage = "wallpaper.png"
 
@@ -32,19 +34,10 @@ defaultBackgroundImage = "wallpaper.png"
   
 [footer]
   showCopyright = true
+  showAppearanceSwitcher = false
 
 [custom]
   siteStart = "2026-01-18T00:00:00+08:00"
-
-[live2d]
-  enabled = true
-  modelUrl = "https://cdn.jsdelivr.net/npm/live2d-widget-model-hijiki@1.0.5/assets/hijiki.model.json"
-  position = "right"
-  width = 168
-  height = 336
-  hOffset = 18
-  vOffset = -16
-  mobileScale = 0.65
 
 # 👇 Giscus 评论配置 (已填好你的 ID)
 [giscus]
@@ -56,6 +49,6 @@ defaultBackgroundImage = "wallpaper.png"
   reactionsEnabled = "1"
   emitMetadata = "0"
   inputPosition = "top"
-  theme = "preferred_color_scheme"
+  theme = "dark"
   lang = "zh-CN"
   loading = "lazy"

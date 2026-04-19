@@ -3,8 +3,8 @@
   lang="zh-CN"
   dir="ltr"
   class="scroll-smooth"
-  data-default-appearance="light"
-  data-auto-appearance="true"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  data-default-appearance="dark"
+  data-auto-appearance="false"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   <meta charset="utf-8">
   
     <meta http-equiv="content-language" content="zh-CN">
@@ -103,8 +103,8 @@
   <link
     type="text/css"
     rel="stylesheet"
-    href="/css/main.bundle.min.db05ffd267970e0f5807881572b51d3ec3125301aa6cff55c0844092869805b4f9bb0ebdb0d5e7513166f300de571d100c6cd04f320852c12aed72ac0dcaba70.css"
-    integrity="sha512-2wX/0meXDg9YB4gVcrUdPsMSUwGqbP9VwIRAkoaYBbT5uw69sNXnUTFm8wDeVx0QDGzQTzIIUsEq7XKsDcq6cA==">
+    href="/css/main.bundle.min.091386bc5f3d20d257dc9d8afa404b9f962552c752c99245ceb47c7cb06fa71638bd8d499b8c2fa60c88aef4615dc04e1ce4d3ff1fd128ee543a1aa16ba29eca.css"
+    integrity="sha512-CROGvF89INJX3J2K&#43;kBLn5YlUsdSyZJFzrR8fLBvpxY4vY1Jm4wvpgyIrvRhXcBOHOTT/x/RKO5UOhqha6Keyg==">
 
   
   
@@ -365,7 +365,7 @@
     
     
     "mainEntityOfPage": "true",
-    "wordCount": "602"
+    "wordCount": "11459"
   }]
   </script>
 
@@ -377,10 +377,49 @@
   
   
     
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.css" />
-<script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js"></script>
+<script>
+  (function () {
+    try {
+      if (window.location.pathname !== "/") return;
+      var key = "blog-home-hero-mode-v1";
+      localStorage.removeItem(key);
+      document.documentElement.classList.add("tech-home-first");
+
+      var isMobileLike = false;
+      try {
+        var coarseNoHover = window.matchMedia && window.matchMedia("(hover: none) and (pointer: coarse)").matches;
+        var mobileUA = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent || "");
+        var uaDataMobile = window.navigator.userAgentData && window.navigator.userAgentData.mobile === true;
+        var narrowScreen = Math.min(window.innerWidth || 0, screen.width || 0) > 0 && Math.min(window.innerWidth || 0, screen.width || 0) < 900;
+        isMobileLike = mobileUA || uaDataMobile || (coarseNoHover && narrowScreen);
+      } catch (deviceCheckError) {
+        isMobileLike = false;
+      }
+
+      document.documentElement.classList.add(isMobileLike ? "tech-home-bg-static" : "tech-home-bg-dynamic");
+    } catch (e) {
+      
+    }
+  })();
+</script>
+<link rel="stylesheet" href="/js/nprogress.css" />
+<link rel="stylesheet" href="/css/tech-preview.css" />
+<script src="/js/nprogress.min.js"></script>
 
 <script>
+  (function () {
+    try {
+      if (window.location.pathname !== "/") return;
+      if (window.location.search.indexOf("noFirstRedirect=1") !== -1) return;
+      var key = "blog-first-visit-about-v1";
+      if (localStorage.getItem(key)) return;
+      localStorage.setItem(key, "1");
+      window.location.replace("/about/");
+    } catch (e) {
+      
+    }
+  })();
+
   document.addEventListener("DOMContentLoaded", function () {
     NProgress.configure({
       showSpinner: false,
@@ -593,23 +632,6 @@
   
 
   
-    <div class="flex items-center">
-      <button
-        id="appearance-switcher"
-        aria-label="Dark mode switcher"
-        type="button"
-        class="text-base bf-icon-color-hover">
-        <div class="flex items-center justify-center dark:hidden">
-          <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M32 256c0-123.8 100.3-224 223.8-224c11.36 0 29.7 1.668 40.9 3.746c9.616 1.777 11.75 14.63 3.279 19.44C245 86.5 211.2 144.6 211.2 207.8c0 109.7 99.71 193 208.3 172.3c9.561-1.805 16.28 9.324 10.11 16.95C387.9 448.6 324.8 480 255.8 480C132.1 480 32 379.6 32 256z"/></svg>
-</span>
-        </div>
-        <div class="items-center justify-center hidden dark:flex">
-          <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 159.1c-53.02 0-95.1 42.98-95.1 95.1S202.1 351.1 256 351.1s95.1-42.98 95.1-95.1S309 159.1 256 159.1zM509.3 347L446.1 255.1l63.15-91.01c6.332-9.125 1.104-21.74-9.826-23.72l-109-19.7l-19.7-109c-1.975-10.93-14.59-16.16-23.72-9.824L256 65.89L164.1 2.736c-9.125-6.332-21.74-1.107-23.72 9.824L121.6 121.6L12.56 141.3C1.633 143.2-3.596 155.9 2.736 164.1L65.89 256l-63.15 91.01c-6.332 9.125-1.105 21.74 9.824 23.72l109 19.7l19.7 109c1.975 10.93 14.59 16.16 23.72 9.824L256 446.1l91.01 63.15c9.127 6.334 21.75 1.107 23.72-9.822l19.7-109l109-19.7C510.4 368.8 515.6 356.1 509.3 347zM256 383.1c-70.69 0-127.1-57.31-127.1-127.1c0-70.69 57.31-127.1 127.1-127.1s127.1 57.3 127.1 127.1C383.1 326.7 326.7 383.1 256 383.1z"/></svg>
-</span>
-        </div>
-      </button>
-    </div>
-  
 </nav>
 
 
@@ -628,21 +650,6 @@
     </button>
   
 
-  
-    <button
-      id="appearance-switcher-mobile"
-      type="button"
-      aria-label="Dark mode switcher"
-      class="flex items-center justify-center text-neutral-900 hover:text-primary-600 dark:text-neutral-200 dark:hover:text-primary-400">
-      <div class="dark:hidden">
-        <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M32 256c0-123.8 100.3-224 223.8-224c11.36 0 29.7 1.668 40.9 3.746c9.616 1.777 11.75 14.63 3.279 19.44C245 86.5 211.2 144.6 211.2 207.8c0 109.7 99.71 193 208.3 172.3c9.561-1.805 16.28 9.324 10.11 16.95C387.9 448.6 324.8 480 255.8 480C132.1 480 32 379.6 32 256z"/></svg>
-</span>
-      </div>
-      <div class="hidden dark:block">
-        <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 159.1c-53.02 0-95.1 42.98-95.1 95.1S202.1 351.1 256 351.1s95.1-42.98 95.1-95.1S309 159.1 256 159.1zM509.3 347L446.1 255.1l63.15-91.01c6.332-9.125 1.104-21.74-9.826-23.72l-109-19.7l-19.7-109c-1.975-10.93-14.59-16.16-23.72-9.824L256 65.89L164.1 2.736c-9.125-6.332-21.74-1.107-23.72 9.824L121.6 121.6L12.56 141.3C1.633 143.2-3.596 155.9 2.736 164.1L65.89 256l-63.15 91.01c-6.332 9.125-1.105 21.74 9.824 23.72l109 19.7l19.7 109c1.975 10.93 14.59 16.16 23.72 9.824L256 446.1l91.01 63.15c9.127 6.334 21.75 1.107 23.72-9.822l19.7-109l109-19.7C510.4 368.8 515.6 356.1 509.3 347zM256 383.1c-70.69 0-127.1-57.31-127.1-127.1c0-70.69 57.31-127.1 127.1-127.1s127.1 57.3 127.1 127.1C383.1 326.7 326.7 383.1 256 383.1z"/></svg>
-</span>
-      </div>
-    </button>
   
 
   
@@ -968,7 +975,7 @@
   <div class="flex flex-row flex-wrap items-center">
     
     
-      <time datetime="2026-02-25T13:58:00&#43;08:00">2026年2月25日</time><span class="px-2 text-primary-500">&middot;</span><span>602 字</span><span class="px-2 text-primary-500">&middot;</span><span title="预计阅读">2 分钟</span>
+      <time datetime="2026-02-25T13:58:00&#43;08:00">2026年2月25日</time><span class="px-2 text-primary-500">&middot;</span><span>11459 字</span><span class="px-2 text-primary-500">&middot;</span><span title="预计阅读">23 分钟</span>
     
 
     
@@ -1102,7 +1109,26 @@
   <ul>
     <li><a href="#linear-regression-线性回归">Linear Regression 线性回归</a>
       <ul>
-        <li><a href="#how-to-choose-a">HOW TO CHOOSE a </a></li>
+        <li><a href="#gradient-descent-梯度下降">Gradient Descent 梯度下降</a>
+          <ul>
+            <li><a href="#batch-gradient-descentbgd-批次梯度下降">Batch Gradient Descent(BGD) 批次梯度下降</a></li>
+            <li><a href="#stochastic-gradient-descent-随机梯度下降法">Stochastic Gradient Descent 随机梯度下降法</a></li>
+          </ul>
+        </li>
+        <li><a href="#normal-equation-正规方程">Normal Equation 正规方程</a>
+          <ul>
+            <li><a href="#矩阵导数">矩阵导数</a></li>
+            <li><a href="#矩阵的迹trace">矩阵的迹(trace)</a></li>
+          </ul>
+        </li>
+        <li><a href="#locally-weighted-regression局部加权回归">Locally Weighted Regression局部加权回归</a></li>
+        <li><a href="#why-least-squares为什么是二次幂">Why least squares?为什么是二次幂?</a></li>
+      </ul>
+    </li>
+    <li><a href="#classification-problem-分类问题">Classification problem 分类问题</a>
+      <ul>
+        <li><a href="#logistic-regression-逻辑回归">Logistic regression 逻辑回归</a></li>
+        <li><a href="#newtons-method牛顿法">Newton&rsquo;s method牛顿法</a></li>
       </ul>
     </li>
   </ul>
@@ -1120,7 +1146,26 @@
   <ul>
     <li><a href="#linear-regression-线性回归">Linear Regression 线性回归</a>
       <ul>
-        <li><a href="#how-to-choose-a">HOW TO CHOOSE a </a></li>
+        <li><a href="#gradient-descent-梯度下降">Gradient Descent 梯度下降</a>
+          <ul>
+            <li><a href="#batch-gradient-descentbgd-批次梯度下降">Batch Gradient Descent(BGD) 批次梯度下降</a></li>
+            <li><a href="#stochastic-gradient-descent-随机梯度下降法">Stochastic Gradient Descent 随机梯度下降法</a></li>
+          </ul>
+        </li>
+        <li><a href="#normal-equation-正规方程">Normal Equation 正规方程</a>
+          <ul>
+            <li><a href="#矩阵导数">矩阵导数</a></li>
+            <li><a href="#矩阵的迹trace">矩阵的迹(trace)</a></li>
+          </ul>
+        </li>
+        <li><a href="#locally-weighted-regression局部加权回归">Locally Weighted Regression局部加权回归</a></li>
+        <li><a href="#why-least-squares为什么是二次幂">Why least squares?为什么是二次幂?</a></li>
+      </ul>
+    </li>
+    <li><a href="#classification-problem-分类问题">Classification problem 分类问题</a>
+      <ul>
+        <li><a href="#logistic-regression-逻辑回归">Logistic regression 逻辑回归</a></li>
+        <li><a href="#newtons-method牛顿法">Newton&rsquo;s method牛顿法</a></li>
       </ul>
     </li>
   </ul>
@@ -1168,15 +1213,26 @@ $$h(x) = \sum_{j=0}^{n}\theta _j x_j$$<p>
 <li>$n$表示监督学习(supervised learning)中总的特征数量</li>
 </ul>
 
-<h3 class="relative group">HOW TO CHOOSE a $\theta$
-    <div id="how-to-choose-a" class="anchor"></div>
+<h3 class="relative group">Gradient Descent 梯度下降
+    <div id="gradient-descent-梯度下降" class="anchor"></div>
     
     <span
         class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#how-to-choose-a" aria-label="锚点">#</a>
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#gradient-descent-%e6%a2%af%e5%ba%a6%e4%b8%8b%e9%99%8d" aria-label="锚点">#</a>
     </span>
     
 </h3>
+
+<h4 class="relative group">Batch Gradient Descent(BGD) 批次梯度下降
+    <div id="batch-gradient-descentbgd-批次梯度下降" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#batch-gradient-descentbgd-%e6%89%b9%e6%ac%a1%e6%a2%af%e5%ba%a6%e4%b8%8b%e9%99%8d" aria-label="锚点">#</a>
+    </span>
+    
+</h4>
+<p>如何找到一个好的$\theta$呢?</p>
 <blockquote><p>$s.t. \; h(x) \approx y \; for \; training \; examples$</p>
 </blockquote><p>我们可以使用记号$h_\theta (x)$来强调$h$同时依赖于参数与特征,当然两者没有本质区别</p>
 <p>为此我们,我们可以最小化
@@ -1186,7 +1242,892 @@ $$(h_\theta (x)- y)^2$$<p>
 </p>
 $$J(\theta)=\frac{1}{2}\sum_{i=1}^{m}(h_\theta (x)- y)^2 $$<p>
 Wu声称$\frac{1}{2}$是为了使得求导后更加容易算,而是否有$\frac{1}{2}$并不影响最小值<del>我感觉不是很有必要</del></p>
+<p>之所以使用平方误差,对应着高斯分布,具体将在后面线性回归的推广处详解</p>
+<p>接下来我们介绍梯度下降算法</p>
+<ul>
+<li>从某个$\theta$值开始,比如$\theta=\vec{0}$就是一个很好的初始点</li>
+<li>不断改变$\theta$的数值,来<strong>减少</strong>$J(\theta)$</li>
+<li>注意到该过程像是在寻找所有方向中可以最快&quot;下坡&quot;的路,走一步,然后重复,最终获得一个局部最优的解</li>
+<li>注意到上述过程类似于数学中的梯度($\nabla$),于是我们用如下公式定义:
+$$\theta _j := \theta _j - \alpha \frac{\partial} {\partial \theta _j} J(\theta)\tag{1}$$
+其中,</li>
+<li>:=代表赋值(assignment)</li>
+<li>$\alpha$ 表示学习率(learning rate)
+接下来,我们要展开$J(\theta)$好好算一算
+$$
+\begin{aligned}
+\frac{\partial}{\partial \theta_{j}} J(\theta) &= \frac{\partial}{\partial \theta_{j}} \frac{1}{2}\left(h_{\theta}(x)-y\right)^{2} \\
+&= 2 \cdot \frac{1}{2}\left(h_{\theta}(x)-y\right) \cdot \frac{\partial}{\partial \theta_{j}}\left(h_{\theta}(x)-y\right) \\
+&= \left(h_{\theta}(x)-y\right) \cdot \frac{\partial}{\partial \theta_{j}}\left(\sum_{i=0}^{n} \theta_{i} x_{i}-y\right)       \tag{2}\\
+&= \left(h_{\theta}(x)-y\right) x_{j}
+\end{aligned}
+$$
+对于(2)中不同的$j$取值,只有对应的$\theta _j x_j$对偏导有贡献并计算得到$x_j$,由此可以得到最终答案<del>似乎乘上0.5的确更好看</del></li>
+</ul>
+<p>带回公式(1)可得:
+</p>
+$$
+\theta _j := \theta _j - \sum _{i=1}^{m}\alpha (h_\theta (x^{(i)}))-y^{(i)}) x_j^{(i)}\tag{3}
+$$<p>
+为使公式满足对于m个数据集的总操作,我们加上$\sum$来完善</p>
+<p>综上,不断重复上述操作(3)直至收敛,其中$j=1,2,\cdots,n$,其中$n$为特征($x$)的数量</p>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">theta0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">theta1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">T0</span><span class="p">,</span> <span class="n">T1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">theta0</span><span class="p">,</span> <span class="n">theta1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">J</span> <span class="o">=</span> <span class="p">(</span><span class="n">T0</span> <span class="o">-</span> <span class="mi">25</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">T1</span> <span class="o">-</span> <span class="mi">25</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="s1">&#39;3d&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 关键在这里：</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># cmap=&#39;YlGnBu&#39; (黄绿蓝) 或者 &#39;GnBu&#39; (绿蓝) 会非常亮</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># antialiased=True 让网格看起来更细腻</span>
+</span></span><span class="line"><span class="cl"><span class="n">surf</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">plot_surface</span><span class="p">(</span><span class="n">T0</span><span class="p">,</span> <span class="n">T1</span><span class="p">,</span> <span class="n">J</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;YlGnBu&#39;</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">                       <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">antialiased</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\theta_0$&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\theta_1$&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">ax</span><span class="o">.</span><span class="n">set_zlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$J(\theta)$&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 调整背景色为白色，看起来会更亮</span>
+</span></span><span class="line"><span class="cl"><span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_pane_color</span><span class="p">((</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_pane_color</span><span class="p">((</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">ax</span><span class="o">.</span><span class="n">zaxis</span><span class="o">.</span><span class="n">set_pane_color</span><span class="p">((</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span></span></span></code></pre></div></div>
+<figure><img
+    class="my-0 rounded-md"
+    loading="lazy"
+    decoding="async"
+    fetchpriority="auto"
+    alt="png"
+    width="578"
+    height="559"
+    src="/notes/cs229/note_files/note_1_0.png"
+    srcset="/notes/cs229/note_files/note_1_0.png 800w, /notes/cs229/note_files/note_1_0.png 1280w"
+    sizes="(min-width: 768px) 50vw, 65vw"
+    data-zoom-src="/notes/cs229/note_files/note_1_0.png"></figure>
+<p>上方是函数$J(\theta)$的图像,我们发现,如果按照平方误差来定义,$J(\theta)$就是一个二次函数(上方的大碗),这意味着该函数不存在局部最优,或者说,局部最优就是全局最优解.接下来,我们看向水平切片的边缘:</p>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 1. 定义代价函数 J(theta0, theta1) 和它的梯度 (Nabla 算子)</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 为了配合之前的倾斜椭圆，我们使用这个二次型函数</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">cost_function</span><span class="p">(</span><span class="n">t0</span><span class="p">,</span> <span class="n">t1</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="p">(</span><span class="n">t0</span> <span class="o">-</span> <span class="mi">25</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">t1</span> <span class="o">-</span> <span class="mi">25</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mf">0.8</span><span class="o">*</span><span class="p">(</span><span class="n">t0</span> <span class="o">-</span> <span class="mi">25</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">t1</span> <span class="o">-</span> <span class="mi">25</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">get_gradient</span><span class="p">(</span><span class="n">t0</span><span class="p">,</span> <span class="n">t1</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># 手写偏导数 (根据上面的公式求导)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">grad_t0</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="n">t0</span> <span class="o">-</span> <span class="mi">25</span><span class="p">)</span> <span class="o">+</span> <span class="mf">0.8</span> <span class="o">*</span> <span class="p">(</span><span class="n">t1</span> <span class="o">-</span> <span class="mi">25</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">grad_t1</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="n">t1</span> <span class="o">-</span> <span class="mi">25</span><span class="p">)</span> <span class="o">+</span> <span class="mf">0.8</span> <span class="o">*</span> <span class="p">(</span><span class="n">t0</span> <span class="o">-</span> <span class="mi">25</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">grad_t0</span><span class="p">,</span> <span class="n">grad_t1</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 2. 梯度下降算法实现</span>
+</span></span><span class="line"><span class="cl"><span class="n">theta0_start</span><span class="p">,</span> <span class="n">theta1_start</span> <span class="o">=</span> <span class="mf">10.0</span><span class="p">,</span> <span class="mf">10.0</span> <span class="c1"># 初始点（山坡上）</span>
+</span></span><span class="line"><span class="cl"><span class="n">learning_rate</span> <span class="o">=</span> <span class="mf">0.1</span>                    <span class="c1"># 学习率 alpha</span>
+</span></span><span class="line"><span class="cl"><span class="n">iterations</span> <span class="o">=</span> <span class="mi">20</span>                         <span class="c1"># 迭代步数</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 用列表记录每一步的路径</span>
+</span></span><span class="line"><span class="cl"><span class="n">path_t0</span> <span class="o">=</span> <span class="p">[</span><span class="n">theta0_start</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="n">path_t1</span> <span class="o">=</span> <span class="p">[</span><span class="n">theta1_start</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">t0</span><span class="p">,</span> <span class="n">t1</span> <span class="o">=</span> <span class="n">theta0_start</span><span class="p">,</span> <span class="n">theta1_start</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">iterations</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">g0</span><span class="p">,</span> <span class="n">g1</span> <span class="o">=</span> <span class="n">get_gradient</span><span class="p">(</span><span class="n">t0</span><span class="p">,</span> <span class="n">t1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">t0</span> <span class="o">=</span> <span class="n">t0</span> <span class="o">-</span> <span class="n">learning_rate</span> <span class="o">*</span> <span class="n">g0</span> <span class="c1"># 核心公式</span>
+</span></span><span class="line"><span class="cl">    <span class="n">t1</span> <span class="o">=</span> <span class="n">t1</span> <span class="o">-</span> <span class="n">learning_rate</span> <span class="o">*</span> <span class="n">g1</span>
+</span></span><span class="line"><span class="cl">    <span class="n">path_t0</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">t0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">path_t1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">t1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 3. 绘图 (等高线 + 路径)</span>
+</span></span><span class="line"><span class="cl"><span class="n">t0_range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">t1_range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">T1</span><span class="p">,</span> <span class="n">T0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">t1_range</span><span class="p">,</span> <span class="n">t0_range</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">J</span> <span class="o">=</span> <span class="n">cost_function</span><span class="p">(</span><span class="n">T0</span><span class="p">,</span> <span class="n">T1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 画出底图：等高线</span>
+</span></span><span class="line"><span class="cl"><span class="n">cp</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">T1</span><span class="p">,</span> <span class="n">T0</span><span class="p">,</span> <span class="n">J</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">clabel</span><span class="p">(</span><span class="n">cp</span><span class="p">,</span> <span class="n">inline</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 画出路径：用红色的点和线连接</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">path_t1</span><span class="p">,</span> <span class="n">path_t0</span><span class="p">,</span> <span class="s1">&#39;r-o&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Gradient Descent Path&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 标记起点和终点</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">path_t1</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">path_t0</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;go&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Start (10, 10)&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">25</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="s1">&#39;bx&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">markeredgewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Minimum (25, 25)&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\theta_1$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\theta_0$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;How AI &#34;Walks&#34; to the Minimum&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span></span></span></code></pre></div></div>
+<figure><img
+    class="my-0 rounded-md"
+    loading="lazy"
+    decoding="async"
+    fetchpriority="auto"
+    alt="png"
+    width="858"
+    height="711"
+    src="/notes/cs229/note_files/note_3_0_hu_30139966c44fc5c9.png"
+    srcset="/notes/cs229/note_files/note_3_0_hu_30139966c44fc5c9.png 800w, /notes/cs229/note_files/note_3_0.png 1280w"
+    sizes="(min-width: 768px) 50vw, 65vw"
+    data-zoom-src="/notes/cs229/note_files/note_3_0.png"></figure>
+<p>图片底部的椭圆就是函数的水平切片的边缘,我让ai绘制了类似于梯度下降的算法,我们会注意到两件事情:</p>
+<ol>
+<li>每次&quot;下降&quot;,路线和水平切片的边缘都是正交的</li>
+<li>鉴于不存在局部最优,最终算法会收敛到全局最小值,也就是&quot;碗底&quot;</li>
+</ol>
+<p>接下来我们讨论$\alpha$的选取,如果$\alpha$特别的大,可能会直接越过最小值,而过小的话,迭代次数会特别大,意味着极慢的运行速度,一般通过多次实验来确定比较好的$\alpha$</p>
+<p>我们还可以称上述&quot;梯度下降&quot;为&quot;batch gradient descent&quot;(批次梯度下降),这意味着在面对大数据(如一个美国的房价数据),我们可以采取将其分为多批次少量的数据集,也就是所谓的&quot;batch&quot;</p>
+<p>注意到该算法有一个显著的缺点:$\sum$ 被使用,这意味着如果式子(3)中的m特别的大,我们需要扫描整个数据集来进行一步下降,而算法又是高度依赖多次下降以达到收敛,所以每一步都比较慢,下面我们会介绍另一个算法:</p>
 
+<h4 class="relative group">Stochastic Gradient Descent 随机梯度下降法
+    <div id="stochastic-gradient-descent-随机梯度下降法" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#stochastic-gradient-descent-%e9%9a%8f%e6%9c%ba%e6%a2%af%e5%ba%a6%e4%b8%8b%e9%99%8d%e6%b3%95" aria-label="锚点">#</a>
+    </span>
+    
+</h4>
+<p>不同于扫描整个数据集来更新$\theta$,我们一般采取以下方法来进行更新:</p>
+<p><strong>Repeat</strong> {</p>
+<p>For $i = 1$ to $m$:
+</p>
+$$ \theta_j := \theta_j - \alpha (h_\theta(x^{(i)}) - y^{(i)}) x_j^{(i)} $$<p>
+}</p>
+<p>对于SGD,我们在每遇到一个数据m时就对$\theta$进行一次更新,实际上,不同于BGD,SGD的收敛路线是带有噪音的,并且虽然全局上向最低水平收敛,但实际上会在最低点附近震荡而非收敛后停止,但是在大数据集下我们以更快的方式取得了进展,并且wu在回答某同学提问中提到,在较大的数据下,我们极少使用BGD,而是通过不断减小$\alpha$也就是SGD的学习率来减小震荡所带来的误差。</p>
+<p>当然,梯度下降法并不是只用来解决线性回归,只是由于线性回归不存在局部最优解使得该方法表现较为出色,然而对于纯线性回归,我们有另外一种手段:</p>
+
+<h3 class="relative group">Normal Equation 正规方程
+    <div id="normal-equation-正规方程" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#normal-equation-%e6%ad%a3%e8%a7%84%e6%96%b9%e7%a8%8b" aria-label="锚点">#</a>
+    </span>
+    
+</h3>
+<p>我们先给出如下定义:</p>
+
+<h4 class="relative group">矩阵导数
+    <div id="矩阵导数" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e7%9f%a9%e9%98%b5%e5%af%bc%e6%95%b0" aria-label="锚点">#</a>
+    </span>
+    
+</h4>
+$$
+\nabla_A f(A) = \begin{bmatrix}
+\frac{\partial f}{\partial A_{11}} & \frac{\partial f}{\partial A_{12}} & \dots & \frac{\partial f}{\partial A_{1n}} \\
+\frac{\partial f}{\partial A_{21}} & \frac{\partial f}{\partial A_{22}} & \dots & \frac{\partial f}{\partial A_{2n}} \\
+\vdots & \vdots & \ddots & \vdots \\
+\frac{\partial f}{\partial A_{m1}} & \frac{\partial f}{\partial A_{m2}} & \dots & \frac{\partial f}{\partial A_{mn}}
+\end{bmatrix}
+$$<p>
+比如,</p>
+<p>一个 $2 \times 2$ 的矩阵 $A = \begin{bmatrix} A_{11} & A_{12} \\ A_{21} & A_{22} \end{bmatrix}$</p>
+<p><strong>函数</strong>：$f(A) = A_{11} + A_{12}^2$</p>
+<p>注意：这个函数只用到了 $A_{11}$ 和 $A_{12}$，与 $A_{21}$ 和 $A_{22}$ 无关（相当于它们的系数是 0）。
+目标:</p>
+<p>求 $\nabla_A f(A)$。</p>
+<p>根据定义，我们需要对矩阵里的<strong>每一个位置</strong>分别求偏导数，然后把结果放回原来的位置。</p>
+<p>计算过程：</p>
+<ol>
+<li>
+<p><strong>左上角 ($A_{11}$)</strong>：
+</p>
+$$ \frac{\partial}{\partial A_{11}} (A_{11} + A_{12}^2) = 1 $$<p>
+<em>(因为 $A_{11}$ 的导数是 1，后面的是常数)</em></p>
+</li>
+<li>
+<p><strong>右上角 ($A_{12}$)</strong>：
+</p>
+$$ \frac{\partial}{\partial A_{12}} (A_{11} + A_{12}^2) = 2A_{12} $$<p>
+<em>(因为 $A_{12}^2$ 的导数是 $2A_{12}$)</em></p>
+</li>
+<li>
+<p><strong>左下角 ($A_{21}$)</strong>：
+</p>
+$$ \frac{\partial}{\partial A_{21}} (A_{11} + A_{12}^2) = 0 $$<p>
+<em>(函数里根本没有 $A_{21}$，所以它是常数，导数为 0)</em></p>
+</li>
+<li>
+<p><strong>右下角 ($A_{22}$)</strong>：
+</p>
+$$ \frac{\partial}{\partial A_{22}} (A_{11} + A_{12}^2) = 0 $$<p>
+<em>(同理，导数为 0)</em></p>
+</li>
+</ol>
+<p>拼装结果：</p>
+<p>把上面算出来的 4 个数，按照它们在 $A$ 中原来的位置摆好：</p>
+$$
+\nabla_A f(A) = \begin{bmatrix}
+\frac{\partial f}{\partial A_{11}} & \frac{\partial f}{\partial A_{12}} \\
+\frac{\partial f}{\partial A_{21}} & \frac{\partial f}{\partial A_{22}}
+\end{bmatrix} = \begin{bmatrix}
+1 & 2A_{12} \\
+0 & 0
+\end{bmatrix}
+$$<p>这样做的目的主要是:
+<strong>如果我们对一个标量函数 $f$ 关于一个矩阵 $A$ 求导，那么结果（梯度）也是一个矩阵，而且形状必须和 $A$ 一模一样。</strong></p>
+<p>在公式：
+</p>
+$$ A := A - \alpha \nabla_A f(A) $$<p>
+中,矩阵减法要求两个矩阵形状必须相同。所以，$\nabla_A f(A)$ 必须长得和 $A$ 一样，这样才能对应位置相减。</p>
+
+<h4 class="relative group">矩阵的迹(trace)
+    <div id="矩阵的迹trace" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e7%9f%a9%e9%98%b5%e7%9a%84%e8%bf%b9trace" aria-label="锚点">#</a>
+    </span>
+    
+</h4>
+<p>给出一个矩阵$A$,满足$A\in \mathbb{R}^{n\times n}$,记:
+</p>
+$$\operatorname{tr} A=\sum^{n}_{i} A_{ii}$$<p>
+即对角线元素之和,对于迹有以下几个特点:</p>
+<ul>
+<li>$\operatorname{tr} A=\operatorname{tr} A^{T}$</li>
+<li>若$f(A)=\operatorname{tr}AB$,则$\nabla_{A}f(A)=B^{T}$</li>
+<li>$\operatorname{tr}AB=\operatorname{tr}BA$
+这也意味着$\operatorname{tr}ABC=\operatorname{tr}CAB$,即在$\operatorname{tr}$运算下,对矩阵的左乘和右乘没有区别</li>
+<li>$\nabla_A \text{tr}(A A^T C) = CA + C^T A$
+虽然我没有注意到,但是a接下来wu讲到,其实上述公式可以类比为二次函求导:
+对于$f(x) = c \cdot x^2$,有$\frac{d}{dx} f(x) = 2cx$
+而
+<ul>
+<li>矩阵 $A$ 对应于标量 $x$</li>
+<li>常数矩阵 $C$ 对应于常数 $c$</li>
+<li>矩阵的“平方” $A A^T$ 对应于标量的平方 $x^2$</li>
+<li>有上一个公式,$A A^T C$其实等价于$C A A^T $
+矩阵求导法则 $\nabla_A \text{tr}(A A^T C)$ 本质上就是高中二次函数求导法则在矩阵世界中的一个推广。它描述了当自变量 $A$ 发生微小变化时，这个二次函数 $f(A)$ 的梯度(变化最快的方向)</li>
+</ul>
+</li>
+</ul>
+<p>对于线性回归问题,我们给出以下方程:</p>
+<ul>
+<li>为获得$J(\theta)$的最小值,我们求:$$\nabla _\theta J(\theta)  \stackrel{\text{set}}{=}  \vec{0}$$            <br>
+怎么求呢?我们先设:</li>
+</ul>
+<ul>
+<li>
+<p><strong>$\theta$ (参数向量)</strong>: 一个 $n \times 1$ 的列向量。
+</p>
+$$ \theta = \begin{bmatrix} \theta_1 \\ \theta_2 \\ \vdots \\ \theta_n \end{bmatrix} $$</li>
+<li>
+<p><strong>$x^{(i)}$ (第 $i$ 个样本)</strong>: 一个 $n \times 1$ 的列向量。因此，转置 $(x^{(i)})^T$ 是一个 $1 \times n$ 的行向量。预测值 $h_\theta(x^{(i)}) = (x^{(i)})^T \theta$ 是一个标量。</p>
+</li>
+<li>
+<p><strong>$X$ (设计矩阵 Design Matrix)</strong>: 这是一个 $m \times n$ 的矩阵，它的每一<strong>行</strong>是一个训练样本的转置。
+</p>
+$$ X = \begin{bmatrix} — (x^{(1)})^T — \\ — (x^{(2)})^T — \\ \vdots \\ — (x^{(m)})^T — \end{bmatrix} $$</li>
+<li>
+<p><strong>$y$ (标签向量)</strong>: 这是一个 $m \times 1$ 的列向量，包含了所有样本的真实值。
+</p>
+$$ y = \begin{bmatrix} y^{(1)} \\ y^{(2)} \\ \vdots \\ y^{(m)} \end{bmatrix} $$</li>
+</ul>
+<p><strong>步骤一：计算 $X\theta$</strong>
+将 $m \times n$ 的矩阵 $X$ 乘以 $n \times 1$ 的向量 $\theta$，结果是一个 $m \times 1$ 的列向量：
+</p>
+$$ X\theta = \begin{bmatrix} (x^{(1)})^T \theta \\ (x^{(2)})^T \theta \\ \vdots \\ (x^{(m)})^T \theta \end{bmatrix} = \begin{bmatrix} h_\theta(x^{(1)}) \\ h_\theta(x^{(2)}) \\ \vdots \\ h_\theta(x^{(m)}) \end{bmatrix} $$<p>
+<em>直观理解：$X\theta$ 就是一个包含了模型对所有 $m$ 个样本预测值的列向量。</em></p>
+<p><strong>步骤二：计算误差向量 $X\theta - y$</strong>
+将预测值列向量减去真实值列向量，结果依然是一个 $m \times 1$ 的列向量（我们设它为 $z$）：
+</p>
+$$ z = X\theta - y = \begin{bmatrix} h_\theta(x^{(1)}) - y^{(1)} \\ h_\theta(x^{(2)}) - y^{(2)} \\ \vdots \\ h_\theta(x^{(m)}) - y^{(m)} \end{bmatrix} $$<p>
+<em>直观理解：这个列向量里的每一个元素，就是对应样本的“预测误差”。</em></p>
+<p><strong>步骤三：利用向量内积消去 $\sum$</strong>
+根据线性代数的基础知识，一个列向量 $z$ 自身的内积 $z^T z$ 等于它各个元素的平方和：
+</p>
+$$ z^T z = \begin{bmatrix} z_1 & z_2 & \dots & z_m \end{bmatrix} \begin{bmatrix} z_1 \\ z_2 \\ \vdots \\ z_m \end{bmatrix} = \sum_{i=1}^{m} z_i^2 $$<p><strong>步骤四：代入我们的误差向量 $z$</strong>
+既然 $z_i = h_\theta(x^{(i)}) - y^{(i)}$，那么：
+</p>
+$$ (X\theta - y)^T (X\theta - y) = \sum_{i=1}^{m} (h_\theta(x^{(i)}) - y^{(i)})^2 $$<p>最后，在等式两边同时乘以 $\frac{1}{2}$，推导完成！
+</p>
+$$ \frac{1}{2} (X\theta - y)^T (X\theta - y) = \frac{1}{2} \sum_{i=1}^{m} (h_\theta(x^{(i)}) - y^{(i)})^2 = J(\theta) $$<p>那么,
+</p>
+$$
+\begin{align*}
+\nabla_{\theta} J(\theta) 
+&= \nabla_\theta\frac{1}{2} \sum_{i=1}^{m} (h_\theta(x^{(i)}) - y^{(i)})^2 \\
+&= \nabla_{\theta} \frac{1}{2} (X\theta - y)^T (X\theta - y)\\
+&= \frac{1}{2} \nabla_{\theta} (\theta^T X^T X \theta - \theta^T X^T y - y^T X \theta + y^T y)\\
+&= \frac{1}{2} \nabla_{\theta} \operatorname{tr} (\theta^T X^T X \theta - \theta^T X^T y- y^T X \theta + y^T y)  \tag{1} \\
+&= \frac{1}{2} \nabla_{\theta} (\operatorname{tr} \theta^T X^T X \theta - 2 \operatorname{tr} y^T X \theta)\\
+&= \frac{1}{2} (X^T X \theta + X^T X \theta - 2 X^T y)\\
+&= X^T X \theta - X^T y
+\end{align*}  \tag{2}$$<p>
+我们发现,$(1)$处&quot;凭空&quot;多了一个$\operatorname{tr}$,这是因为表达式就是一个标量,引入一个trace可以有效的简化运算过程
+而$(2)$在移项后就得到:
+</p>
+$$X^T X \theta = X^T y$$<p>
+即正规方程,由此解得:</p>
+$$\theta=(X^T X)^{-1}X^Ty$$
+<h3 class="relative group">Locally Weighted Regression局部加权回归
+    <div id="locally-weighted-regression局部加权回归" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#locally-weighted-regression%e5%b1%80%e9%83%a8%e5%8a%a0%e6%9d%83%e5%9b%9e%e5%bd%92" aria-label="锚点">#</a>
+    </span>
+    
+</h3>
+<p>局部加权回归是一种线性回归的修正,可以使其拟合非线性的函数 <br>
+首先给出一个术语上的区分:</p>
+<ul>
+<li>对于比如线性回归,我们将这种<strong>拟合一组固定的参数</strong>(即$\theta_i$)的计算方法称为参数化学习算法(parametric learning algorithm)</li>
+<li>而当一个算法的数据/参数数量与数据规模呈线性增长时,我们称其为非参数化学习算法(non-parametric learning algorithm),比如所谓局部加权回归
+显而易见的,这种算法对于大数据集相当不友好<br>
+下面给出定义:
+$$ \sum_{i=1}^{m} w^{(i)} (y^{(i)} - \theta^T x^{(i)})^2 $$
+不同于标准线性回归的核心目标函数,我们加入了权重函数(Weighting function)$w^{(i)}$,也就是对于不同的样本点,权重是不同的,而$\omega$为:
+$$ w^{(i)} = \exp \left( - \frac{(x^{(i)} - x)^2}{2\tau^{2}} \right) $$
+其中,$\tau$决定了这个高斯钟的宽度,改变它可以决定在多宽的范围里寻找</li>
+</ul>
+<ul>
+<li>
+<p><strong>情况 A：当训练样本 $x^{(i)}$ 离预测点 $x$ 很“近”时</strong></p>
+<ul>
+<li>两者的差值 $|x^{(i)} - x|$ 接近于 0。</li>
+<li>平方之后 $\approx 0$。</li>
+<li>代入公式：$w^{(i)} \approx \exp(0) = e^0 = 1$。</li>
+<li><strong>结论</strong>：这个样本的权重是 1。在拟合回归线时，我们<strong>极其重视</strong>这个样本的误差。</li>
+</ul>
+</li>
+<li>
+<p><strong>情况 B：当训练样本 $x^{(i)}$ 离预测点 $x$ 很“远”时</strong></p>
+<ul>
+<li>两者的差值 $|x^{(i)} - x|$ 是一个很大的数。</li>
+<li>带负号的指数项：$w^{(i)} \approx \exp(-\text{一个大数})$。</li>
+<li>$e$ 的负无穷大次方接近于 0。所以 $w^{(i)} \approx 0$。</li>
+<li><strong>结论</strong>：这个样本的权重是 0。在拟合回归线时，我们<strong>完全无视</strong>这个样本的误差。
+也就是说,每次来一个新的查询点 $x$，算法都会以 $x$ 为中心，给周围的数据打分（离得近的分数高 $w \approx 1$，离得远的分数低 $w \approx 0$）。然后<strong>只用分数高的数据</strong>临时拟合出一条直线，算出预测值。预测完后，这条直线就扔了。这意味很强的灵活性,无论多复杂的非线性曲线都能拟合得很好，不需要提前设定多项式的阶数。但是这也呼应了之前的定义中暴露的缺点,计算成本极高!</li>
+</ul>
+</li>
+</ul>
+<p>总结,在标准的线性回归中，我们试图用<strong>一条全局的直线</strong>去拟合所有的数据。但如果数据分布比较复杂（比如呈波浪形），一条直线根本拟合不好（欠拟合/Underfitting）
+解决方法就是既然一条直线拟合不了所有数据，那当我们想预测某个点 $x$ 的值时，我们<strong>只看 $x$ 附近的数据</strong>，在 $x$ 的局部范围内拟合出一条直线即可。那些离 $x$ 很远的数据，我们就当它们不存在</p>
+
+<h3 class="relative group">Why least squares?为什么是二次幂?
+    <div id="why-least-squares为什么是二次幂" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#why-least-squares%e4%b8%ba%e4%bb%80%e4%b9%88%e6%98%af%e4%ba%8c%e6%ac%a1%e5%b9%82" aria-label="锚点">#</a>
+    </span>
+    
+</h3>
+<p>我们将先进行如下假设:
+对于比如房价$y^{(i)}$,定义为:
+</p>
+$$y(i)=\theta^{T}x^{(i)}+\epsilon{(i)}$$<p>
+其中$\epsilon$为未经建模的随机噪声,该情境下就是房价为面积和卧室数量的线性组合加上一个可能和个体有关的特殊情况</p>
+<p>我们再假设$\epsilon$满足:$\epsilon\sim\mathcal{N}(0, \sigma^2)$,也就是高斯分布</p>
+<details>
+  <summary>why guass</summary>
+  大量不确定性因素在中心极限定理 (CLT)的影响下会接近于高斯分布,实际上不是guass分布该模型表现得也相当不错
+</details>
+<p>由此得到:
+</p>
+$$P(\epsilon^{(i)}) = \frac{1}{\sqrt{2\pi} \sigma} \exp\left( -\frac{(\epsilon^{(i)})^2}{2\sigma^2} \right)$$<p>我们再假设所有的$\epsilon^{(i)}$是独立的(IID,independently and identically distributed),那么带入有
+</p>
+$$p(y^{(i)} | x^{(i)} ; \theta) = \frac{1}{\sqrt{2\pi}\sigma} \exp\left( -\frac{(y^{(i)} - \theta^T x^{(i)})^2}{2\sigma^2} \right)$$<p>
+等价于
+</p>
+$$y^{(i)} | x^{(i)} ; \theta \sim \mathcal{N}(\theta^T x^{(i)}, \sigma^2)$$<p>
+其中的&quot;;&ldquo;应该理解为&quot;参数化(parameterized by)&ldquo;因为$\theta$是一个常量参数而非随机变量</p>
+<p>我们给出其似然函数（Likelihood Function）并带入得到
+\begin{aligned}
+\mathscr{L}(\theta) &amp;= p(\vec{y} | X; \theta) \
+&amp;= \prod_{i=1}^{m} p(y^{(i)} | x^{(i)}; \theta) \
+&amp;= \prod_{i=1}^{m} \frac{1}{\sqrt{2\pi}\sigma} \exp\left( -\frac{(y^{(i)} - \theta^T x^{(i)})^2}{2\sigma^2} \right)
+\end{aligned}
+本质上,概率(probability)和似然性(likehood)是一样的,至少在式子上,为做出区分,我们将数据集固定,$\theta$改变的情况成为似然性,反之则为概率,即</p>
+<ul>
+<li>参数的似然性(likelihood of the parameters)</li>
+<li>数据的概率(probability of the data)</li>
+</ul>
+<blockquote><p>这里我会根据自己查找的资料做出一些解释,所谓的&quot;统计学中的频率学派与贝叶斯学派之争&quot;其实是在为$\theta$定性,前者认为$\theta$是客观存在的,也就是为什么使用&rdquo;;&quot;,而我们改变的其实是去不断接近&quot;真正的&rdquo;$\theta$,而后者认为$\theta$是基于个人实验的,此时的$\theta$也可以作为随机变量</p>
+</blockquote><blockquote><p>看完$\theta$再考虑,在前者视角下,怎么理解似然和概率呢?</p>
+</blockquote><blockquote><p>已知$\theta$,怎么知道$y$呢?将$\theta$带入刚刚的公式得到$x$和$y$的关系,此时就是<strong>数据的概率</strong></p>
+</blockquote><blockquote><p>已知数据集$x$和$y$时,我们想知道$\theta$是怎样的,此时带入并计算,得到&quot;$\theta$看起来像真理的程度&quot;,也就是所谓的<strong>参数的似然度</strong></p>
+</blockquote><blockquote><p>改变$\theta$其实就是让我们模型更接近于真理,增大似然度</p>
+</blockquote><p>接下来,我们以$\mathscr{l}$以表示$log\mathscr{L}(\theta)$(对数似然值,the log-likehood)
+\begin{aligned}
+\ell(\theta) &amp;= \log L(\theta) \
+&amp;= \log \prod_{i=1}^{m} \frac{1}{\sqrt{2\pi}\sigma} \exp\left( -\frac{(y^{(i)} - \theta^T x^{(i)})^2}{2\sigma^2} \right) \
+&amp;= \sum_{i=1}^{m} \left[ \log \frac{1}{\sqrt{2\pi}\sigma} + \log \exp\left( -\frac{(y^{(i)} - \theta^T x^{(i)})^2}{2\sigma^2} \right) \right] \
+&amp;= m \log \frac{1}{\sqrt{2\pi}\sigma} + \sum_{i=1}^{m} \left( -\frac{(y^{(i)} - \theta^T x^{(i)})^2}{2\sigma^2} \right) \qquad (4)
+\end{aligned}
+我们介绍MLE(maximum likehood estimation)最大似然估计,也就是</p>
+<details>
+  <summary>MLE</summary>
+  不看几何距离，只看“概率”。既然事情已经发生，我们就去寻找能让现实数据发生概率最大的模型参数
+</details>
+<p>选择使得$\mathscr{l}(\theta)$最大的$\theta$,对于上述的$(4)$其实在去掉不要的常数后,就是使得</p>
+$$\left( \frac{1}{2}\sum_{i=1}^{m}(y^{(i)} - \theta^T x^{(i)})^2 \right)=J(\theta)$$<p>最小,恰好是之前的损失函数$J(\theta)$</p>
+<p>逻辑其实是:
+</p>
+$$
+\begin{aligned}
+& \text{最大化 } \mathscr{L}(\theta) \\
+\iff & \text{最大化 } \ell (\log \text{在 } \mathbb{R} \text{ 上单增}) \\
+\iff & \text{最大化 }  \frac{1}{2}\sum_{i=1}^{m}(y^{(i)} - \theta^T x^{(i)})^2 =  J(\theta) (\text{该式子在 (4) 中符号为负})
+\end{aligned}$$<p>
+上述式子发现就应该最小化$\left( \frac{1}{2}\sum_{i=1}^{m}(y^{(i)} - \theta^T x^{(i)})^2 \right)$,相当于解释了$J(\theta)$的来源</p>
+<p>学完之后我产生了一个疑问,最小二乘和MLE的关系是什么呢?查找发现,其实是高斯分布使得MLE会推导出最小二乘,也就是殊途同归了,MLE相对于最小二乘更广一点,比如如果是拉普拉斯分布(Laplace distribution),那就会得到绝对值误差$|y - \theta^T x|$ ,关于高斯分布还有一个小故事:</p>
+<blockquote><p>当年，伟大的数学家高斯（Gauss）早就知道了最小二乘法（算几何距离）极其好用。但他是一个有强迫症的天才，他想：“这世界上到底存在一种什么样的概率分布，能让基于概率推导出来的最优解，恰好等于我手里的最小二乘法？”为了让这两者完美等价，高斯硬生生地反向推导，“捏”出了那个钟形曲线公式，并把它命名为正态分布（后来大家为了纪念他，也叫它高斯分布）。</p>
+</blockquote>
+<h2 class="relative group">Classification problem 分类问题
+    <div id="classification-problem-分类问题" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#classification-problem-%e5%88%86%e7%b1%bb%e9%97%ae%e9%a2%98" aria-label="锚点">#</a>
+    </span>
+    
+</h2>
+<p>我们一般不使用线性回归来解决分类问题,举例如下:
+binary classification 二元分类</p>
+<p>其中,$y\in \{0,1\}$
+注意到这个数据集几乎都是离散的点,这对于线性回归不是很稳定,容易被带偏,如图:</p>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</span></span><span class="line"><span class="cl"><span class="n">x0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="n">y0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">x0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">x1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span> <span class="mf">5.5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mf">6.5</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="n">y1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">x1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">x_outlier</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">12</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="n">y_outlier</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">x0</span><span class="p">,</span> <span class="n">x1</span><span class="p">,</span> <span class="n">x_outlier</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">y0</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">y_outlier</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="n">w1</span><span class="p">,</span> <span class="n">b1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">x0</span><span class="p">,</span> <span class="n">x1</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">y0</span><span class="p">,</span> <span class="n">y1</span><span class="p">]),</span> <span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">w2</span><span class="p">,</span> <span class="n">b2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Class 0&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Class 1&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x_outlier</span><span class="p">,</span> <span class="n">y_outlier</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span> <span class="c1"># 离群点</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">x_range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_range</span><span class="p">,</span> <span class="n">w1</span> <span class="o">*</span> <span class="n">x_range</span> <span class="o">+</span> <span class="n">b1</span><span class="p">,</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Without Outlier&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_range</span><span class="p">,</span> <span class="n">w2</span> <span class="o">*</span> <span class="n">x_range</span> <span class="o">+</span> <span class="n">b2</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;With Outlier&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.52</span><span class="p">,</span> <span class="s1">&#39;Threshold = 0.5&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x (Feature)&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;y (Label/Prediction)&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span></span></span></code></pre></div></div>
+<figure><img
+    class="my-0 rounded-md"
+    loading="lazy"
+    decoding="async"
+    fetchpriority="auto"
+    alt="png"
+    width="858"
+    height="453"
+    src="/notes/cs229/note_files/note_17_0_hu_1ca4839d78deb793.png"
+    srcset="/notes/cs229/note_files/note_17_0_hu_1ca4839d78deb793.png 800w, /notes/cs229/note_files/note_17_0.png 1280w"
+    sizes="(min-width: 768px) 50vw, 65vw"
+    data-zoom-src="/notes/cs229/note_files/note_17_0.png"></figure>
+<p>由于一个比较远的数据,这个函数被直接带偏了,所以我们介绍下一个算法</p>
+
+<h3 class="relative group">Logistic regression 逻辑回归
+    <div id="logistic-regression-逻辑回归" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#logistic-regression-%e9%80%bb%e8%be%91%e5%9b%9e%e5%bd%92" aria-label="锚点">#</a>
+    </span>
+    
+</h3>
+<p>我们认为,$h_\theta (x) \in [0,1]$,接下来就是大名鼎鼎的sigmod函数(logistic function),写作:
+</p>
+$$g(z) = \frac{1}{1 + e^{-z}}$$<p>
+本情境下,就是
+</p>
+$$h_\theta(x) = g(\theta^T x) = \frac{1}{1 + e^{-\theta^T x}}$$<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 1. 定义 Sigmoid 函数</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">sigmoid</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 2. 生成 x 轴数据：从 -10 到 10，生成 200 个点</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 范围稍微宽一点（如 -10 到 10）可以更清楚地看到函数趋于 0 和 1 的过程</span>
+</span></span><span class="line"><span class="cl"><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 3. 计算对应的 y 值</span>
+</span></span><span class="line"><span class="cl"><span class="n">y</span> <span class="o">=</span> <span class="n">sigmoid</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 4. 绘图设置</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span> <span class="c1"># 设置画布大小</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 画出 Sigmoid 曲线</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$f(x) = \frac</span><span class="si">{1}</span><span class="s1">{1 + e^{-x}}$&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">2.5</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 5. 修饰图像</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 添加标题和坐标轴标签 (支持 LaTeX 公式)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Sigmoid Function&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;f(x)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 添加网格线，设为虚线</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;:&#39;</span><span class="p">)</span>  <span class="c1"># 用 y 表示高度</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 设置 y 轴的显示范围，略大于 [0, 1]，留出一点空白，更美观</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 在特殊点 (0, 0.5) 处添加标记</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">([</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.55</span><span class="p">,</span> <span class="s1">&#39;(0, 0.5)&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 显示图例</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 6. 显示图像</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span></span></span></code></pre></div></div>
+<figure><img
+    class="my-0 rounded-md"
+    loading="lazy"
+    decoding="async"
+    fetchpriority="auto"
+    alt="png"
+    width="851"
+    height="556"
+    src="/notes/cs229/note_files/note_19_0_hu_b79b22d4c3c1f20a.png"
+    srcset="/notes/cs229/note_files/note_19_0_hu_b79b22d4c3c1f20a.png 800w, /notes/cs229/note_files/note_19_0.png 1280w"
+    sizes="(min-width: 768px) 50vw, 65vw"
+    data-zoom-src="/notes/cs229/note_files/note_19_0.png"></figure>
+<p>我们假设有:</p>
+$$P(y=1|x;\theta )=h_\theta(x)$$<p>      <br>
+这意味着:</p>
+$$P(y=0|x;\theta )=1-h_\theta(x)$$<p>      <br>
+由于是一个二元问题,那就有:
+</p>
+$$P(y|x;\theta )=(1-h_\theta(x))^{1-y}h_\theta(x)^y$$<p>
+由此,有:
+\begin{aligned}
+L(\theta) &amp;= p(\vec{y} | X; \theta) \
+&amp;= \prod_{i=1}^{m} p(y^{(i)} | x^{(i)}; \theta) \
+&amp;= \prod_{i=1}^{m} h_\theta(x^{(i)})^{y^{(i)}} (1 - h_\theta(x^{(i)}))^{1 - y^{(i)}}
+\end{aligned}
+同样的,取对数有:
+\begin{aligned}
+\ell(\theta) &amp;= \log L(\theta) \
+&amp;= \sum_{i=1}^{m} y^{(i)} \log h_\theta(x^{(i)}) + (1 - y^{(i)}) \log(1 - h_\theta(x^{(i)}))
+\end{aligned}
+为了能够预测,我们使用一种批量梯度上升法(batch gradient ascent):
+</p>
+$$\theta_j := \theta_j + \alpha \frac{\partial}{\partial \theta_j} \ell(\theta)$$<p>我们的目标是求对数似然函数 $\ell(\theta)$ 对参数 $\theta_j$ 的偏导数：$\frac{\partial}{\partial \theta_j} \ell(\theta)$</p>
+<p>首先,我们介绍一个Sigmoid 函数的极其优美的求导性质,这是后续推导的基石</p>
+<p>令 $g(z) = \frac{1}{1 + e^{-z}}$，对其求导：
+</p>
+$$
+\begin{aligned}
+g'(z) &= \frac{d}{dz} (1 + e^{-z})^{-1} \\
+&= -(1 + e^{-z})^{-2} (-e^{-z}) \\
+&= \frac{e^{-z}}{(1 + e^{-z})^2} \\
+&= \left( \frac{1}{1 + e^{-z}} \right) \left( \frac{e^{-z}}{1 + e^{-z}} \right) \\
+&= \left( \frac{1}{1 + e^{-z}} \right) \left( \frac{(1 + e^{-z}) - 1}{1 + e^{-z}} \right) \\
+&= \left( \frac{1}{1 + e^{-z}} \right) \left( 1 - \frac{1}{1 + e^{-z}} \right) \\
+&= g(z)(1 - g(z))
+\end{aligned}
+$$<p>
+<strong>结论</strong>：Sigmoid 函数的导数可以用它自己来表示，即 $g'(z) = g(z)(1 - g(z))$。</p>
+<p>已知 $h_\theta(x) = g(\theta^T x)$，根据链式求导法则（令 $z = \theta^T x$）：
+</p>
+$$
+\begin{aligned}
+\frac{\partial}{\partial \theta_j} h_\theta(x) &= \frac{\partial}{\partial \theta_j} g(\theta^T x) \\
+&= g'(\theta^T x) \cdot \frac{\partial}{\partial \theta_j} (\theta^T x) \\
+&= g(\theta^T x)(1 - g(\theta^T x)) \cdot x_j \\
+&= h_\theta(x)(1 - h_\theta(x))x_j
+\end{aligned}
+$$<p>为了简化书写，我们先只看单个样本 $(x, y)$ 的似然函数求导：
+</p>
+$$ \ell^{(i)}(\theta) = y \log h_\theta(x) + (1 - y) \log (1 - h_\theta(x)) $$<p>对其求 $\theta_j$ 的偏导：
+</p>
+$$
+\begin{aligned}
+\frac{\partial}{\partial \theta_j} \ell^{(i)}(\theta) &= y \frac{1}{h_\theta(x)} \frac{\partial}{\partial \theta_j}h_\theta(x) + (1 - y) \frac{1}{1 - h_\theta(x)} \left( - \frac{\partial}{\partial \theta_j}h_\theta(x) \right) \\
+\end{aligned}
+$$<p>将公因式 $\frac{\partial}{\partial \theta_j}h_\theta(x)$ 提取出来：
+</p>
+$$
+\begin{aligned}
+\frac{\partial}{\partial \theta_j} \ell^{(i)}(\theta) &= \left( \frac{y}{h_\theta(x)} - \frac{1 - y}{1 - h_\theta(x)} \right) \frac{\partial}{\partial \theta_j}h_\theta(x)
+\end{aligned}
+$$<p>将括号内通分化简：
+</p>
+$$
+\begin{aligned}
+\frac{\partial}{\partial \theta_j} \ell^{(i)}(\theta) &= \left( \frac{y(1 - h_\theta(x)) - (1 - y)h_\theta(x)}{h_\theta(x)(1 - h_\theta(x))} \right) \frac{\partial}{\partial \theta_j}h_\theta(x) \\
+&= \left( \frac{y - y \cdot h_\theta(x) - h_\theta(x) + y \cdot h_\theta(x)}{h_\theta(x)(1 - h_\theta(x))} \right) \frac{\partial}{\partial \theta_j}h_\theta(x) \\
+&= \left( \frac{y - h_\theta(x)}{h_\theta(x)(1 - h_\theta(x))} \right) \frac{\partial}{\partial \theta_j}h_\theta(x)
+\end{aligned}
+$$<p>此时，将我们在<strong>第二步</strong>中求得的 $\frac{\partial}{\partial \theta_j} h_\theta(x) = h_\theta(x)(1 - h_\theta(x))x_j$ 代入上式：</p>
+$$
+\begin{aligned}
+\frac{\partial}{\partial \theta_j} \ell^{(i)}(\theta) &= \left( \frac{y - h_\theta(x)}{h_\theta(x)(1 - h_\theta(x))} \right) \cdot h_\theta(x)(1 - h_\theta(x))x_j
+\end{aligned}
+$$<p>极其完美的消元发生了！分子分母的 $h_\theta(x)(1 - h_\theta(x))$ 被完全约掉：
+</p>
+$$
+\frac{\partial}{\partial \theta_j} \ell^{(i)}(\theta) = (y - h_\theta(x))x_j
+$$<p>加上所有 $m$ 个样本的求和符号 $\sum$，我们得到最终的偏导数：
+</p>
+$$
+\frac{\partial}{\partial \theta_j} \ell(\theta) = \sum_{i=1}^m \left( y^{(i)} - h_\theta(x^{(i)}) \right) x_j^{(i)}
+$$<p>所以，梯度上升的参数更新公式为（注意这里是极大似然，所以是加号 $+$）：
+</p>
+$$
+\theta_j := \theta_j + \alpha \sum_{i=1}^m \left( y^{(i)} - h_\theta(x^{(i)}) \right) x_j^{(i)}
+$$<p style="color: #d93025; font-family: monospace; font-size: 16px; font-weight: bold;">
+  ⚠️ 注意：上述所有的log指的是ln而不是以10为底的对数
+</p>
+<p>不难注意到,这个和<strong>线性回归（最小二乘法）的梯度下降公式</strong>放在一起对比时：</p>
+<ul>
+<li><strong>线性回归更新规则</strong>：$\theta_j := \theta_j - \alpha \sum (h_\theta(x) - y) x_j$  （把负号放进去就是 $\theta_j + \alpha \sum (y - h_\theta(x)) x_j$）</li>
+<li><strong>逻辑回归更新规则</strong>：$\theta_j := \theta_j + \alpha \sum (y - h_\theta(x)) x_j$</li>
+</ul>
+<p>这是巧合吗？绝对不是,区别在于压缩机”变了：</p>
+<ul>
+<li>线性回归里：$h_\theta(x) = \theta^T x$</li>
+<li>逻辑回归里：$h_\theta(x) = \frac{1}{1 + e^{-\theta^T x}}$</li>
+</ul>
+<p>它证明了这两种算法在底层被称为<strong>广义线性模型（GLM）</strong>，它们归根结底是&quot;同一类&quot;模型</p>
+<p>我看完之后再想全局最大值为什么一定存在呢?为什么不会是局部极值?为什么一定会有最大值?我问了ai,但是现在看不懂,暂存此处</p>
+<details>
+  <summary>凭什么我们能那么自信地闭着眼睛用梯度上升？</summary>
+<p>一句话回答：<strong>因为数学家通过证明发现，逻辑回归的对数似然函数 $\ell(\theta)$ 是一个完美的“凹函数”（Concave Function）！</strong> （对应的，如果前面加个负号变成损失函数 $J(\theta)$，就是一个完美的“凸函数” Convex Function）。</p>
+<p>这种函数就像一个倒扣过来的“平滑大碗”，它<strong>永远只有一个碗底/碗顶</strong>，没有任何其他坑坑洼洼的假山头。</p>
+<p>作为助教，我直接带你深入数学底层，把这个证明过程“硬核”地推演一遍，并解答你关于“压根没有最大值”的极其深刻的直觉。</p>
+<hr>
+<p>第一步：怎么证明它是“平滑大碗”（凹函数）？</p>
+<p>在高数中，证明一个一元函数只有唯一极值的办法是：<strong>求二阶导数</strong>。</p>
+<ul>
+<li>如果二阶导数恒小于 0（比如 $y = -x^2$），说明曲线永远在往下弯，必定只有一个全局最高点。</li>
+</ul>
+<p>在机器学习（多元微积分）中，$\theta$ 是一个向量，所以二阶导数变成了一个矩阵，叫做 <strong>海森矩阵（Hessian Matrix, 记作 $H$）</strong>。
+我们要证明：<strong>对于逻辑回归，它的海森矩阵是“半负定”的（Negative Semi-Definite）</strong>，这就等价于一元函数里的“二阶导数恒小于或等于0”。</p>
+<p>极简推导过程（你可以记在笔记里）：</p>
+<p>刚才我们已经算出了<strong>一阶导数（梯度）</strong>：
+</p>
+$$ \frac{\partial \ell}{\partial \theta_j} = \sum_{i=1}^m (y^{(i)} - h_\theta(x^{(i)})) x_j^{(i)} $$<p>现在，我们对这个一阶导数，再求一次导，算出关于 $\theta_k$ 的<strong>二阶导数</strong>：
+（注意，$y^{(i)}$ 和 $x_j^{(i)}$ 都是常量，只有 $h_\theta(x^{(i)})$ 里面含有 $\theta$）</p>
+$$ \frac{\partial^2 \ell}{\partial \theta_j \partial \theta_k} = \sum_{i=1}^m - \frac{\partial}{\partial \theta_k} h_\theta(x^{(i)}) \cdot x_j^{(i)} $$<p>还记得我们推导过的 Sigmoid 导数吗？$\frac{\partial h_\theta(x)}{\partial \theta_k} = h_\theta(x)(1 - h_\theta(x)) x_k$。把它代进去：</p>
+$$ H_{jk} = - \sum_{i=1}^m \underbrace{h_\theta(x^{(i)})(1 - h_\theta(x^{(i)}))}_{\text{必然大于 0}} x_j^{(i)} x_k^{(i)} $$<p><strong>🔥 见证奇迹的时刻：</strong>
+看公式里的那一项 $h_\theta(x) (1 - h_\theta(x))$。
+因为 $h_\theta(x)$ 是 Sigmoid 函数的输出，它的值域永远在 $(0, 1)$ 之间。
+所以，一个 $0$ 到 $1$ 之间的数，乘以 $(1 - \text{它自己})$，<strong>结果绝对是一个大于 0 的正数！</strong></p>
+<p>如果把上面的式子写成极其优雅的矩阵形式：
+</p>
+$$ H = - X^T S X $$<p>
+（其中 $S$ 是一个对角线上全为正数的矩阵）。</p>
+<p>在线性代数中，任何形如 $X^T S X$ （$S$ 为正对角阵）的矩阵必定是<strong>半正定</strong>的。前面加了一个负号，所以逻辑回归的海森矩阵 $H$ 永远是<strong>半负定</strong>的！</p>
+<p><strong>数学结论：</strong> 既然海森矩阵半负定，这就严谨地证明了 $\ell(\theta)$ 是一个绝对纯粹的凹函数（Concave）。<strong>它绝对不存在任何局部最大值，你只要顺着梯度往上爬，到达的那个顶点，100% 就是全宇宙唯一的全局最高点！</strong></p>
+<hr>
+<p>第二步：你直觉超神的一点 —— “或者压根没有最大值？”</p>
+<p>如果你在推导完上面那段之后，依然觉得“压根没有最大值”是有可能的，那你真的具备了成为顶级算法工程师的直觉。</p>
+<p><strong>你说对了！在一种极其特殊的情况下，逻辑回归的 $\ell(\theta)$ 真的找不到最大值点！</strong></p>
+<p>这种情况叫做：<strong>数据完美线性可分（Linearly Separable）</strong>。</p>
+<ul>
+<li><strong>直觉想象</strong>：假设你的数据非常好区分，所有的良性肿瘤全在左边，所有的恶性肿瘤全在右边，中间有一道极其清晰的界限（可以画出无数条完美的直线把它们分开）。</li>
+<li><strong>算法的贪婪</strong>：MLE 的目标是让概率最大化（无限逼近 100%）。为了让模型对这些数据的预测概率从 $0.99$ 变成 $0.99999$，再变成 $0.99999999$…… 逻辑回归会做一件疯狂的事：</li>
+<li><strong>它的参数 $\theta$ 的数值会无限膨胀，直接冲向正无穷或负无穷（$\infty$）！</strong></li>
+</ul>
+<p>因为 Sigmoid 曲线只有在自变量无穷大的时候，才能真正摸到 $1.0$ 的天花板。
+所以在这种情况下，梯度上升算法会永远跑下去，$\theta$ 会越来越大，似然函数永远在逼近最大值，却<strong>压根永远达不到那个最大值</strong>。</p>
+<p>怎么解决这个致命问题？
+既然 $\theta$ 想膨胀到无穷大，我们就必须在数学上“栓”住它。
+这就是吴恩达老师在接下来几节课一定会重磅推出的概念：<strong>正则化（Regularization）</strong>。</p>
+<p>通过在目标函数后面强行加一个“惩罚项”（比如 $\lambda \sum \theta_j^2$），只要 $\theta$ 敢膨胀，系统就狠狠地扣它的分。
+加上正则化之后，函数就会从“可能没有最大值”的半凹函数，变成<strong>严格凹函数（Strictly Concave）</strong>，从而保证无论数据长什么样，都有一个唯一且有限的全局最优解。</p>
+</details>
+
+<h3 class="relative group">Newton&rsquo;s method牛顿法
+    <div id="newtons-method牛顿法" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#newtons-method%e7%89%9b%e9%a1%bf%e6%b3%95" aria-label="锚点">#</a>
+    </span>
+    
+</h3>
+<p>刚刚我们使用梯度下降法解决分类问题,但是需要多次迭代,我们介绍牛顿法可以显著减少迭代次数,接下来是一个示意图,介绍了运作方法</p>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 1. 定义函数 f(x) 及其导数 f&#39;(x)</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 这里选一个类似图中形状的二次函数：f(x) = 0.5*x^2 - 2</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">2</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">df</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">x</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 2. 准备绘图数据</span>
+</span></span><span class="line"><span class="cl"><span class="n">x_range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">400</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">y_range</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">x_range</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 3. 模拟牛顿法迭代步骤</span>
+</span></span><span class="line"><span class="cl"><span class="n">theta_samples</span> <span class="o">=</span> <span class="p">[</span><span class="mf">4.5</span><span class="p">,</span> <span class="mf">2.7</span><span class="p">,</span> <span class="mf">2.1</span><span class="p">]</span>  <span class="c1"># 手动选几个点模拟 theta(0), (1), (2)</span>
+</span></span><span class="line"><span class="cl"><span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 画出 f(x) 曲线</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_range</span><span class="p">,</span> <span class="n">y_range</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;purple&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$f(</span><span class="se">\\</span><span class="s1">theta)$&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 画出 x 轴</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 画出 y 轴</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 4. 循环绘制迭代过程</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">theta_samples</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">y_val</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">slope</span> <span class="o">=</span> <span class="n">df</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1"># 画垂直虚线：从轴到曲线上的点</span>
+</span></span><span class="line"><span class="cl">    <span class="n">plt</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">y_val</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">linestyles</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1"># 画切线：y - f(t) = f&#39;(t)(x - t) -&gt; y = f&#39;(t)*(x - t) + f(t)</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># 计算切线与 x 轴的交点 (即下一个 theta)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">next_t</span> <span class="o">=</span> <span class="n">t</span> <span class="o">-</span> <span class="n">y_val</span> <span class="o">/</span> <span class="n">slope</span>
+</span></span><span class="line"><span class="cl">    <span class="n">t_tangent</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">next_t</span><span class="p">,</span> <span class="n">t</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">y_tangent</span> <span class="o">=</span> <span class="n">slope</span> <span class="o">*</span> <span class="p">(</span><span class="n">t_tangent</span> <span class="o">-</span> <span class="n">t</span><span class="p">)</span> <span class="o">+</span> <span class="n">y_val</span>
+</span></span><span class="line"><span class="cl">    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_tangent</span><span class="p">,</span> <span class="n">y_tangent</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1"># 标记点</span>
+</span></span><span class="line"><span class="cl">    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">([</span><span class="n">t</span><span class="p">],</span> <span class="p">[</span><span class="n">y_val</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.3</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;$</span><span class="se">\\</span><span class="s1">theta^</span><span class="se">{{</span><span class="s1">(</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">)</span><span class="se">}}</span><span class="s1">$&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> 
+</span></span><span class="line"><span class="cl">             <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 5. 标注 &#34;Goal&#34; (零点)</span>
+</span></span><span class="line"><span class="cl"><span class="n">goal_x</span> <span class="o">=</span> <span class="mf">2.0</span>  <span class="c1"># f(2)=0</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;Goal&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="n">goal_x</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mf">1.2</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">             <span class="n">arrowprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">shrink</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">headwidth</span><span class="o">=</span><span class="mi">8</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">             <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">([</span><span class="n">goal_x</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">edgecolors</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 6. 图表装饰</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&#34;Geometric Interpretation of Newton&#39;s Method&#34;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$</span><span class="se">\\</span><span class="s1">theta$&#39;</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$f(</span><span class="se">\\</span><span class="s1">theta)$&#39;</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;top&#39;</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">2.5</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 隐藏坐标轴刻度，模仿手绘感</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">([])</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">([])</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span></span></span></code></pre></div></div>
+<figure><img
+    class="my-0 rounded-md"
+    loading="lazy"
+    decoding="async"
+    fetchpriority="auto"
+    alt="png"
+    width="834"
+    height="532"
+    src="/notes/cs229/note_files/note_25_0_hu_3d06fdd1d1f6c857.png"
+    srcset="/notes/cs229/note_files/note_25_0_hu_3d06fdd1d1f6c857.png 800w, /notes/cs229/note_files/note_25_0.png 1280w"
+    sizes="(min-width: 768px) 50vw, 65vw"
+    data-zoom-src="/notes/cs229/note_files/note_25_0.png"></figure>
+<p>首先,我们记
+</p>
+$$ \theta^{(1)} := \theta^{(0)} - \Delta   $$<p>
+其中,定义增量为 $\Delta$</p>
+<p>考察上图中$\theta^{(1)}$和$\theta^{(2)}$一段,这部分切线有
+</p>
+$$
+f'(\theta^{(0)}) = \frac{f(\theta^{(0)})}{\Delta} \\
+$$<p>
+移项得到
+</p>
+$$
+\Delta = \frac{f(\theta^{(0)})}{f'(\theta^{(0)})}
+$$<p>
+带入后得到每次的规律:
+</p>
+$$
+ \theta^{(t+1)} := \theta^{(t)} - \frac{f(\theta^{(t)})}{f'(\theta^{(t)})} 
+$$<p>
+这就是通用牛顿零点公式,接下来,我们令 $f$ 为似然函数 $\ell$ 的导数,就有
+</p>
+$$
+\text{Let } f(\theta) = \ell'(\theta) 
+$$<p>
+</p>
+$$\theta^{(t+1)} := \theta^{(t)} - \frac{\ell'(\theta^{(t)})}{\ell''(\theta^{(t)})} $$<p>牛顿法还有一个二次收敛的特性(quadratic convergence)
+大概意思是每迭代一次，有效数字的位数大约会翻一倍。对比来看,</p>
+<ul>
+<li>线性收敛（如梯度下降）：如果当前误差是 $0.1$，下一步可能是 $0.09$，再下一步是 $0.081$。你需要走很多步才能增加一位小数的精度。</li>
+<li>二次收敛（如牛顿法）：如果当前误差是 $10^{-2}$，下一步大约就是 $(10^{-2})^2 = 10^{-4}$，再下一步就是 $10^{-8}$，接着是 $10^{-16}$。这意味着，一旦你进入了目标值附近的“收敛区域”，牛顿法通常只需要 5 到 10 次迭代就能达到计算机浮点数的精度极限。</li>
+</ul>
+<p>当$\theta$是向量时($\theta \in \mathbb{R}^{n+1}$)
+</p>
+$$\theta^{(t+1)}:=\theta^{(t)}-H^{-1} \nabla _\theta \ell $$<p>下面详细解释这个公式,我们将原先的一维和现在的对比:</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">一元标量</th>
+          <th style="text-align: left">多元向量</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">$\theta$</td>
+          <td style="text-align: left">$\theta$ (向量 $\in \mathbb{R}^{n+1}$)</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">$\ell'(\theta)$ (一阶导数)</td>
+          <td style="text-align: left">$\nabla_\theta \ell$ (梯度向量)</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">$\ell''(\theta)$ (二阶导数)</td>
+          <td style="text-align: left">$H$ (Hessian 海森矩阵)</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">除法 $\frac{1}{\ell''(\theta)}$</td>
+          <td style="text-align: left">矩阵求逆 $H^{-1}$</td>
+      </tr>
+  </tbody>
+</table>
+<p>把右边那一列组合起来，一元公式 $\theta := \theta - \frac{\ell'(\theta)}{\ell''(\theta)}$ 就完美变成了：</p>
+$$ \theta^{(t+1)} := \theta^{(t)} - H^{-1} \nabla_\theta \ell $$<p>至于什么是Hessian矩阵,定义为:
+</p>
+$$ H_{ij} = \frac{\partial^2 \ell}{\partial \theta_i \partial \theta_j} $$<p>对于有 $n$ 个维度的特征向量 $x$ （算上截距项是 $(n+1)$ 个），那么梯度 $\nabla_\theta \ell$ 是一个 $(n+1)$ 行 1 列的向量。
+而 Hessian 矩阵 $H$ 就是一个 <strong>$(n+1) \times (n+1)$ 的方阵</strong>。</p>
+<p>总结来看,newton法在低维度时比较好用,因为非常的快,但是因为每一次运算量非常的,当维度比较高的时候,对一个极大的Hessian矩阵求逆($O(n^3)$)是非常困难的,所以其适用范围一般是特征数较少的情况,此时梯度下降只要求导就好了</p>
+<blockquote><p>喜报喜报,Lecture1&amp;2已经全部上完!(3.31上传)</p>
+</blockquote>
           
           
           
@@ -1345,19 +2286,11 @@ Wu声称$\frac{1}{2}$是为了使得求导后更加容易算,而是否有$\frac{
   
     
 
-
-
-
-
-
-
-
-
 <div class="site-meta-panel">
   <div id="runtime" class="site-runtime" data-site-start="2026-01-18T00:00:00&#43;08:00"></div>
 
   <div id="site-stat-online" class="site-stat" style="display:none;">
-    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <script async src="/js/busuanzi.pure.mini.js"></script>
     <span id="busuanzi_container_site_pv">
       访问量: <span id="busuanzi_value_site_pv" class="site-stat-value"></span> 次
     </span>
@@ -1372,15 +2305,30 @@ Wu声称$\frac{1}{2}$是为了使得求导后更加容易算,而是否有$\frac{
   </div>
 </div>
 
-<div id="font-switcher" class="font-switcher" aria-label="字体切换">
-  <span class="font-switcher__badge">Aa</span>
-  <select id="font-selector">
-    <option value="noto-sans">思源黑体</option>
-    <option value="noto-serif">思源宋体</option>
-    <option value="zcool">站酷小薇</option>
-    <option value="mashan">马善政手写</option>
-    <option value="longcang">龙藏书法</option>
-  </select>
+<div class="floating-tools-container">
+  
+  <div id="font-switcher" aria-label="字体切换">
+    <span class="floating-tools-container__badge">Aa</span>
+    <select id="font-selector">
+      <option value="noto-sans">思源黑体</option>
+      <option value="noto-serif">思源宋体</option>
+      <option value="zcool">站酷小薇</option>
+      <option value="mashan">马善政手写</option>
+      <option value="longcang">龙藏书法</option>
+    </select>
+  </div>
+
+  
+  <div id="effect-switcher" aria-label="页面特效">
+    <span class="floating-tools-container__badge" style="font-size: 1.1rem; line-height: 1;">✨</span>
+    <select id="effect-selector">
+      <option value="none">🚫 无特效</option>
+      <option value="star">💫 鼠标星光</option>
+      <option value="sakura">🌸 樱花飘落</option>
+      <option value="clickword">💕 点击浮字</option>
+    </select>
+  </div>
+
 </div>
 
 <script>
@@ -1440,6 +2388,7 @@ Wu声称$\frac{1}{2}$是为了使得求导后更加容易算,而是否有$\frac{
     updateRuntime();
     window.setInterval(updateRuntime, 1000);
 
+    
     var selector = document.getElementById("font-selector");
     var key = "blog-font-choice";
     if (selector) {
@@ -1458,52 +2407,34 @@ Wu声称$\frac{1}{2}$是为了使得求导后更加容易算,而是否有$\frac{
         localStorage.setItem(key, value);
       });
     }
-  })();
-</script>
 
+    
+    var effectSelector = document.getElementById("effect-selector");
+    var effectKey = "blog-effect-choice";
+    if (effectSelector) {
+      var savedEffect = localStorage.getItem(effectKey) || "none";
+      effectSelector.value = savedEffect;
+      
+      if (savedEffect !== 'none') {
+        var script = document.createElement('script');
+        script.src = '/js/blog-effects.js';
+        script.onload = function() {
+          if(window.BlogEffects && window.BlogEffects[savedEffect]) {
+            window.BlogEffects[savedEffect]();
+          }
+        };
+        document.body.appendChild(script);
+      }
 
-<script>
-  (function () {
-    function initLive2D() {
-      if (!window.L2Dwidget) return;
-      L2Dwidget.init({
-        model: {
-          jsonPath: "https:\/\/cdn.jsdelivr.net\/npm\/live2d-widget-model-hijiki@1.0.5\/assets\/hijiki.model.json"
-        },
-        display: {
-          position: "right",
-          width: Number("168"),
-          height: Number("336"),
-          hOffset: Number("18"),
-          vOffset: Number("-16")
-        },
-        mobile: {
-          show: true,
-          scale: Number("0.65")
-        },
-        react: {
-          opacityDefault: 0.9,
-          opacityOnHover: 0.3
-        }
+      effectSelector.addEventListener("change", function () {
+        localStorage.setItem(effectKey, effectSelector.value);
+        location.reload(); 
       });
     }
-
-    function loadLive2DScript() {
-      var script = document.createElement("script");
-      script.src = "https://cdn.jsdelivr.net/npm/live2d-widget@3.1.4/lib/L2Dwidget.min.js";
-      script.async = true;
-      script.onload = initLive2D;
-      document.body.appendChild(script);
-    }
-
-    if ("requestIdleCallback" in window) {
-      window.requestIdleCallback(loadLive2DScript, { timeout: 2000 });
-    } else {
-      window.setTimeout(loadLive2DScript, 1200);
-    }
   })();
 </script>
 
+<script defer src="/js/tech-preview.js"></script>
 
   
 </footer>
