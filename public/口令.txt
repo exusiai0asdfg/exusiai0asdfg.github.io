@@ -1,5 +1,5 @@
 git add .
-git commit -m "修复壁纸和人数"
+git commit -m "论回忆"
 git push
 
 批注:
