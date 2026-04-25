@@ -15,6 +15,29 @@
 {{- $author := .Get "author" | default (index $metadata "author" | default "") -}}
 {{- $date := .Get "date" | default (index $metadata "date" | default "") -}}
 {{- $cells := index $notebook "cells" | default slice -}}
+{{- $toc := slice -}}
+
+{{- range $index, $cell := $cells -}}
+  {{- $cellType := index $cell "cell_type" | default "unknown" -}}
+  {{- if eq $cellType "markdown" -}}
+    {{- $source := index $cell "source" | default slice -}}
+    {{- $lineNumber := 0 -}}
+    {{- range $line := $source -}}
+      {{- $lineNumber = add $lineNumber 1 -}}
+      {{- $cleanLine := strings.TrimRight $line "\r\n" -}}
+      {{- $trimmed := strings.TrimSpace $cleanLine -}}
+      {{- if gt (len (findRE "^#{1,6}\\s+" $trimmed)) 0 -}}
+        {{- $hashes := index (findRE "^#{1,6}" $trimmed) 0 -}}
+        {{- $level := len $hashes -}}
+        {{- $titleText := replaceRE "^#{1,6}\\s*" "" $trimmed | strings.TrimSpace -}}
+        {{- $titleText = replaceRE "\\s+#*$" "" $titleText | strings.TrimSpace -}}
+        {{- $plainTitle := $titleText | plainify -}}
+        {{- $anchor := $plainTitle | anchorize -}}
+        {{- $toc = $toc | append (dict "level" $level "title" $titleText "anchor" $anchor) -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
 
 <section class="notebook-view">
   <header class="notebook-view__header">
@@ -27,68 +50,95 @@
     <div class="notebook-view__meta">来源：{{ $path }}</div>
   </header>
 
-  <div class="notebook-view__cells">
-    {{- range $index, $cell := $cells }}
-      {{- $cellType := index $cell "cell_type" | default "unknown" -}}
-      {{- $source := index $cell "source" | default slice -}}
-      {{- $sourceText := delimit $source "" -}}
+  <div class="notebook-view__layout">
+    <div class="notebook-view__main">
+      <div class="notebook-view__cells">
+        {{- range $index, $cell := $cells }}
+          {{- $cellType := index $cell "cell_type" | default "unknown" -}}
+          {{- $source := index $cell "source" | default slice -}}
+          {{- $sourceText := delimit $source "" -}}
 
-      <section class="notebook-cell notebook-cell--{{ $cellType }}">
-        <div class="notebook-cell__header">
-          <span class="notebook-cell__index">Cell {{ add $index 1 }}</span>
-          <span class="notebook-cell__type">{{ $cellType }}</span>
-        </div>
+          <section class="notebook-cell notebook-cell--{{ $cellType }}">
+            <div class="notebook-cell__header">
+              <span class="notebook-cell__index">Cell {{ add $index 1 }}</span>
+              <span class="notebook-cell__type">{{ $cellType }}</span>
+            </div>
 
-        {{- if eq $cellType "markdown" -}}
-          <div class="notebook-cell__markdown">
-            {{ $sourceText | $.Page.RenderString }}
-          </div>
-        {{- else if eq $cellType "code" -}}
-          <pre class="notebook-cell__code"><code>{{ $sourceText | htmlEscape }}</code></pre>
-
-          {{- $outputs := index $cell "outputs" | default slice -}}
-          {{- if gt (len $outputs) 0 -}}
-            <div class="notebook-cell__outputs">
-              {{- range $output := $outputs -}}
-                {{- $outputType := index $output "output_type" | default "" -}}
-                {{- if eq $outputType "stream" -}}
-                  {{- $streamText := index $output "text" | default slice | delimit "" -}}
-                  <pre class="notebook-output notebook-output--stream">{{ $streamText | htmlEscape }}</pre>
-                {{- else if eq $outputType "error" -}}
-                  {{- $traceback := index $output "traceback" | default slice | delimit "\n" -}}
-                  <pre class="notebook-output notebook-output--error">{{ $traceback | htmlEscape }}</pre>
-                {{- else -}}
-                  {{- $data := index $output "data" | default dict -}}
-
-                  {{- with index $data "text/html" -}}
-                    {{- $htmlOutput := delimit . "" -}}
-                    <div class="notebook-output notebook-output--html">{{ $htmlOutput | safeHTML }}</div>
-                  {{- end -}}
-
-                  {{- with index $data "image/png" -}}
-                    <figure class="notebook-output notebook-output--image">
-                      <img src="data:image/png;base64,{{ . }}" alt="Notebook output image">
-                    </figure>
-                  {{- end -}}
-
-                  {{- with index $data "image/jpeg" -}}
-                    <figure class="notebook-output notebook-output--image">
-                      <img src="data:image/jpeg;base64,{{ . }}" alt="Notebook output image">
-                    </figure>
-                  {{- end -}}
-
-                  {{- with index $data "text/plain" -}}
-                    {{- $plainOutput := delimit . "" -}}
-                    <pre class="notebook-output notebook-output--plain">{{ $plainOutput | htmlEscape }}</pre>
+            {{- if eq $cellType "markdown" -}}
+              {{- $renderSource := delimit $source "" -}}
+              {{- $attachments := index $cell "attachments" | default dict -}}
+              {{- range $name, $attachment := $attachments -}}
+                {{- $mimeTypes := slice "image/png" "image/jpeg" "image/jpg" "image/gif" "image/webp" "image/svg+xml" -}}
+                {{- range $mime := $mimeTypes -}}
+                  {{- with index $attachment $mime -}}
+                    {{- $payload := printf "%v" . -}}
+                    {{- $renderSource = replace $renderSource (printf "attachment:%s" $name) (printf "data:%s;base64,%s" $mime $payload) -}}
                   {{- end -}}
                 {{- end -}}
               {{- end -}}
-            </div>
-          {{- end -}}
-        {{- else -}}
-          <pre class="notebook-cell__raw">{{ $sourceText | htmlEscape }}</pre>
+
+              <div class="notebook-cell__markdown">
+                {{ $renderSource | markdownify }}
+              </div>
+            {{- else if eq $cellType "code" -}}
+              <pre class="notebook-cell__code"><code>{{ $sourceText | htmlEscape }}</code></pre>
+
+              {{- $outputs := index $cell "outputs" | default slice -}}
+              {{- if gt (len $outputs) 0 -}}
+                <div class="notebook-cell__outputs">
+                  {{- range $output := $outputs -}}
+                    {{- $outputType := index $output "output_type" | default "" -}}
+                    {{- if eq $outputType "stream" -}}
+                      {{- $streamText := index $output "text" | default slice | delimit "" -}}
+                      <pre class="notebook-output notebook-output--stream">{{ $streamText | htmlEscape }}</pre>
+                    {{- else if eq $outputType "error" -}}
+                      {{- $traceback := index $output "traceback" | default slice | delimit "\n" -}}
+                      <pre class="notebook-output notebook-output--error">{{ $traceback | htmlEscape }}</pre>
+                    {{- else -}}
+                      {{- $data := index $output "data" | default dict -}}
+
+                      {{- with index $data "text/html" -}}
+                        {{- $htmlOutput := delimit . "" -}}
+                        <div class="notebook-output notebook-output--html">{{ $htmlOutput | safeHTML }}</div>
+                      {{- end -}}
+
+                      {{- with index $data "image/png" -}}
+                        <figure class="notebook-output notebook-output--image">
+                          <img src="data:image/png;base64,{{ . }}" alt="Notebook output image">
+                        </figure>
+                      {{- end -}}
+
+                      {{- with index $data "image/jpeg" -}}
+                        <figure class="notebook-output notebook-output--image">
+                          <img src="data:image/jpeg;base64,{{ . }}" alt="Notebook output image">
+                        </figure>
+                      {{- end -}}
+
+                      {{- with index $data "text/plain" -}}
+                        {{- $plainOutput := delimit . "" -}}
+                        <pre class="notebook-output notebook-output--plain">{{ $plainOutput | htmlEscape }}</pre>
+                      {{- end -}}
+                    {{- end -}}
+                  {{- end -}}
+                </div>
+              {{- end -}}
+            {{- else -}}
+              <pre class="notebook-cell__raw">{{ $sourceText | htmlEscape }}</pre>
+            {{- end -}}
+          </section>
         {{- end -}}
-      </section>
+      </div>
+    </div>
+
+    {{- if gt (len $toc) 0 -}}
+      <aside class="notebook-view__toc" aria-label="Notebook 目录">
+        <h3 class="notebook-view__toc-title">目录</h3>
+        <nav class="notebook-view__toc-list">
+          {{- range $item := $toc -}}
+            <a class="notebook-view__toc-link notebook-view__toc-link--l{{ index $item "level" }}" href="#{{ index $item "anchor" }}">{{ index $item "title" }}</a>
+          {{- end -}}
+        </nav>
+      </aside>
     {{- end -}}
   </div>
 </section>

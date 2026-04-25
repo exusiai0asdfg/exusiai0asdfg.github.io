@@ -2,41 +2,41 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>学习笔记 on </title>
-    <link>http://localhost:1313/notes/</link>
+    <link>https://exusiaiblog.vercel.app/notes/</link>
     <description>Recent content in 学习笔记 on </description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>© 2026 难评</copyright>
-    <lastBuildDate>Tue, 21 Apr 2026 17:14:00 +0800</lastBuildDate><atom:link href="http://localhost:1313/notes/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 21 Apr 2026 17:14:00 +0800</lastBuildDate><atom:link href="https://exusiaiblog.vercel.app/notes/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>cs229</title>
-      <link>http://localhost:1313/notes/cs229/</link>
+      <link>https://exusiaiblog.vercel.app/notes/cs229/</link>
       <pubDate>Tue, 21 Apr 2026 17:14:00 +0800</pubDate>
       
-      <guid>http://localhost:1313/notes/cs229/</guid>
+      <guid>https://exusiaiblog.vercel.app/notes/cs229/</guid>
       <description></description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/notes/cs229/featured.jpg" />
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://exusiaiblog.vercel.app/notes/cs229/featured.jpg" />
     </item>
     
     <item>
       <title>不等式小全</title>
-      <link>http://localhost:1313/notes/%E4%B8%8D%E7%AD%89%E5%BC%8F%E5%B0%8F%E5%85%A8/</link>
+      <link>https://exusiaiblog.vercel.app/notes/%E4%B8%8D%E7%AD%89%E5%BC%8F%E5%B0%8F%E5%85%A8/</link>
       <pubDate>Fri, 27 Feb 2026 21:58:00 +0800</pubDate>
       
-      <guid>http://localhost:1313/notes/%E4%B8%8D%E7%AD%89%E5%BC%8F%E5%B0%8F%E5%85%A8/</guid>
+      <guid>https://exusiaiblog.vercel.app/notes/%E4%B8%8D%E7%AD%89%E5%BC%8F%E5%B0%8F%E5%85%A8/</guid>
       <description></description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/notes/%E4%B8%8D%E7%AD%89%E5%BC%8F%E5%B0%8F%E5%85%A8/featured.jpg" />
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://exusiaiblog.vercel.app/notes/%E4%B8%8D%E7%AD%89%E5%BC%8F%E5%B0%8F%E5%85%A8/featured.jpg" />
     </item>
     
     <item>
       <title>NumPy学习1</title>
-      <link>http://localhost:1313/notes/numpy%E5%AD%A6%E4%B9%A0/</link>
+      <link>https://exusiaiblog.vercel.app/notes/numpy%E5%AD%A6%E4%B9%A0/</link>
       <pubDate>Wed, 18 Feb 2026 13:58:00 +0800</pubDate>
       
-      <guid>http://localhost:1313/notes/numpy%E5%AD%A6%E4%B9%A0/</guid>
+      <guid>https://exusiaiblog.vercel.app/notes/numpy%E5%AD%A6%E4%B9%A0/</guid>
       <description></description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/notes/numpy%E5%AD%A6%E4%B9%A0/featured.jpg" />
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://exusiaiblog.vercel.app/notes/numpy%E5%AD%A6%E4%B9%A0/featured.jpg" />
     </item>
     
   </channel>

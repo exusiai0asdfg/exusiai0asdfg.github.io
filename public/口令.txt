@@ -1,5 +1,5 @@
 git add .
-git commit -m "论回忆"
+git commit -m "支持直接jupyternotebook"
 git push
 
 批注:
@@ -16,3 +16,8 @@ shit
 
 
 这是正文中的一句话，{{< marginnote date="2026-04-19 22:30" note="这里是对这句话的边注说明" >}}这一小段是重点{{< /marginnote >}}，后面继续正文。
+
+
+
+直接使用jupyter notebook
+{{< notebook src="note.ipynb" title="cs229 笔记" >}}
