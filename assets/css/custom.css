@@ -899,3 +899,51 @@ html {
         justify-content: space-between;
     }
 }
+
+/* Download Links for Notes */
+.note-download-link {
+    margin: 1.5rem 0;
+}
+.note-download-link.top-link {
+    margin-top: 0;
+    margin-bottom: 2rem;
+}
+.note-download-link.bottom-link {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px dashed rgba(150, 150, 150, 0.3);
+}
+.note-download-link a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: rgba(59, 130, 246, 0.1);
+    color: var(--primary, #3b82f6);
+    border-radius: 8px;
+    font-size: 0.9rem;
+    text-decoration: none !important;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    border: 1px solid rgba(59, 130, 246, 0.2);
+}
+.note-download-link a:hover {
+    background: rgba(59, 130, 246, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
+}
+.dark .note-download-link.bottom-link {
+    border-top-color: rgba(200, 200, 200, 0.15);
+}
+.dark .note-download-link a {
+    background: rgba(96, 165, 250, 0.15);
+    color: #93c5fd;
+    border-color: rgba(96, 165, 250, 0.25);
+}
+.dark .note-download-link a:hover {
+    background: rgba(96, 165, 250, 0.25);
+    box-shadow: 0 4px 12px rgba(96, 165, 250, 0.2);
+}
+.note-download-link .icon {
+    font-size: 1.1rem;
+}

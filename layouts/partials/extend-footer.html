@@ -1,4 +1,4 @@
-{{ $siteStart := .Site.Params.custom.siteStart | default "2026-01-18T00:00:00+08:00" }}
+﻿{{ $siteStart := .Site.Params.custom.siteStart | default "2026-01-18T00:00:00+08:00" }}
 
 <div class="site-meta-panel">
   <div id="runtime" class="site-runtime" data-site-start="{{ $siteStart }}"></div>
@@ -17,13 +17,9 @@
   <div id="site-stat-local" class="site-stat" style="display:none;">
     本地预览模式不统计访问量，部署到正式域名后显示真实数据。
   </div>
-</div>
-
-<div class="floating-tools-container">
-  <!-- 字体切换 -->
-  <div id="font-switcher" aria-label="字体切换">
-    <span class="floating-tools-container__badge">Aa</span>
-    <select id="font-selector">
+  <div class="font-switcher-inline" style="margin-top: 5px; font-size: 0.8rem; text-align: center;">
+    字体设定: 
+    <select id="font-selector" style="background: transparent; border: 1px solid rgba(150,150,150,0.2); border-radius: 4px; padding: 2px 4px; font-size: 0.8rem; color: inherit;">
       <option value="noto-sans">思源黑体</option>
       <option value="noto-serif">思源宋体</option>
       <option value="zcool">站酷小薇</option>
@@ -31,18 +27,6 @@
       <option value="longcang">龙藏书法</option>
     </select>
   </div>
-
-  <!-- 特效切换 -->
-  <div id="effect-switcher" aria-label="页面特效">
-    <span class="floating-tools-container__badge" style="font-size: 1.1rem; line-height: 1;">✨</span>
-    <select id="effect-selector">
-      <option value="none">🚫 无特效</option>
-      <option value="star">💫 鼠标星光</option>
-      <option value="sakura">� 樱花飘落</option>
-      <option value="clickword">� 点击浮字</option>
-    </select>
-  </div>
-
 </div>
 
 <script>
@@ -119,30 +103,6 @@
         ensureFontLoaded(value);
         document.documentElement.setAttribute("data-font", value);
         localStorage.setItem(key, value);
-      });
-    }
-
-    // --- 特效切换逻辑 ---
-    var effectSelector = document.getElementById("effect-selector");
-    var effectKey = "blog-effect-choice";
-    if (effectSelector) {
-      var savedEffect = localStorage.getItem(effectKey) || "none";
-      effectSelector.value = savedEffect;
-      
-      if (savedEffect !== 'none') {
-        var script = document.createElement('script');
-        script.src = '/js/blog-effects.js';
-        script.onload = function() {
-          if(window.BlogEffects && window.BlogEffects[savedEffect]) {
-            window.BlogEffects[savedEffect]();
-          }
-        };
-        document.body.appendChild(script);
-      }
-
-      effectSelector.addEventListener("change", function () {
-        localStorage.setItem(effectKey, effectSelector.value);
-        location.reload(); // 刷新页面以完全清理上一个 Canvas 特效
       });
     }
   })();

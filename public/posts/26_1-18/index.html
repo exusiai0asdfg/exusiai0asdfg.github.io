@@ -4,7 +4,7 @@
   dir="ltr"
   class="scroll-smooth"
   data-default-appearance="dark"
-  data-auto-appearance="false"><head>
+  data-auto-appearance="false"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   <meta charset="utf-8">
   
     <meta http-equiv="content-language" content="zh-CN">
@@ -26,7 +26,7 @@
   
   
   
-  <link rel="canonical" href="https://exusiaiblog.vercel.app/posts/26_1-18/">
+  <link rel="canonical" href="http://localhost:1313/posts/26_1-18/">
   
 
   
@@ -48,7 +48,7 @@
   
 
   
-  <meta property="og:url" content="https://exusiaiblog.vercel.app/posts/26_1-18/">
+  <meta property="og:url" content="http://localhost:1313/posts/26_1-18/">
   <meta property="og:title" content="人为何而活？">
   <meta property="og:description" content="我的博客">
   <meta property="og:locale" content="zh_CN">
@@ -56,11 +56,11 @@
     <meta property="article:section" content="posts">
     <meta property="article:published_time" content="2026-01-18T12:45:00+08:00">
     <meta property="article:modified_time" content="2026-01-18T12:45:00+08:00">
-    <meta property="og:image" content="https://exusiaiblog.vercel.app/posts/26_1-18/featured.jpeg">
+    <meta property="og:image" content="http://localhost:1313/posts/26_1-18/featured.jpeg">
 
   
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="https://exusiaiblog.vercel.app/posts/26_1-18/featured.jpeg">
+  <meta name="twitter:image" content="http://localhost:1313/posts/26_1-18/featured.jpeg">
   <meta name="twitter:title" content="人为何而活？">
   <meta name="twitter:description" content="我的博客">
 
@@ -103,8 +103,8 @@
   <link
     type="text/css"
     rel="stylesheet"
-    href="/css/main.bundle.min.6f66a00dc89ab9cfbadde3822316396ef31f837e06671e881a4140db062a7fd3899c36cdd531b559b276b5227d747121ce9f128e7d237746930ef7a67e92a47b.css"
-    integrity="sha512-b2agDciauc&#43;63eOCIxY5bvMfg34GZx6IGkFA2wYqf9OJnDbN1TG1WbJ2tSJ9dHEhzp8Sjn0jd0aTDvemfpKkew==">
+    href="/css/main.bundle.min.4c27be2e0d69dcbddab0ba7994a20c30bc85c8bf77da43584c99f6a42ada276f2359a3f1058f48847a0cdc9d806de3c4862790cb6288ba054216a7f0adebbc9a.css"
+    integrity="sha512-TCe&#43;Lg1p3L3asLp5lKIMMLyFyL932kNYTJn2pCraJ28jWaPxBY9IhHoM3J2AbePEhieQy2KIugVCFqfwreu8mg==">
 
   
   
@@ -212,7 +212,7 @@
     "headline": "人为何而活？",
     
     "inLanguage": "zh-CN",
-    "url" : "https://exusiaiblog.vercel.app/posts/26_1-18/",
+    "url" : "http://localhost:1313/posts/26_1-18/",
     "author" : {
       "@type": "Person",
       "name": "难评"
@@ -233,12 +233,6 @@
 
 
   
-  
-    
-
-
-
-
   
 
   
@@ -269,9 +263,9 @@
     }
   })();
 </script>
-<link rel="stylesheet" href="/js/nprogress.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.css" />
 <link rel="stylesheet" href="/css/tech-preview.css" />
-<script src="/js/nprogress.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js"></script>
 
 <script>
   (function () {
@@ -316,6 +310,7 @@
   
   
     
+
   
 
   
@@ -1035,6 +1030,10 @@
         
 
         <div class="article-content max-w-prose mb-20">
+
+          
+          
+
           
 <h3 class="relative group">人为何而活？
     <div id="人为何而活" class="anchor"></div>
@@ -1354,6 +1353,10 @@
 </ol>
 </div>
 
+
+          
+          
+
           
           
           
@@ -1529,13 +1532,9 @@
   <div id="site-stat-local" class="site-stat" style="display:none;">
     本地预览模式不统计访问量，部署到正式域名后显示真实数据。
   </div>
-</div>
-
-<div class="floating-tools-container">
-  
-  <div id="font-switcher" aria-label="字体切换">
-    <span class="floating-tools-container__badge">Aa</span>
-    <select id="font-selector">
+  <div class="font-switcher-inline" style="margin-top: 5px; font-size: 0.8rem; text-align: center;">
+    字体设定: 
+    <select id="font-selector" style="background: transparent; border: 1px solid rgba(150,150,150,0.2); border-radius: 4px; padding: 2px 4px; font-size: 0.8rem; color: inherit;">
       <option value="noto-sans">思源黑体</option>
       <option value="noto-serif">思源宋体</option>
       <option value="zcool">站酷小薇</option>
@@ -1543,18 +1542,6 @@
       <option value="longcang">龙藏书法</option>
     </select>
   </div>
-
-  
-  <div id="effect-switcher" aria-label="页面特效">
-    <span class="floating-tools-container__badge" style="font-size: 1.1rem; line-height: 1;">✨</span>
-    <select id="effect-selector">
-      <option value="none">🚫 无特效</option>
-      <option value="star">💫 鼠标星光</option>
-      <option value="sakura">� 樱花飘落</option>
-      <option value="clickword">� 点击浮字</option>
-    </select>
-  </div>
-
 </div>
 
 <script>
@@ -1633,41 +1620,16 @@
         localStorage.setItem(key, value);
       });
     }
-
-    
-    var effectSelector = document.getElementById("effect-selector");
-    var effectKey = "blog-effect-choice";
-    if (effectSelector) {
-      var savedEffect = localStorage.getItem(effectKey) || "none";
-      effectSelector.value = savedEffect;
-      
-      if (savedEffect !== 'none') {
-        var script = document.createElement('script');
-        script.src = '/js/blog-effects.js';
-        script.onload = function() {
-          if(window.BlogEffects && window.BlogEffects[savedEffect]) {
-            window.BlogEffects[savedEffect]();
-          }
-        };
-        document.body.appendChild(script);
-      }
-
-      effectSelector.addEventListener("change", function () {
-        localStorage.setItem(effectKey, effectSelector.value);
-        location.reload(); 
-      });
-    }
   })();
 </script>
 
 <script defer src="/js/tech-preview.js"></script>
-
   
 </footer>
 <div
   id="search-wrapper"
   class="invisible fixed inset-0 flex h-screen w-screen cursor-default flex-col bg-neutral-500/50 p-4 backdrop-blur-sm dark:bg-neutral-900/50 sm:p-6 md:p-[10vh] lg:p-[12vh] z-500"
-  data-url="https://exusiaiblog.vercel.app/">
+  data-url="http://localhost:1313/">
   <div
     id="search-modal"
     class="flex flex-col w-full max-w-3xl min-h-0 mx-auto border rounded-md shadow-lg top-20 border-neutral-200 bg-neutral dark:border-neutral-700 dark:bg-neutral-800">
