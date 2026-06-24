@@ -53,6 +53,7 @@
   gap: 14px 18px;
   align-items: center;
   padding-top: 10px;
+  justify-content: center;
 }
 
 .work-shell__nav a {
@@ -60,11 +61,16 @@
   color: inherit;
   font-size: 0.96rem;
   letter-spacing: 0.02em;
-  border-bottom: 1px solid transparent;
+  padding: 6px 14px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: background 0.2s, border-color 0.2s;
 }
 
 .work-shell__nav a:hover {
-  border-bottom-color: currentColor;
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.2);
 }
 
 .work-shell__avatar-wrap {

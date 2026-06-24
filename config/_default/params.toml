@@ -35,6 +35,10 @@ defaultBackgroundImage = "wallpaper.png"
 [footer]
   showCopyright = true
   showAppearanceSwitcher = false
+  showScrollToTop = true
+
+[search]
+  enable = true
 
 [custom]
   siteStart = "2026-01-18T00:00:00+08:00"

@@ -104,8 +104,8 @@
   <link
     type="text/css"
     rel="stylesheet"
-    href="/css/main.bundle.min.4c27be2e0d69dcbddab0ba7994a20c30bc85c8bf77da43584c99f6a42ada276f2359a3f1058f48847a0cdc9d806de3c4862790cb6288ba054216a7f0adebbc9a.css"
-    integrity="sha512-TCe&#43;Lg1p3L3asLp5lKIMMLyFyL932kNYTJn2pCraJ28jWaPxBY9IhHoM3J2AbePEhieQy2KIugVCFqfwreu8mg==">
+    href="/css/main.bundle.min.9dce6d39058d98b90311abebe510ab7cd914409b2be23590423718b8bf90835df980dcdbf6cb62fdb325817cba299caf38e91784e6b5bbeb3edcbe1691437bef.css"
+    integrity="sha512-nc5tOQWNmLkDEavr5RCrfNkUQJsr4jWQQjcYuL&#43;Qg135gNzb9sti/bMlgXy6KZyvOOkXhOa1u&#43;s&#43;3L4WkUN77w==">
 
   
   
@@ -251,10 +251,10 @@
 
 
 <link rel="stylesheet"
-  href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&display=swap"
+  href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&display=swap"
   media="print" onload="this.media='all'" />
 <noscript><link rel="stylesheet"
-  href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&display=swap" /></noscript>
+  href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&display=swap" /></noscript>
 
 
 <script>
@@ -1305,61 +1305,6 @@
   })();
 </script>
 
-
-<div class="font-switcher-inline" style="margin-top: 5px; font-size: 0.8rem; text-align: center;">
-  字体设定: 
-  <select id="font-selector" style="background: transparent; border: 1px solid rgba(150,150,150,0.2); border-radius: 4px; padding: 2px 4px; font-size: 0.8rem; color: inherit;">
-    <option value="noto-sans">思源黑体</option>
-    <option value="noto-serif">思源宋体</option>
-    <option value="zcool">站酷小薇</option>
-    <option value="mashan">马善政手写</option>
-    <option value="longcang">龙藏书法</option>
-  </select>
-</div>
-
-<script>
-  (function () {
-    var fontCssMap = {
-      "noto-sans": "https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&display=swap",
-      "noto-serif": "https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&display=swap",
-      "zcool": "https://fonts.googleapis.com/css2?family=ZCOOL+XiaoWei&display=swap",
-      "mashan": "https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&display=swap",
-      "longcang": "https://fonts.googleapis.com/css2?family=Long+Cang&display=swap"
-    };
-
-    function loadFontCSS(name) {
-      var href = fontCssMap[name];
-      if (!href) return;
-      var id = "font-css-" + name;
-      if (document.getElementById(id)) return;
-      var link = document.createElement("link");
-      link.id = id;
-      link.rel = "stylesheet";
-      link.href = href;
-      link.media = "print";
-      link.onload = function () { link.media = "all"; };
-      document.head.appendChild(link);
-    }
-
-    var selector = document.getElementById("font-selector");
-    var key = "blog-font-choice";
-    if (selector) {
-      var saved = localStorage.getItem(key);
-      if (saved && saved !== "noto-sans") {
-         
-        loadFontCSS(saved);
-        document.documentElement.setAttribute("data-font", saved);
-        selector.value = saved;
-      }
-      selector.addEventListener("change", function () {
-        var value = selector.value;
-        loadFontCSS(value);
-        document.documentElement.setAttribute("data-font", value);
-        localStorage.setItem(key, value);
-      });
-    }
-  })();
-</script>
 
 <script defer src="/js/tech-preview.js"></script>
 <div class="home-switcher" style="text-align:center;margin-top:12px;font-size:0.9rem;">

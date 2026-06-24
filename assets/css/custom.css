@@ -1,110 +1,58 @@
-/* 针对文章正文的段落进行首行缩进 */
-article .article-content p {
-    text-indent: 2em;
-}
-
-/* 排除引用的段落，不然引用块也会缩进 */
-article .article-content blockquote p {
-    text-indent: 0;
-}
+/* 保护代码块不被特殊字体覆盖，强制使用等宽字体 */
 
 :root {
-    --site-font: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
-}
-
-html[data-font='noto-sans'] {
-    --site-font: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
-}
-
-html[data-font='noto-serif'] {
-    --site-font: 'Noto Serif SC', 'Songti SC', 'STSong', serif;
-}
-
-html[data-font='zcool'] {
-    --site-font: 'ZCOOL XiaoWei', 'Noto Sans SC', 'PingFang SC', sans-serif;
-}
-
-html[data-font='mashan'] {
-    --site-font: 'Ma Shan Zheng', 'Noto Sans SC', 'PingFang SC', sans-serif;
-}
-
-html[data-font='longcang'] {
-    --site-font: 'Long Cang', 'Noto Sans SC', 'PingFang SC', sans-serif;
+    --site-font: 'Source Serif 4', 'Noto Serif SC', 'Songti SC', 'STSong', 'Georgia', serif;
 }
 
 body {
     font-family: var(--site-font) !important;
     letter-spacing: 0.01em;
-    line-height: 1.75;
+    line-height: 1.85;
 }
 
-/* 针对不同字体的修复：字距、行高、以及由于特殊字体(ch单位极小)导致的排版偏窄(过早换行)问题 */
-
-/* 修复特殊字体下 `ch` 单位引发的极窄排版压缩问题。
-   彻底放开最大宽度限制，让正文自动填满页面的主体栅格，避免右侧出现巨大留白。 */
-.prose, .max-w-prose {
+/* 让内容区撑满可用空间（不再 shrink-to-fit） */
+.min-w-0.max-w-fit {
     max-width: none !important;
+    flex: 1 1 0%;
 }
 
-/* 针对龙藏体：视觉尺寸偏小极多，需大幅放大 */
-html[data-font='longcang'] body {
-    font-size: 1.15rem !important;
-    letter-spacing: 0.06em;
-    word-spacing: 0.08em;
-}
-html[data-font='longcang'] .prose {
-    font-size: 1.35rem !important; /* 正文放大 */
-    line-height: 2.2 !important;   /* 行高加大 */
-}
-html[data-font='longcang'] .prose h1 { font-size: 2.5rem !important; line-height: 1.4 !important; }
-html[data-font='longcang'] .prose h2 { font-size: 2.1rem !important; line-height: 1.4 !important; }
-html[data-font='longcang'] .prose h3 { font-size: 1.7rem !important; line-height: 1.4 !important; }
-
-html[data-font='mashan'] body {
-    font-weight: 400;
-    letter-spacing: 0.03em;
-    line-height: 1.9 !important;
-}
-html[data-font='mashan'] .prose {
-    font-size: 1.25rem !important;
-    line-height: 2.0 !important;
-}
-html[data-font='mashan'] .prose h1 { font-size: 2.2rem !important; line-height: 1.4 !important; }
-html[data-font='mashan'] .prose h2 { font-size: 1.9rem !important; line-height: 1.4 !important; }
-html[data-font='mashan'] .prose h3 { font-size: 1.6rem !important; line-height: 1.4 !important; }
-
-html[data-font='zcool'] body {
-    font-weight: 500;
-    letter-spacing: 0.02em;
-}
-html[data-font='zcool'] .prose {
-    font-size: 1.12rem !important;
-    line-height: 1.85 !important;
+/* 正文居中 + 限制行宽 */
+.article-content.max-w-prose {
+    max-width: 85ch;
+    margin-left: auto !important;
+    margin-right: auto !important;
 }
 
-/* 保护代码块不被书法字体覆盖，强制使用等宽字体 */
-html[data-font] .prose code,
-html[data-font] .prose pre,
-html[data-font] .highlight {
+/* 有侧边目录时：正文不居中，撑满剩余空间 */
+@media (min-width: 1024px) {
+    .lg\:flex-row .article-content.max-w-prose {
+        max-width: none;
+    }
+}
+
+/* 正文两端对齐 */
+article .article-content p {
+    text-indent: 2em;
+    text-align: justify;
+}
+
+/* 排除引用的段落 */
+article .article-content blockquote p {
+    text-indent: 0;
+    text-align: start;
+}
+
+/* 暗色模式下正文对比度微调 */
+.dark .prose {
+    --tw-prose-body: #d1d5db;
+}
+.prose code,
+.prose pre,
+.highlight {
     font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !important;
-    font-size: 0.95rem !important; /* 修正代码字体大小 */
+    font-size: 0.95rem !important;
     letter-spacing: normal !important;
     line-height: 1.5 !important;
-}
-
-html[data-font='mashan'] h1,
-html[data-font='mashan'] h2,
-html[data-font='mashan'] h3,
-html[data-font='longcang'] h1,
-html[data-font='longcang'] h2,
-html[data-font='longcang'] h3,
-html[data-font='mashan'] .prose h1,
-html[data-font='mashan'] .prose h2,
-html[data-font='mashan'] .prose h3,
-html[data-font='longcang'] .prose h1,
-html[data-font='longcang'] .prose h2,
-html[data-font='longcang'] .prose h3 {
-    letter-spacing: 0.06em;
 }
 
 strong, b {
