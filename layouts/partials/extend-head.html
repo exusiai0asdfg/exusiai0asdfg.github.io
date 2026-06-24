@@ -1,4 +1,16 @@
-{{/* 加载进度条 NProgress */}}
+{{/* === 资源预连接（减少 DNS/TCP 延迟）=== */}}
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+{{/* === 默认字体：用 link 直接加载，不等待 JS === */}}
+<link rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&display=swap"
+  media="print" onload="this.media='all'" />
+<noscript><link rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&display=swap" /></noscript>
+
+{{/* === 首页 Hero 模式检测 === */}}
 <script>
   (function () {
     try {
@@ -19,34 +31,33 @@
       }
 
       document.documentElement.classList.add(isMobileLike ? "tech-home-bg-static" : "tech-home-bg-dynamic");
-    } catch (e) {
-      // Ignore storage failures and keep rendering.
-    }
+    } catch (e) {}
   })();
 </script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.css" />
-<link rel="stylesheet" href="/css/tech-preview.css" />
-<script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js"></script>
+
+{{/* === NProgress（非阻塞加载）=== */}}
+<link rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.css"
+  media="print" onload="this.media='all'" />
+<link rel="stylesheet" href="/css/tech-preview.css"
+  media="print" onload="this.media='all'" />
+<script defer src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js"></script>
 
 <script>
   document.addEventListener("DOMContentLoaded", function () {
-    NProgress.configure({
-      showSpinner: false,
-      speed: 500,
-      minimum: 0.15
-    });
+    if (typeof NProgress === "undefined") return;
+    NProgress.configure({ showSpinner: false, speed: 500, minimum: 0.15 });
     NProgress.start();
   });
 
   window.addEventListener("load", function () {
-    NProgress.done();
+    if (typeof NProgress !== "undefined") NProgress.done();
   });
 
   document.addEventListener("click", function (e) {
+    if (typeof NProgress === "undefined") return;
     var target = e.target;
-    while (target && target.tagName !== "A") {
-      target = target.parentNode;
-    }
+    while (target && target.tagName !== "A") target = target.parentNode;
     if (target && target.href && target.href.indexOf(window.location.origin) !== -1 && target.target !== "_blank") {
       NProgress.start();
     }

@@ -4,7 +4,7 @@
   dir="ltr"
   class="scroll-smooth"
   data-default-appearance="dark"
-  data-auto-appearance="false"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  data-auto-appearance="false"><head>
   <meta charset="utf-8">
   
     <meta http-equiv="content-language" content="zh-CN">
@@ -26,7 +26,7 @@
   
   
   
-  <link rel="canonical" href="http://localhost:1313/notes/">
+  <link rel="canonical" href="https://exusiaiblog.vercel.app/notes/">
   
     
       <link rel="alternate" type="application/rss+xml" href="/notes/index.xml" title="难评's blog" />
@@ -51,7 +51,7 @@
   
 
   
-  <meta property="og:url" content="http://localhost:1313/notes/">
+  <meta property="og:url" content="https://exusiaiblog.vercel.app/notes/">
   <meta property="og:site_name" content="难评&#39;s blog">
   <meta property="og:title" content="学习笔记">
   <meta property="og:description" content="我的博客">
@@ -217,7 +217,7 @@
     "headline": "学习笔记",
     
     "inLanguage": "zh-CN",
-    "url" : "http://localhost:1313/notes/",
+    "url" : "https://exusiaiblog.vercel.app/notes/",
     "author" : {
       "@type": "Person",
       "name": "难评"
@@ -239,10 +239,28 @@
 
   
   
+    
+
+
+
+
+  
 
   
   
     
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+
+<link rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&display=swap"
+  media="print" onload="this.media='all'" />
+<noscript><link rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&display=swap" /></noscript>
+
+
 <script>
   (function () {
     try {
@@ -263,34 +281,33 @@
       }
 
       document.documentElement.classList.add(isMobileLike ? "tech-home-bg-static" : "tech-home-bg-dynamic");
-    } catch (e) {
-      
-    }
+    } catch (e) {}
   })();
 </script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.css" />
-<link rel="stylesheet" href="/css/tech-preview.css" />
-<script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js"></script>
+
+
+<link rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.css"
+  media="print" onload="this.media='all'" />
+<link rel="stylesheet" href="/css/tech-preview.css"
+  media="print" onload="this.media='all'" />
+<script defer src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js"></script>
 
 <script>
   document.addEventListener("DOMContentLoaded", function () {
-    NProgress.configure({
-      showSpinner: false,
-      speed: 500,
-      minimum: 0.15
-    });
+    if (typeof NProgress === "undefined") return;
+    NProgress.configure({ showSpinner: false, speed: 500, minimum: 0.15 });
     NProgress.start();
   });
 
   window.addEventListener("load", function () {
-    NProgress.done();
+    if (typeof NProgress !== "undefined") NProgress.done();
   });
 
   document.addEventListener("click", function (e) {
+    if (typeof NProgress === "undefined") return;
     var target = e.target;
-    while (target && target.tagName !== "A") {
-      target = target.parentNode;
-    }
+    while (target && target.tagName !== "A") target = target.parentNode;
     if (target && target.href && target.href.indexOf(window.location.origin) !== -1 && target.target !== "_blank") {
       NProgress.start();
     }
@@ -1436,7 +1453,7 @@
       "longcang": "https://fonts.googleapis.com/css2?family=Long+Cang&display=swap"
     };
 
-    function ensureFontLoaded(name) {
+    function loadFontCSS(name) {
       var href = fontCssMap[name];
       if (!href) return;
       var id = "font-css-" + name;
@@ -1445,24 +1462,24 @@
       link.id = id;
       link.rel = "stylesheet";
       link.href = href;
+      link.media = "print";
+      link.onload = function () { link.media = "all"; };
       document.head.appendChild(link);
     }
 
-     
     var selector = document.getElementById("font-selector");
     var key = "blog-font-choice";
     if (selector) {
       var saved = localStorage.getItem(key);
-      if (saved) {
-        ensureFontLoaded(saved);
+      if (saved && saved !== "noto-sans") {
+         
+        loadFontCSS(saved);
         document.documentElement.setAttribute("data-font", saved);
         selector.value = saved;
-      } else {
-        ensureFontLoaded("noto-sans");
       }
       selector.addEventListener("change", function () {
         var value = selector.value;
-        ensureFontLoaded(value);
+        loadFontCSS(value);
         document.documentElement.setAttribute("data-font", value);
         localStorage.setItem(key, value);
       });
@@ -1482,7 +1499,7 @@
 <div
   id="search-wrapper"
   class="invisible fixed inset-0 flex h-screen w-screen cursor-default flex-col bg-neutral-500/50 p-4 backdrop-blur-sm dark:bg-neutral-900/50 sm:p-6 md:p-[10vh] lg:p-[12vh] z-500"
-  data-url="http://localhost:1313/">
+  data-url="https://exusiaiblog.vercel.app/">
   <div
     id="search-modal"
     class="flex flex-col w-full max-w-3xl min-h-0 mx-auto border rounded-md shadow-lg top-20 border-neutral-200 bg-neutral dark:border-neutral-700 dark:bg-neutral-800">
