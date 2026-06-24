@@ -1,7 +1,18 @@
 {{ $disableImageOptimization := .Site.Params.disableImageOptimization | default false }}
 <article class="prose dark:prose-invert max-w-full">
   <div class="relative">
-    <div class="tech-home-stage absolute inset-x-0 top-0 -z-10">
+    <div id="tech-home-bg">
+      {{ $bgVideo := "/videos/home-bg.mp4" }}
+      {{ if $bgVideo }}
+        <video class="home-bg-video" autoplay muted loop playsinline preload="auto">
+          <source src="{{ $bgVideo }}" type="video/mp4">
+        </video>
+      {{ end }}
+      <div class="home-bg-layer home-bg-noise"></div>
+      <div class="home-bg-layer home-bg-wave"></div>
+      <div class="home-bg-layer home-bg-vignette"></div>
+    </div>
+    <div class="relative">
       {{ $useDefault := true }}
       {{ $homepageImage := "" }}
       {{ with .Site.Params.defaultBackgroundImage }}
@@ -26,7 +37,7 @@
         {{ with $.Params.imagePosition | default $defaultPosition }}
           {{ $style = printf "object-position: %s;" . }}
         {{ end }}
-        <img
+          <img
           id="background-image"
           class="tech-home-stage__image nozoom mt-0 mr-0 mb-0 ml-0 w-full object-cover"
           src="{{ $homepageImage.RelPermalink }}"

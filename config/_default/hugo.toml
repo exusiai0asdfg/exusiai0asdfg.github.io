@@ -4,6 +4,7 @@
 
  theme = "blowfish" # UNCOMMENT THIS LINE
 baseURL = "https://exusiaiblog.vercel.app/"
+title = "难评's blog"
 defaultContentLanguage = "zh"
 hasCJKLanguage = true
 enableGitInfo = false
@@ -30,12 +31,6 @@ disableKinds = ["taxonomy", "term"]
 
 
 
-[taxonomies]
-  tag = "tags"
-  category = "categories"
-  author = "authors"
-  series = "series"
-
 [sitemap]
   changefreq = 'daily'
   filename = 'sitemap.xml'
@@ -44,35 +39,6 @@ disableKinds = ["taxonomy", "term"]
 [outputs]
   home = ["HTML", "RSS", "JSON"]
 
-[related]
-  threshold = 0
-  toLower = false
-
-    [[related.indices]]
-        name = "tags"
-        weight = 100
-
-    [[related.indices]]
-        name = "categories"
-        weight = 100
-
-    [[related.indices]]
-        name = "series"
-        weight = 50
-
-    [[related.indices]]
-        name = "authors"
-        weight = 20
-
-    [[related.indices]]
-        name = "date"
-        weight = 10
-
-    [[related.indices]]
-      applyFilter = false
-      name = 'fragmentrefs'
-      type = 'fragments'
-      weight = 10
 [markup]
   [markup.goldmark]
     [markup.goldmark.extensions]

@@ -1,0 +1,301 @@
+/* Academic / Work homepage styles */
+.work-page {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top right, rgba(107, 114, 128, 0.12), transparent 32%),
+    radial-gradient(circle at bottom left, rgba(31, 41, 55, 0.07), transparent 28%),
+    var(--page-bg, #f8f7f2);
+  color: var(--page-fg, #111827);
+  position: relative;
+}
+
+/* 全屏固定背景图层（带模糊蒙版） */
+.work-page::before {
+  content: "";
+  position: fixed;
+  inset: -4%;               /* 放大以消除模糊边缘白边 */
+  z-index: -2;
+  background-image: var(--work-bg-image, none);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: blur(4px) brightness(0.55);
+}
+
+/* 背景上的暗色遮罩 */
+.work-page::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(180deg, rgba(2, 6, 23, 0.18), rgba(2, 6, 23, 0.45) 60%, rgba(2, 6, 23, 0.72));
+}
+
+.work-shell {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px 24px 28px;
+  position: relative;
+  z-index: 0;
+}
+
+.work-shell__top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 28px;
+}
+
+.work-shell__nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px 18px;
+  align-items: center;
+  padding-top: 10px;
+}
+
+.work-shell__nav a {
+  text-decoration: none;
+  color: inherit;
+  font-size: 0.96rem;
+  letter-spacing: 0.02em;
+  border-bottom: 1px solid transparent;
+}
+
+.work-shell__nav a:hover {
+  border-bottom-color: currentColor;
+}
+
+.work-shell__avatar-wrap {
+  flex: 0 0 auto;
+}
+
+.work-shell__avatar-link {
+  display: inline-flex;
+  border-radius: 999px;
+  overflow: hidden;
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.15);
+}
+
+.work-shell__avatar {
+  width: 112px;
+  height: 112px;
+  object-fit: cover;
+  display: block;
+}
+
+.work-shell__content {
+  background: rgba(255, 255, 255, 0.74);
+  backdrop-filter: blur(18px);
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  border-radius: 24px;
+  padding: 32px 34px 28px;
+  box-shadow: 0 22px 55px rgba(15, 23, 42, 0.08);
+}
+
+.work-shell__content h2 {
+  margin-top: 2rem;
+  margin-bottom: 0.6rem;
+  font-size: 1.2rem;
+}
+
+.work-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.work-card {
+  display: block;
+  padding: 18px 18px 16px;
+  border-radius: 20px;
+  text-decoration: none;
+  color: inherit;
+  background: rgba(255, 255, 255, 0.64);
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  box-shadow: 0 14px 30px rgba(15, 23, 42, 0.08);
+  transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
+}
+
+.work-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(37, 99, 235, 0.28);
+  box-shadow: 0 18px 36px rgba(15, 23, 42, 0.12);
+}
+
+.work-card h2 {
+  margin: 0 0 8px;
+  font-size: 1.08rem;
+}
+
+.work-card p {
+  margin: 0;
+  line-height: 1.7;
+  opacity: 0.82;
+}
+
+.work-block + .work-block {
+  margin-top: 28px;
+}
+
+.work-block h2 {
+  margin: 0 0 10px;
+  font-size: 1.35rem;
+  letter-spacing: 0.01em;
+}
+
+.work-block p {
+  margin: 0.25rem 0;
+}
+
+.work-shell__content p,
+.work-shell__content li {
+  line-height: 1.8;
+}
+
+/* 正文内链接样式（适配深色背景） */
+.work-shell__content a {
+  color: #3b82f6;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  text-decoration-color: rgba(59, 130, 246, 0.4);
+  transition: color 0.15s, text-decoration-color 0.15s;
+}
+.work-shell__content a:hover {
+  color: #60a5fa;
+  text-decoration-color: rgba(96, 165, 250, 0.7);
+}
+.work-shell__content a:visited {
+  color: #7c3aed;
+}
+
+.work-shell__switcher {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 20px;
+  font-size: 0.9rem;
+}
+
+.work-shell__switcher a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.work-shell__switcher a:hover {
+  text-decoration: underline;
+}
+
+.work-shell__switcher span {
+  opacity: 0.6;
+}
+
+@media (max-width: 760px) {
+  .work-shell {
+    padding: 22px 16px 24px;
+  }
+
+  .work-shell__top {
+    flex-direction: column-reverse;
+    align-items: flex-start;
+  }
+
+  .work-shell__avatar {
+    width: 88px;
+    height: 88px;
+  }
+
+  .work-shell__content {
+    padding: 22px 20px 20px;
+    border-radius: 18px;
+  }
+
+  .work-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .work-page {
+    background:
+      radial-gradient(circle at top right, rgba(148, 163, 184, 0.08), transparent 32%),
+      radial-gradient(circle at bottom left, rgba(15, 23, 42, 0.26), transparent 28%),
+      #0b1220;
+    color: #e5e7eb;
+  }
+
+  .work-shell__content {
+    background: rgba(15, 23, 42, 0.78);
+    border-color: rgba(148, 163, 184, 0.16);
+    box-shadow: 0 22px 55px rgba(0, 0, 0, 0.28);
+  }
+}
+
+/* ---- Hugo Goldmark 标题锚点 # 样式 ---- */
+/* 补齐 Blowfish / Tailwind 工具类，让 # 默认隐藏、hover 标题时显示 */
+
+.work-shell__content h1,
+.work-shell__content h2,
+.work-shell__content h3,
+.work-shell__content h4,
+.work-shell__content h5,
+.work-shell__content h6 {
+  position: relative;
+}
+
+/* 锚点 div（隐藏的跳转目标） */
+.work-shell__content .anchor {
+  position: absolute;
+  top: 0;
+  visibility: hidden;
+}
+
+/* 锚点 # 链接 — 默认透明，hover 时出现 */
+.work-shell__content h1 > span,
+.work-shell__content h2 > span,
+.work-shell__content h3 > span,
+.work-shell__content h4 > span,
+.work-shell__content h5 > span,
+.work-shell__content h6 > span {
+  position: absolute;
+  top: 0;
+  inset-inline-start: -1.5rem;
+  width: 1.5rem;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  user-select: none;
+  font-size: 0.9em;
+  font-weight: 400;
+}
+
+.work-shell__content h1:hover > span,
+.work-shell__content h2:hover > span,
+.work-shell__content h3:hover > span,
+.work-shell__content h4:hover > span,
+.work-shell__content h5:hover > span,
+.work-shell__content h6:hover > span {
+  opacity: 1;
+}
+
+/* 锚点链接文字样式 */
+.work-shell__content h1 > span a,
+.work-shell__content h2 > span a,
+.work-shell__content h3 > span a,
+.work-shell__content h4 > span a,
+.work-shell__content h5 > span a,
+.work-shell__content h6 > span a {
+  text-decoration: none !important;
+  color: inherit;
+  opacity: 0.5;
+}
+
+.work-shell__content h1:hover > span a,
+.work-shell__content h2:hover > span a,
+.work-shell__content h3:hover > span a,
+.work-shell__content h4:hover > span a,
+.work-shell__content h5:hover > span a,
+.work-shell__content h6:hover > span a {
+  opacity: 0.85;
+}

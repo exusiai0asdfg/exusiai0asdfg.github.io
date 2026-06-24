@@ -17,6 +17,8 @@
       [goldmark.extensions.passthrough.delimiters]
         block = [['\[', '\]'], ['$$', '$$'], ['$$$$', '$$$$']]
         inline = [['\(', '\)'], ['$', '$']]
+    [goldmark.extensions.typographer]
+      enable = false
 
 [highlight]
   noClasses = false

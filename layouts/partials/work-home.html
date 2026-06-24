@@ -1,0 +1,32 @@
+<section class="work-shell">
+  <div class="work-shell__top">
+    <div class="work-shell__nav" aria-label="Work sections">
+      <a href="/work/intro/">Personal Introduction</a>
+      <a href="/work/paper/">Important Papers</a>
+      <a href="/work/path/">Learning Path</a>
+    </div>
+
+    <div class="work-shell__avatar-wrap">
+      {{ with .Site.Params.Author.image }}
+        {{ $avatar := resources.Get . }}
+        {{ if $avatar }}
+          <img class="work-shell__avatar" src="{{ $avatar.RelPermalink }}" alt="avatar">
+        {{ end }}
+      {{ else }}
+        <img class="work-shell__avatar" src="/mouse.jpg" alt="avatar">
+      {{ end }}
+    </div>
+  </div>
+
+  <div class="work-shell__content">
+    {{ .Content }}
+  </div>
+
+  <div class="work-shell__switcher">
+    <a href="/life/">Life</a>
+    <span> | </span>
+    <a href="/">Work</a>
+  </div>
+
+  {{ partial "site-stats.html" . }}
+</section>

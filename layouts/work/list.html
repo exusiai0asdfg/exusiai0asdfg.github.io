@@ -1,0 +1,5 @@
+{{ define "main" }}
+  {{ with .Site.GetPage "work/intro" }}
+    {{ partial "work-home.html" . }}
+  {{ end }}
+{{ end }}

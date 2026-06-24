@@ -1,7 +1,7 @@
 [[main]]
   identifier = "home"
   name = "首页"
-  url = "/"
+  url = "/life/"
   weight = 40
 
 [[main]]

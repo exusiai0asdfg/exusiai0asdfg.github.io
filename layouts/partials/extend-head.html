@@ -2,7 +2,7 @@
 <script>
   (function () {
     try {
-      if (window.location.pathname !== "/") return;
+      if (window.location.pathname !== "/" && window.location.pathname !== "/life/") return;
       var key = "blog-home-hero-mode-v1";
       localStorage.removeItem(key);
       document.documentElement.classList.add("tech-home-first");
@@ -29,19 +29,6 @@
 <script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js"></script>
 
 <script>
-  (function () {
-    try {
-      if (window.location.pathname !== "/") return;
-      if (window.location.search.indexOf("noFirstRedirect=1") !== -1) return;
-      var key = "blog-first-visit-about-v1";
-      if (localStorage.getItem(key)) return;
-      localStorage.setItem(key, "1");
-      window.location.replace("/about/");
-    } catch (e) {
-      // Fail silently to avoid blocking page render.
-    }
-  })();
-
   document.addEventListener("DOMContentLoaded", function () {
     NProgress.configure({
       showSpinner: false,

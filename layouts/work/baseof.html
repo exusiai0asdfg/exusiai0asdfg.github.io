@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{{ if .Title }}{{ .Title }} · {{ end }}Shiming Li's Website</title>
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="stylesheet" href="/css/work.css" />
+  {{ with .Site.Params.work.backgroundImage }}
+    {{ $bg := resources.Get . }}
+    {{ if $bg }}
+    <style>:root { --work-bg-image: url('{{ $bg.RelPermalink }}'); }</style>
+    {{ end }}
+  {{ end }}
+  {{ with .Site.Params.Author.image }}
+    {{ $img := resources.Get . }}
+    {{ if $img }}
+      <link rel="preload" as="image" href="{{ $img.RelPermalink }}" />
+    {{ end }}
+  {{ end }}
+</head>
+<body class="work-page">
+  <main id="main-content">
+    {{ block "main" . }}{{ end }}
+  </main>
+</body>
+</html>

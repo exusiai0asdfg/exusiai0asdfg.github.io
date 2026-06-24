@@ -1,32 +1,14 @@
-﻿{{ $siteStart := .Site.Params.custom.siteStart | default "2026-01-18T00:00:00+08:00" }}
+﻿{{ partial "site-stats.html" . }}
 
-<div class="site-meta-panel">
-  <div id="runtime" class="site-runtime" data-site-start="{{ $siteStart }}"></div>
-
-  <div id="site-stat-online" class="site-stat" style="display:none;">
-    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-    <span id="busuanzi_container_site_pv">
-      访问量: <span id="busuanzi_value_site_pv" class="site-stat-value"></span> 次
-    </span>
-    <span class="site-stat-sep">|</span>
-    <span id="busuanzi_container_site_uv">
-      访客数: <span id="busuanzi_value_site_uv" class="site-stat-value"></span> 人
-    </span>
-  </div>
-
-  <div id="site-stat-local" class="site-stat" style="display:none;">
-    本地预览模式不统计访问量，部署到正式域名后显示真实数据。
-  </div>
-  <div class="font-switcher-inline" style="margin-top: 5px; font-size: 0.8rem; text-align: center;">
-    字体设定: 
-    <select id="font-selector" style="background: transparent; border: 1px solid rgba(150,150,150,0.2); border-radius: 4px; padding: 2px 4px; font-size: 0.8rem; color: inherit;">
-      <option value="noto-sans">思源黑体</option>
-      <option value="noto-serif">思源宋体</option>
-      <option value="zcool">站酷小薇</option>
-      <option value="mashan">马善政手写</option>
-      <option value="longcang">龙藏书法</option>
-    </select>
-  </div>
+<div class="font-switcher-inline" style="margin-top: 5px; font-size: 0.8rem; text-align: center;">
+  字体设定: 
+  <select id="font-selector" style="background: transparent; border: 1px solid rgba(150,150,150,0.2); border-radius: 4px; padding: 2px 4px; font-size: 0.8rem; color: inherit;">
+    <option value="noto-sans">思源黑体</option>
+    <option value="noto-serif">思源宋体</option>
+    <option value="zcool">站酷小薇</option>
+    <option value="mashan">马善政手写</option>
+    <option value="longcang">龙藏书法</option>
+  </select>
 </div>
 
 <script>
@@ -51,42 +33,7 @@
       document.head.appendChild(link);
     }
 
-    function updateRuntime() {
-      var runtimeEl = document.getElementById("runtime");
-      if (!runtimeEl) return;
-
-      var startRaw = runtimeEl.getAttribute("data-site-start");
-      var start = new Date(startRaw);
-      if (Number.isNaN(start.getTime())) return;
-
-      var now = new Date();
-      var diff = now.getTime() - start.getTime();
-      if (diff < 0) diff = 0;
-
-      var dayMs = 24 * 60 * 60 * 1000;
-      var days = Math.floor(diff / dayMs);
-      var hours = Math.floor((diff % dayMs) / (60 * 60 * 1000));
-      var mins = Math.floor((diff % (60 * 60 * 1000)) / (60 * 1000));
-      var secs = Math.floor((diff % (60 * 1000)) / 1000);
-
-      runtimeEl.innerHTML = "本站已运行: <span class='site-stat-value'>" + days + "</span> 天 <span class='site-stat-value'>" + hours + "</span> 小时 <span class='site-stat-value'>" + mins + "</span> 分 <span class='site-stat-value'>" + secs + "</span> 秒";
-    }
-
-    var isLocal = ["localhost", "127.0.0.1", "::1"].indexOf(window.location.hostname) !== -1;
-    var localStat = document.getElementById("site-stat-local");
-    var onlineStat = document.getElementById("site-stat-online");
-    if (isLocal) {
-      if (localStat) localStat.style.display = "block";
-      if (onlineStat) onlineStat.style.display = "none";
-    } else {
-      if (localStat) localStat.style.display = "none";
-      if (onlineStat) onlineStat.style.display = "block";
-    }
-
-    updateRuntime();
-    window.setInterval(updateRuntime, 1000);
-
-    // --- 字体切换逻辑 ---
+    /* 字体切换逻辑 */
     var selector = document.getElementById("font-selector");
     var key = "blog-font-choice";
     if (selector) {
@@ -109,3 +56,8 @@
 </script>
 
 <script defer src="/js/tech-preview.js"></script>
+<div class="home-switcher" style="text-align:center;margin-top:12px;font-size:0.9rem;">
+  <a href="/life/" style="margin-right:8px;">Life</a>
+  <span style="color:var(--muted,#888)">|</span>
+  <a href="/" style="margin-left:8px;">Work</a>
+</div>

@@ -52,3 +52,7 @@ defaultBackgroundImage = "wallpaper.png"
   theme = "dark"
   lang = "zh-CN"
   loading = "lazy"
+
+# Work 学术主页配置
+[work]
+  backgroundImage = "XJTU.jpg"   # 背景图放在 assets/ 目录下

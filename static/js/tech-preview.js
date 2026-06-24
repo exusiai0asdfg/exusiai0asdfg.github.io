@@ -9,7 +9,7 @@
   }
 
   function shouldUseStaticHomeBackground() {
-    if (window.location.pathname !== "/") return false;
+    if (window.location.pathname !== "/" && window.location.pathname !== "/life/") return false;
 
     try {
       var coarseNoHover = window.matchMedia && window.matchMedia("(hover: none) and (pointer: coarse)").matches;
@@ -76,7 +76,7 @@
   }
 
   function setupHomeIntro() {
-    if (window.location.pathname !== "/") return;
+    if (window.location.pathname !== "/" && window.location.pathname !== "/life/") return;
     if (!root.classList.contains("tech-home-first")) return;
 
     root.classList.add("tech-home-intro");
@@ -88,7 +88,7 @@
   }
 
   function setupHomeBackground() {
-    if (window.location.pathname !== "/") return;
+    if (window.location.pathname !== "/" && window.location.pathname !== "/life/") return;
     if (document.getElementById("tech-home-bg")) return;
 
     if (shouldUseStaticHomeBackground()) {

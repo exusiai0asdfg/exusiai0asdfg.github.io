@@ -15,8 +15,8 @@
 
   
   
-    <title>超时空辉夜姬! &middot; </title>
-    <meta name="title" content="超时空辉夜姬! &middot; ">
+    <title>超时空辉夜姬! &middot; 难评&#39;s blog</title>
+    <meta name="title" content="超时空辉夜姬! &middot; 难评&#39;s blog">
   
 
   
@@ -49,6 +49,7 @@
 
   
   <meta property="og:url" content="http://localhost:1313/posts/%E8%B6%85%E6%97%B6%E7%A9%BA%E8%BE%89%E5%A4%9C%E5%A7%AC/">
+  <meta property="og:site_name" content="难评&#39;s blog">
   <meta property="og:title" content="超时空辉夜姬!">
   <meta property="og:description" content="我的博客">
   <meta property="og:locale" content="zh_CN">
@@ -241,7 +242,7 @@
 <script>
   (function () {
     try {
-      if (window.location.pathname !== "/") return;
+      if (window.location.pathname !== "/" && window.location.pathname !== "/life/") return;
       var key = "blog-home-hero-mode-v1";
       localStorage.removeItem(key);
       document.documentElement.classList.add("tech-home-first");
@@ -268,19 +269,6 @@
 <script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js"></script>
 
 <script>
-  (function () {
-    try {
-      if (window.location.pathname !== "/") return;
-      if (window.location.search.indexOf("noFirstRedirect=1") !== -1) return;
-      var key = "blog-first-visit-about-v1";
-      if (localStorage.getItem(key)) return;
-      localStorage.setItem(key, "1");
-      window.location.replace("/about/");
-    } catch (e) {
-      
-    }
-  })();
-
   document.addEventListener("DOMContentLoaded", function () {
     NProgress.configure({
       showSpinner: false,
@@ -310,6 +298,8 @@
   
   
     
+
+
 
   
 
@@ -359,8 +349,8 @@
     
   
   
-    <a href="/" class="text-base font-medium truncate min-w-0 shrink">
-      
+    <a href="/life/" class="text-base font-medium truncate min-w-0 shrink">
+      难评&rsquo;s blog
     </a>
   
   <div class="flex items-center ms-auto">
@@ -461,7 +451,7 @@
       
   
     <a
-      href="/"
+      href="/life/"
       
       class="flex items-center bf-icon-color-hover"
       aria-label="首页"
@@ -624,7 +614,7 @@
     
     <div class="px-2">
       <a
-        href="/"
+        href="/life/"
         aria-label="首页"
         
         class="flex items-center gap-4 group bf-icon-color-hover text-neutral-700 dark:text-neutral-200">
@@ -762,7 +752,7 @@
   
   <li class="hidden">
     <a class="hover:underline decoration-neutral-300 dark:underline-neutral-600" href="/"
-      ></a
+      >难评&#39;s blog</a
     ><span class="px-1 text-primary-500">/</span>
   </li>
 
@@ -1450,6 +1440,25 @@ VTuber（Virtual YouTuber）是指使用虚拟形象（2D或3D模型，俗称“
             <hr class="border-dotted border-neutral-300 dark:border-neutral-600">
             <div class="pt-3">
               
+  
+  <script src="https://giscus.app/client.js"
+      data-repo="exusiai0asdfg/exusiai0asdfg.github.io"
+      data-repo-id="R_kgDOQ5pfUQ"
+      data-category="General"
+      data-category-id="DIC_kwDOQ5pfUc4C1GYH"
+      data-mapping="pathname"
+      data-reactions-enabled="1"
+      data-emit-metadata="0"
+      data-input-position="top"
+      data-theme="dark"
+      data-lang="zh-CN"
+      data-loading="lazy"
+      crossorigin="anonymous"
+      async>
+  </script>
+  
+
+
             </div>
           </div>
         
@@ -1524,11 +1533,10 @@ VTuber（Virtual YouTuber）是指使用虚拟形象（2D或3D模型，俗称“
   
     
 
-<div class="site-meta-panel">
+<div class="site-meta-panel" style="text-align:center;margin-top:16px;font-size:0.82rem;color:var(--muted, #888);">
   <div id="runtime" class="site-runtime" data-site-start="2026-01-18T00:00:00&#43;08:00"></div>
 
-  <div id="site-stat-online" class="site-stat" style="display:none;">
-    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <div id="site-stat-online" class="site-stat" style="display:none;margin-top:4px;">
     <span id="busuanzi_container_site_pv">
       访问量: <span id="busuanzi_value_site_pv" class="site-stat-value"></span> 次
     </span>
@@ -1538,19 +1546,90 @@ VTuber（Virtual YouTuber）是指使用虚拟形象（2D或3D模型，俗称“
     </span>
   </div>
 
-  <div id="site-stat-local" class="site-stat" style="display:none;">
-    本地预览模式不统计访问量，部署到正式域名后显示真实数据。
+  <div id="site-stat-local" class="site-stat" style="display:none;margin-top:4px;">
+    本地预览模式不统计访问量
   </div>
-  <div class="font-switcher-inline" style="margin-top: 5px; font-size: 0.8rem; text-align: center;">
-    字体设定: 
-    <select id="font-selector" style="background: transparent; border: 1px solid rgba(150,150,150,0.2); border-radius: 4px; padding: 2px 4px; font-size: 0.8rem; color: inherit;">
-      <option value="noto-sans">思源黑体</option>
-      <option value="noto-serif">思源宋体</option>
-      <option value="zcool">站酷小薇</option>
-      <option value="mashan">马善政手写</option>
-      <option value="longcang">龙藏书法</option>
-    </select>
-  </div>
+</div>
+
+<script>
+  (function () {
+     
+    function updateRuntime() {
+      var runtimeEl = document.getElementById("runtime");
+      if (!runtimeEl) return;
+      var startRaw = runtimeEl.getAttribute("data-site-start");
+      var start = new Date(startRaw);
+      if (Number.isNaN(start.getTime())) return;
+      var now = new Date();
+      var diff = now.getTime() - start.getTime();
+      if (diff < 0) diff = 0;
+      var dayMs = 24 * 60 * 60 * 1000;
+      var days = Math.floor(diff / dayMs);
+      var hours = Math.floor((diff % dayMs) / (60 * 60 * 1000));
+      var mins = Math.floor((diff % (60 * 60 * 1000)) / (60 * 1000));
+      var secs = Math.floor((diff % (60 * 1000)) / 1000);
+      runtimeEl.innerHTML = "本站已运行: <span class='site-stat-value'>" + days + "</span> 天 <span class='site-stat-value'>" + hours + "</span> 小时 <span class='site-stat-value'>" + mins + "</span> 分 <span class='site-stat-value'>" + secs + "</span> 秒";
+    }
+    updateRuntime();
+    window.setInterval(updateRuntime, 1000);
+
+     
+    var isLocal = ["localhost", "127.0.0.1", "::1"].indexOf(window.location.hostname) !== -1;
+    if (isLocal) {
+      document.getElementById("site-stat-local").style.display = "block";
+      return;
+    }
+
+    var isInternalNav = false;
+    try {
+      var ref = document.referrer;
+      if (ref) {
+        var refHost = new URL(ref).hostname;
+        isInternalNav = refHost === window.location.hostname;
+      }
+    } catch(e) {}
+
+    var onlineEl = document.getElementById("site-stat-online");
+
+    if (isInternalNav) {
+       
+      var pv = sessionStorage.getItem("busuanzi-pv");
+      var uv = sessionStorage.getItem("busuanzi-uv");
+      if (pv && uv) {
+        document.getElementById("busuanzi_value_site_pv").textContent = pv;
+        document.getElementById("busuanzi_value_site_uv").textContent = uv;
+        onlineEl.style.display = "block";
+      }
+      return;
+    }
+
+     
+    var script = document.createElement("script");
+    script.async = true;
+    script.src = "https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js";
+    script.onload = function () {
+      setTimeout(function () {
+        var pvEl = document.getElementById("busuanzi_value_site_pv");
+        var uvEl = document.getElementById("busuanzi_value_site_uv");
+        if (pvEl && pvEl.textContent) sessionStorage.setItem("busuanzi-pv", pvEl.textContent);
+        if (uvEl && uvEl.textContent) sessionStorage.setItem("busuanzi-uv", uvEl.textContent);
+      }, 1200);
+    };
+    document.head.appendChild(script);
+    onlineEl.style.display = "block";
+  })();
+</script>
+
+
+<div class="font-switcher-inline" style="margin-top: 5px; font-size: 0.8rem; text-align: center;">
+  字体设定: 
+  <select id="font-selector" style="background: transparent; border: 1px solid rgba(150,150,150,0.2); border-radius: 4px; padding: 2px 4px; font-size: 0.8rem; color: inherit;">
+    <option value="noto-sans">思源黑体</option>
+    <option value="noto-serif">思源宋体</option>
+    <option value="zcool">站酷小薇</option>
+    <option value="mashan">马善政手写</option>
+    <option value="longcang">龙藏书法</option>
+  </select>
 </div>
 
 <script>
@@ -1575,42 +1654,7 @@ VTuber（Virtual YouTuber）是指使用虚拟形象（2D或3D模型，俗称“
       document.head.appendChild(link);
     }
 
-    function updateRuntime() {
-      var runtimeEl = document.getElementById("runtime");
-      if (!runtimeEl) return;
-
-      var startRaw = runtimeEl.getAttribute("data-site-start");
-      var start = new Date(startRaw);
-      if (Number.isNaN(start.getTime())) return;
-
-      var now = new Date();
-      var diff = now.getTime() - start.getTime();
-      if (diff < 0) diff = 0;
-
-      var dayMs = 24 * 60 * 60 * 1000;
-      var days = Math.floor(diff / dayMs);
-      var hours = Math.floor((diff % dayMs) / (60 * 60 * 1000));
-      var mins = Math.floor((diff % (60 * 60 * 1000)) / (60 * 1000));
-      var secs = Math.floor((diff % (60 * 1000)) / 1000);
-
-      runtimeEl.innerHTML = "本站已运行: <span class='site-stat-value'>" + days + "</span> 天 <span class='site-stat-value'>" + hours + "</span> 小时 <span class='site-stat-value'>" + mins + "</span> 分 <span class='site-stat-value'>" + secs + "</span> 秒";
-    }
-
-    var isLocal = ["localhost", "127.0.0.1", "::1"].indexOf(window.location.hostname) !== -1;
-    var localStat = document.getElementById("site-stat-local");
-    var onlineStat = document.getElementById("site-stat-online");
-    if (isLocal) {
-      if (localStat) localStat.style.display = "block";
-      if (onlineStat) onlineStat.style.display = "none";
-    } else {
-      if (localStat) localStat.style.display = "none";
-      if (onlineStat) onlineStat.style.display = "block";
-    }
-
-    updateRuntime();
-    window.setInterval(updateRuntime, 1000);
-
-    
+     
     var selector = document.getElementById("font-selector");
     var key = "blog-font-choice";
     if (selector) {
@@ -1633,6 +1677,12 @@ VTuber（Virtual YouTuber）是指使用虚拟形象（2D或3D模型，俗称“
 </script>
 
 <script defer src="/js/tech-preview.js"></script>
+<div class="home-switcher" style="text-align:center;margin-top:12px;font-size:0.9rem;">
+  <a href="/life/" style="margin-right:8px;">Life</a>
+  <span style="color:var(--muted,#888)">|</span>
+  <a href="/" style="margin-left:8px;">Work</a>
+</div>
+
   
 </footer>
 <div

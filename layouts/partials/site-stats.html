@@ -1,0 +1,88 @@
+{{ $siteStart := .Site.Params.custom.siteStart | default "2026-01-18T00:00:00+08:00" }}
+
+<div class="site-meta-panel" style="text-align:center;margin-top:16px;font-size:0.82rem;color:var(--muted, #888);">
+  <div id="runtime" class="site-runtime" data-site-start="{{ $siteStart }}"></div>
+
+  <div id="site-stat-online" class="site-stat" style="display:none;margin-top:4px;">
+    <span id="busuanzi_container_site_pv">
+      访问量: <span id="busuanzi_value_site_pv" class="site-stat-value"></span> 次
+    </span>
+    <span class="site-stat-sep">|</span>
+    <span id="busuanzi_container_site_uv">
+      访客数: <span id="busuanzi_value_site_uv" class="site-stat-value"></span> 人
+    </span>
+  </div>
+
+  <div id="site-stat-local" class="site-stat" style="display:none;margin-top:4px;">
+    本地预览模式不统计访问量
+  </div>
+</div>
+
+<script>
+  (function () {
+    /* ---- 存活时间 ---- */
+    function updateRuntime() {
+      var runtimeEl = document.getElementById("runtime");
+      if (!runtimeEl) return;
+      var startRaw = runtimeEl.getAttribute("data-site-start");
+      var start = new Date(startRaw);
+      if (Number.isNaN(start.getTime())) return;
+      var now = new Date();
+      var diff = now.getTime() - start.getTime();
+      if (diff < 0) diff = 0;
+      var dayMs = 24 * 60 * 60 * 1000;
+      var days = Math.floor(diff / dayMs);
+      var hours = Math.floor((diff % dayMs) / (60 * 60 * 1000));
+      var mins = Math.floor((diff % (60 * 60 * 1000)) / (60 * 1000));
+      var secs = Math.floor((diff % (60 * 1000)) / 1000);
+      runtimeEl.innerHTML = "本站已运行: <span class='site-stat-value'>" + days + "</span> 天 <span class='site-stat-value'>" + hours + "</span> 小时 <span class='site-stat-value'>" + mins + "</span> 分 <span class='site-stat-value'>" + secs + "</span> 秒";
+    }
+    updateRuntime();
+    window.setInterval(updateRuntime, 1000);
+
+    /* ---- 访问统计 (不蒜子) + 站内跳转去重 ---- */
+    var isLocal = ["localhost", "127.0.0.1", "::1"].indexOf(window.location.hostname) !== -1;
+    if (isLocal) {
+      document.getElementById("site-stat-local").style.display = "block";
+      return;
+    }
+
+    var isInternalNav = false;
+    try {
+      var ref = document.referrer;
+      if (ref) {
+        var refHost = new URL(ref).hostname;
+        isInternalNav = refHost === window.location.hostname;
+      }
+    } catch(e) {}
+
+    var onlineEl = document.getElementById("site-stat-online");
+
+    if (isInternalNav) {
+      /* 站内跳转：读取缓存的计数，不加载 busuanzi（不新增计数） */
+      var pv = sessionStorage.getItem("busuanzi-pv");
+      var uv = sessionStorage.getItem("busuanzi-uv");
+      if (pv && uv) {
+        document.getElementById("busuanzi_value_site_pv").textContent = pv;
+        document.getElementById("busuanzi_value_site_uv").textContent = uv;
+        onlineEl.style.display = "block";
+      }
+      return;
+    }
+
+    /* 外部访问 → 加载 busuanzi 并缓存结果 */
+    var script = document.createElement("script");
+    script.async = true;
+    script.src = "https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js";
+    script.onload = function () {
+      setTimeout(function () {
+        var pvEl = document.getElementById("busuanzi_value_site_pv");
+        var uvEl = document.getElementById("busuanzi_value_site_uv");
+        if (pvEl && pvEl.textContent) sessionStorage.setItem("busuanzi-pv", pvEl.textContent);
+        if (uvEl && uvEl.textContent) sessionStorage.setItem("busuanzi-uv", uvEl.textContent);
+      }, 1200);
+    };
+    document.head.appendChild(script);
+    onlineEl.style.display = "block";
+  })();
+</script>

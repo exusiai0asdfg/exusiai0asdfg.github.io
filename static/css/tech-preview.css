@@ -252,6 +252,10 @@
   transition: opacity 420ms ease;
 }
 
+.tech-preview-enabled #tech-home-bg .home-bg-video {
+  opacity: 0.9;
+}
+
 .tech-preview-enabled.tech-home-bg-video-enabled #tech-home-bg .home-bg-video {
   opacity: 0.9;
 }
