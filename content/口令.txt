@@ -1,5 +1,5 @@
 git add .
-git commit -m "更改行距并稍作美化"
+git commit -m "修改导航栏并增加findme"
 git push
 
 批注:

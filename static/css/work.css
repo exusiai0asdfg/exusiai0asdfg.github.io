@@ -39,58 +39,108 @@
   z-index: 0;
 }
 
-.work-shell__top {
+/* ── 太空舱式玻璃拟态导航栏 ── */
+.work-header {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
-  gap: 24px;
-  margin-bottom: 28px;
+  gap: 20px;
+  padding: 8px 8px 8px 28px;
+  margin-bottom: 22px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
 }
 
-.work-shell__nav {
+.work-header__title {
+  font-weight: 300;
+  font-size: 0.82rem;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.65);
+  white-space: nowrap;
+  user-select: none;
+  flex-shrink: 0;
+}
+
+.work-header__nav {
   display: flex;
-  flex-wrap: wrap;
-  gap: 14px 18px;
+  gap: 4px;
   align-items: center;
-  padding-top: 10px;
+  flex-wrap: wrap;
   justify-content: center;
 }
 
-.work-shell__nav a {
+.work-header__nav a {
   text-decoration: none;
-  color: inherit;
-  font-size: 0.96rem;
-  letter-spacing: 0.02em;
-  padding: 6px 14px;
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  transition: background 0.2s, border-color 0.2s;
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 0.85rem;
+  padding: 8px 16px;
+  border-radius: 9999px;
+  transition: all 0.2s ease;
+  white-space: nowrap;
 }
 
-.work-shell__nav a:hover {
-  background: rgba(255, 255, 255, 0.14);
-  border-color: rgba(255, 255, 255, 0.2);
+.work-header__nav a:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
 }
 
-.work-shell__avatar-wrap {
-  flex: 0 0 auto;
+.work-header__right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
 }
 
-.work-shell__avatar-link {
+.work-header__social {
   display: inline-flex;
-  border-radius: 999px;
-  overflow: hidden;
-  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.15);
+  align-items: center;
+  gap: 8px;
+  padding: 5px 14px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.work-shell__avatar {
-  width: 112px;
-  height: 112px;
+.work-header__social > span {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.55);
+  white-space: nowrap;
+  user-select: none;
+}
+
+.work-header__social a {
+  display: flex;
+  align-items: center;
+  color: rgba(255, 255, 255, 0.5);
+  transition: color 0.2s, opacity 0.2s;
+}
+
+.work-header__social a:hover {
+  color: #fff;
+}
+
+.work-header__avatar {
+  flex: 0 0 auto;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.work-header__avatar img {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   display: block;
 }
 
+/* ── 正文卡片 ── */
 .work-shell__content {
   background: rgba(255, 255, 255, 0.74);
   backdrop-filter: blur(18px);
@@ -200,17 +250,25 @@
 
 @media (max-width: 760px) {
   .work-shell {
-    padding: 22px 16px 24px;
+    padding: 16px 12px 24px;
   }
 
-  .work-shell__top {
-    flex-direction: column-reverse;
-    align-items: flex-start;
+  .work-header {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px 16px;
+    border-radius: 28px;
   }
 
-  .work-shell__avatar {
-    width: 88px;
-    height: 88px;
+  .work-header__title {
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+  }
+
+  .work-header__right {
+    width: 100%;
+    justify-content: center;
   }
 
   .work-shell__content {

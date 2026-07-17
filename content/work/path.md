@@ -16,7 +16,7 @@ draft: false
 
 ### Self-Directed Learning Path:
 * **Artificial Intelligence Foundations**
-  * Focus: Theoretical foundations of AI, Automated Control, and Robotics.
+  * Focus: Machine Learning, Deep Learning, Reinforcement Learning, Automated Control, and Robotics.
   * Tools: Python, [C++](https://github.com/exusiai0asdfg/exusiai0asdfg.github.io/tree/main/content/notes/c++), [CS229](https://github.com/exusiai0asdfg/exusiai0asdfg.github.io/tree/main/content/notes/cs229), ROS2 ,Pytorch.
-* **Advanced Mathematical Training**
+* **Mathematical Training**
   * Self-study curriculum: Linear Algebra, Calculus, and Probability Theory.
