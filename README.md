@@ -28,5 +28,5 @@ Vercel：仓库根指向本目录，构建命令 `hugo`，输出目录 `public`�
 
 ## 与 personal-page 的关系
 
-页面底部的 "Personal Page" 链接指向 `https://shimingli.vercel.app/`（personal-page 项目的部署地址）。
+页面底部的 "Personal Page" 链接指向 `https://exusiai0asdfg.github.io/personal-page/`（personal-page 项目的 GitHub Pages 地址）。
 如需修改，编辑 `layouts/partials/extend-footer.html`。
