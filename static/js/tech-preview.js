@@ -102,7 +102,6 @@
     layer.setAttribute("aria-hidden", "true");
     layer.innerHTML = [
       '<video class="home-bg-video" muted autoplay loop playsinline preload="metadata">',
-      '  <source src="/videos/home-bg.webm" type="video/webm">',
       '  <source src="/videos/home-bg.mp4" type="video/mp4">',
       '</video>',
       '<div class="home-bg-layer home-bg-wave"></div>',

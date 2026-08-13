@@ -4,7 +4,7 @@
     <div id="tech-home-bg">
       {{ $bgVideo := "/videos/home-bg.mp4" }}
       {{ if $bgVideo }}
-        <video class="home-bg-video" autoplay muted loop playsinline preload="auto">
+        <video class="home-bg-video" autoplay muted loop playsinline preload="metadata">
           <source src="{{ $bgVideo }}" type="video/mp4">
         </video>
       {{ end }}

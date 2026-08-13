@@ -4,11 +4,11 @@ colorScheme = "blowfish"
 defaultAppearance = "dark"
 autoSwitchAppearance = false
 # 全局兜底背景图
-defaultBackgroundImage = "wallpaper.png"
+defaultBackgroundImage = "wallpaper.webp"
 
 [homepage]
   layout = "background"
-  image = "wallpaper.png" 
+  image = "wallpaper.webp" 
   showRecent = true
   showRecentItems = 5
   showMore = true
@@ -28,7 +28,7 @@ defaultBackgroundImage = "wallpaper.png"
 [list]
   showHero = true
   heroStyle = "background"
-  background = "wallpaper.png"
+  background = "wallpaper.webp"
   showSummary = true
   cardView = true
   
