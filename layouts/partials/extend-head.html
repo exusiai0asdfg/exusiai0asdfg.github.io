@@ -1,0 +1,65 @@
+{{/* === 资源预连接（减少 DNS/TCP 延迟）=== */}}
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+{{/* === 默认字体：用 link 直接加载，不等待 JS === */}}
+<link rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&display=swap"
+  media="print" onload="this.media='all'" />
+<noscript><link rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&display=swap" /></noscript>
+
+{{/* === 首页 Hero 模式检测 === */}}
+<script>
+  (function () {
+    try {
+      if (window.location.pathname !== "/" && window.location.pathname !== "/life/") return;
+      var key = "blog-home-hero-mode-v1";
+      localStorage.removeItem(key);
+      document.documentElement.classList.add("tech-home-first");
+
+      var isMobileLike = false;
+      try {
+        var coarseNoHover = window.matchMedia && window.matchMedia("(hover: none) and (pointer: coarse)").matches;
+        var mobileUA = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent || "");
+        var uaDataMobile = window.navigator.userAgentData && window.navigator.userAgentData.mobile === true;
+        var narrowScreen = Math.min(window.innerWidth || 0, screen.width || 0) > 0 && Math.min(window.innerWidth || 0, screen.width || 0) < 900;
+        isMobileLike = mobileUA || uaDataMobile || (coarseNoHover && narrowScreen);
+      } catch (deviceCheckError) {
+        isMobileLike = false;
+      }
+
+      document.documentElement.classList.add(isMobileLike ? "tech-home-bg-static" : "tech-home-bg-dynamic");
+    } catch (e) {}
+  })();
+</script>
+
+{{/* === NProgress（非阻塞加载）=== */}}
+<link rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.css"
+  media="print" onload="this.media='all'" />
+<link rel="stylesheet" href="/css/tech-preview.css"
+  media="print" onload="this.media='all'" />
+<script defer src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js"></script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    if (typeof NProgress === "undefined") return;
+    NProgress.configure({ showSpinner: false, speed: 500, minimum: 0.15 });
+    NProgress.start();
+  });
+
+  window.addEventListener("load", function () {
+    if (typeof NProgress !== "undefined") NProgress.done();
+  });
+
+  document.addEventListener("click", function (e) {
+    if (typeof NProgress === "undefined") return;
+    var target = e.target;
+    while (target && target.tagName !== "A") target = target.parentNode;
+    if (target && target.href && target.href.indexOf(window.location.origin) !== -1 && target.target !== "_blank") {
+      NProgress.start();
+    }
+  });
+</script>

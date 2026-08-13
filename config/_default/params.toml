@@ -1,0 +1,58 @@
+# config/_default/params.toml
+
+colorScheme = "blowfish"
+defaultAppearance = "dark"
+autoSwitchAppearance = false
+# 全局兜底背景图
+defaultBackgroundImage = "wallpaper.png"
+
+[homepage]
+  layout = "background"
+  image = "wallpaper.png" 
+  showRecent = true
+  showRecentItems = 5
+  showMore = true
+  cardView = true
+
+[article]
+  showHero = true
+  heroStyle = "background"
+  showBreadcrumbs = true
+  showTaxonomies = false
+  showComments = true 
+  showDate = true
+  showReadingTime = true
+  showWordCount = true
+  math = true 
+  showTableOfContents = true
+[list]
+  showHero = true
+  heroStyle = "background"
+  background = "wallpaper.png"
+  showSummary = true
+  cardView = true
+  
+[footer]
+  showCopyright = true
+  showAppearanceSwitcher = false
+  showScrollToTop = true
+
+[search]
+  enable = true
+
+[custom]
+  siteStart = "2026-01-18T00:00:00+08:00"
+
+# 👇 Giscus 评论配置 (已填好你的 ID)
+[giscus]
+  repo = "exusiai0asdfg/exusiai0asdfg.github.io"
+  repoId = "R_kgDOQ5pfUQ"
+  category = "General"
+  categoryId = "DIC_kwDOQ5pfUc4C1GYH"
+  mapping = "pathname"
+  reactionsEnabled = "1"
+  emitMetadata = "0"
+  inputPosition = "top"
+  theme = "dark"
+  lang = "zh-CN"
+  loading = "lazy"
